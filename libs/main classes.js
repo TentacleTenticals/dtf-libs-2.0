@@ -1,4 +1,4 @@
-export class Div{
+class Div{
   constructor({path, addBefore, cName, id, text, title, name, tab, value, valueName, editable, style, onclick, onkeydown, onkeyup, onwheel, onfocus, onblur, onmouseenter, onmouseleave, rtn, func}){
     this.main=document.createElement('div');
     if(cName) this.main.className=cName;
@@ -31,7 +31,7 @@ export class Div{
   }
 };
 
-export class Button{
+class Button{
   constructor({path, cName, id, text, label, style, onclick, rtn}){
     this.main=document.createElement('button');
     if(cName) this.main.className=cName;
@@ -58,7 +58,7 @@ export class Button{
   }
 };
 
-export class Image{
+class Image{
   constructor({path, cName, url, text, title, scale, style, loading, onclick}){
     this.main=document.createElement('img');
     if(cName) this.main.className=cName;
@@ -72,7 +72,7 @@ export class Image{
     path.appendChild(this.main);
   }
 };
-export class Video{
+class Video{
   constructor({path, cName, url, poster, autoplay, loop, muted, controls, pIp, text, style, preload, onclick, onplay, onpause, onended}){
     this.main=document.createElement('video');
     if(cName) this.main.className=cName;
@@ -94,7 +94,7 @@ export class Video{
   }
 };
 
-export class Select{
+class Select{
   constructor({path, container, label, name, value, body, options, onchange, rtn}){
     class Option{
       constructor({path, text}){
@@ -173,7 +173,7 @@ export class Select{
   }
 };
 
-export class Input{
+class Input{
   constructor({path, container, type, cName, name, id, title, value, autocomplete, list, accepted, pattern, placeholder, min, max, step, checked, disabled, required, auto, onchange, onfocus, onblur, onkeydown, onkeyup, text, iText, style, rtn}){
     if(container){
       this.container=new Div({
@@ -228,7 +228,7 @@ export class Input{
   }
 };
 
-export class Form{
+class Form{
   constructor({path, cName, id, name, action, method, style, rtn}){
     this.main=document.createElement('form');
     if(cName) this.main.className=cName;
