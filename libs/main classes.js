@@ -1,5 +1,5 @@
 class Div{
-  constructor({path, addBefore, cName, id, text, title, name, tab, value, valueName, editable, style, onclick, onkeydown, onkeyup, onwheel, onfocus, onblur, onmouseenter, onmouseleave, rtn, func}){
+  constructor({path, addBefore, cName, id, text, label, title, name, tab, value, valueName, editable, style, onclick, onkeydown, onkeyup, onwheel, onfocus, onblur, onmouseenter, onmouseleave, rtn, func}){
     this.main=document.createElement('div');
     if(cName) this.main.className=cName;
     if(id) this.main.id=id;
@@ -17,6 +17,11 @@ class Div{
     if(onblur) this.main.onblur=onblur;
     if(onmouseenter) this.main.onmouseenter=onmouseenter;
     if(onpointerenter) this.main.onpointerenter=onpointerenter;
+    if(label) this.label=new Div({
+      path: this.main,
+      cName: 'title',
+      text: label
+    });
     addBefore ? path.insertBefore(this.main, addBefore) : path.appendChild(this.main);
 
     if(func) func(this.main);
@@ -73,7 +78,7 @@ class Image{
   }
 };
 class Video{
-  constructor({path, cName, url, poster, autoplay, loop, muted, controls, pIp, text, style, preload, onclick, onplay, onpause, onended}){
+  constructor({path, cName, url, poster, autoplay, loop, muted, controls, pIp, text, style, preload, onclick, onplay, onpause, onended, rtn}){
     this.main=document.createElement('video');
     if(cName) this.main.className=cName;
     if(url) this.main.src=url;
@@ -91,6 +96,15 @@ class Video{
     if(onpause) this.main.onpause=onpause;
     if(onended) this.main.onended=onended;
     path.appendChild(this.main);
+
+    if(rtn) {
+      if(!rtn.length > 0) return this.main;
+      this.obj={};
+      rtn.forEach(e => {
+        this.obj[e] = this[e];
+      })
+      return this.obj;
+    }
   }
 };
 
@@ -159,8 +173,6 @@ class Select{
       this.label.textContent=label;
       (container ? this.container : path).appendChild(this.label);
     }
-    // if(!container && rtn === 'container') return this.container;
-    // else
     if(rtn){
       if(!rtn.length > 0 && !container) return this.main;
       this.obj={};
@@ -174,14 +186,20 @@ class Select{
 };
 
 class Input{
-  constructor({path, container, type, cName, name, id, title, value, autocomplete, list, accepted, pattern, placeholder, min, max, step, checked, disabled, required, auto, onchange, onfocus, onblur, onkeydown, onkeyup, text, iText, style, rtn}){
+  constructor({path, container, type, cName, name, id, text, label, title, value, autocomplete, list, accepted, pattern, placeholder, min, max, step, checked, disabled, required, auto, onchange, onfocus, onblur, onkeydown, onkeyup, style, rtn}){
     if(container){
       this.container=new Div({
         path: path,
         cName: 'container',
         rtn: []
       });
-    }
+    };
+    // if(label){
+    //   this.label=document.createElement('label');
+    //   this.label.className='input-label';
+    //   this.label.textContent=iText;
+    //   path.appendChild(this.label);
+    // }
     this.main=document.createElement('input');
     if(cName) this.main.className=cName;
     this.main.name=name;
@@ -207,14 +225,19 @@ class Input{
     if(onblur) this.main.onblur=onblur;
     if(onkeydown) this.main.onkeydown=onkeydown;
     if(onkeyup) this.main.onkeyup=onkeyup;
+    // if(!container) path.appendChild(this.main);
+    // else
+    // if(container) this.container.appendChild(this.main);
     (container ? this.container : path).appendChild(this.main);
 
-    if(text){
-      this.mainName=document.createElement('label');
-      this.inputName.className='input-label';
-      text ? this.inputName.textContent=text : this.inputName.innerHTML=iText;
-      this.div.appendChild(this.inputName);
-    }
+    if(label){
+      this.label=document.createElement('label');
+      this.label.className='input-label';
+      if(label[1]) this.label.htmlFor=this.main.id;
+      this.label.textContent=label[0];
+      path.appendChild(this.label);
+      // (container ? this.container : this.label).appendChild(this.main);
+    };
 
     if(rtn){
       if(!rtn.length > 0 && !container) return this.main;
