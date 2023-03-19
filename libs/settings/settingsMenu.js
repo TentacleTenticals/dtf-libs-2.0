@@ -1,0 +1,69 @@
+class SettingsOpener{
+  SettingsItem(name, id){
+    const main=document.createElement('div');
+    main.className='container';
+    main.id=`stg-DTF-${id}`;
+    document.getElementById('DTF-scriptSettingsOpener').children[2].appendChild(main);
+
+    new Div({
+      path: main,
+      cName: 'scriptName',
+      text: name
+    });
+
+    new Button({
+      path: main,
+      text: 'stg',
+      cName: 'main',
+      onclick: () => {
+        new SettingsMenu(setSettings);
+      }
+    });
+
+    new Button({
+      path: main,
+      text: 'd',
+      cName: 'main',
+      disabled: true,
+      onclick: () => {
+        new SettingsMenu(setSettings);
+      }
+    });
+
+    new Button({
+      path: main,
+      text: 'info',
+      cName: 'main',
+      onclick: () => {
+        new InfoMenu(setInfo);
+      }
+    });
+  };
+  constructor({scriptName, scriptId}){
+    if(document.getElementById('DTF-scriptSettingsOpener')) return;
+    // console.log(settings)
+    this.main=new Div({
+      path: document.body,
+      cName: 'DTF-scriptSettingsOpener',
+      id: 'DTF-scriptSettingsOpener',
+      rtn: []
+    });
+
+    this.label=new Div({
+      path: this.main,
+      cName: 'label',
+      text: 'Настройки скриптов'
+    });
+    this.header=new Div({
+      path: this.main,
+      cName: 'header',
+      text: '🛠️'
+    });
+    this.list=new Div({
+      path: this.main,
+      cName: 'list'
+    });
+
+    this.SettingsItem(scriptName, scriptId);
+  }
+};
