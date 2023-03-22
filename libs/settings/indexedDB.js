@@ -1,4 +1,4 @@
-let db, mainCfg, initCfg;
+let db, mainCfg, initCfg, obs = {};
 function dbGen(i){
   return {
     indexedDB: (window.indexedDB||window.mozIndexedDB||window.webkitIndexedDB||window.msIndexedDB||window.shimIndexedDB),
