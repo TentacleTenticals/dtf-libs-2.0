@@ -1,43 +1,31 @@
 class SettingsMenu {
   constructor(func){
     if(document.getElementById('DTF-scriptSettings')) return;
-    this.main=document.createElement('div');
-    this.main.className='dtf-scriptWindow settings';
-    this.main.id='DTF-scriptSettings';
-    document.body.appendChild(this.main);
+    this.main=new Div({
+      path: document.body,
+      cName: 'dtf-scriptWindow settings',
+      id: 'DTF-scriptSettings',
+      rtn: []
+    });
 
-    this.header=document.createElement('div');
-    this.header.className='header';
-    this.main.appendChild(this.header);
-
-    this.title=document.createElement('div');
-    this.title.className='title';
-    this.title.textContent=`Настройки ${defaultSettings['scriptInfo'].scriptName}`;
-    this.title.style=`
-      text-align: center;
-      font-weight: 500;
-      padding: 5px 0px 0px 0px;`;
-    this.header.appendChild(this.title);
-
-    new Button({
-      path: this.header,
-      text: '❌',
-      title: 'Закрыть настройки',
+    this.header=new Div({
+      path: this.main,
+      cName: 'header',
+      rtn: [],
       onclick: () => {
         this.main.remove();
       }
-    })
+    });
+    this.label=new Div({
+      path: this.header,
+      cName: 'label',
+      text: `Настройки ${defaultSettings['scriptInfo'].scriptName}`
+    });
 
-    this.form=document.createElement('form');
-    this.form.id='settings';
-    this.form.action='';
-    this.form.method='dialog';
-    this.form.onsubmit=() => {
-      // this.main.remove();
-    }
-    this.main.appendChild(this.form);
-
-    if(func) func(this.form, mainCfg);
+    this.form=new Form({
+      path: this.main,
+      rtn: []
+    });
 
     this.dataActions = new Field({
       path: this.form,
@@ -61,19 +49,6 @@ class SettingsMenu {
       ]}
     });
 
-    // this.backupSettings=document.createElement('button');
-    // this.backupSettings.className='btn';
-    // this.backupSettings.textContent='Бэкап настроек в файл';
-    // this.backupSettings.style=`
-    //   width: 100%;
-    //   box-shadow: 0px 0px 2px 0px black;
-    //   cursor: pointer;
-    // `;
-    // this.backupSettings.onclick=() => {
-    //   backupSettingsToFile(JSON.stringify(mainCfg, null, 0), 'DTF feeds settings.txt', 'text/plain');
-    // }
-    // this.main.appendChild(this.backupSettings);
-
     new Button({
       path: this.dataActions,
       text: 'Бэкап настроек в файл',
@@ -82,19 +57,6 @@ class SettingsMenu {
         backupSettingsToFile(JSON.stringify(cfgMain, null, 2), `${cfgMain.srciptInfo.scriptName} ${new Date()} (бэкап настроек).txt`, 'text/plain');
       }
     })
-
-    // this.injectSettingsBackup=document.createElement('button');
-    // this.injectSettingsBackup.className='btn';
-    // this.injectSettingsBackup.textContent='Бэкап настроек в файл';
-    // this.injectSettingsBackup.style=`
-    //   width: 100%;
-    //   box-shadow: 0px 0px 2px 0px black;
-    //   cursor: pointer;
-    // `;
-    // this.backupSettings.onclick=() => {
-    //   readSettingsBackup();
-    // }
-    // this.main.appendChild(this.injectSettingsBackup);
 
     this.buttonContainer=document.createElement('div');
     this.buttonContainer.style=`display: grid;
@@ -124,5 +86,7 @@ class SettingsMenu {
       console.log(`Сброшены настройки, десу.`, mainCfg);
     }
     this.buttonContainer.appendChild(this.backToDefault);
+    
+    if(func) func(this.form, mainCfg);
   }
 };
