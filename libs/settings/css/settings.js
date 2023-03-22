@@ -1,7 +1,7 @@
 let settingsCSS = `
 .DTF-scriptSettingsOpener {
   top: 19px;
-  right: 10%;
+  right: 20%;
   position: fixed;
   display: flex;
   flex-direction: column;
