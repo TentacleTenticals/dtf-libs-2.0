@@ -39,15 +39,23 @@ class Div{
 };
 
 class Button{
-  constructor({path, cName, id, text, label, style, onclick, disabled, rtn}){
+  constructor({path, cName, id, text, label, container, style, onclick, disabled, rtn}){
     this.main=document.createElement('button');
+    if(container){
+      this.container=new Div({
+        path: path,
+        cName: typeof container === 'boolean' ? 'container' : container.cName,
+        group: container.g,
+        rtn: []
+      });
+    }
     if(cName) this.main.className=cName;
     if(id) this.main.id=id;
     if(text) this.main.textContent=text;
     if(style) this.main.style=style;
     if(onclick) this.main.onclick=onclick;
     if(disabled) this.main.disabled=disabled;
-    path.appendChild(this.main);
+    (container ? this.container : path).appendChild(this.main);
 
     if(label) this.mainLabel=new Div({
       path: this.main,
@@ -55,11 +63,12 @@ class Button{
       text: label
     });
 
-    if(rtn) {
-      if(!rtn.length > 0) return this.main;
+    if(rtn){
+      if(!rtn.length > 0 && !container) return this.main;
       this.obj={};
+      if(container) this.obj.container = this.container;
       rtn.forEach(e => {
-        this.obj[e] = this[e];
+        if(e) this.obj[e] = this[e];
       })
       return this.obj;
     }
@@ -151,11 +160,11 @@ class Select{
     if(container){
       this.container=new Div({
         path: path,
-        cName: typeof container === 'boolean' ? 'container' : container.cName,
+        cName: container.n ? `container ${container.n}` : 'container',
         group: container.g,
         rtn: []
       });
-    }
+    };
 
     this.main=document.createElement('select');
     this.main.name=name;
