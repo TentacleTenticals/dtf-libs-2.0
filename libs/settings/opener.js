@@ -13,7 +13,7 @@ class SettingsOpener{
 
     new Button({
       path: main,
-      text: 'stg',
+      text: '🔧',
       cName: 'main',
       onclick: () => {
         new SettingsMenu(setSettings);
@@ -22,7 +22,7 @@ class SettingsOpener{
 
     new Button({
       path: main,
-      text: 'd',
+      text: '💾',
       cName: 'main',
       disabled: true,
       onclick: () => {
@@ -32,7 +32,7 @@ class SettingsOpener{
 
     new Button({
       path: main,
-      text: 'info',
+      text: '❓',
       cName: 'main',
       onclick: () => {
         new InfoMenu(setInfo);
