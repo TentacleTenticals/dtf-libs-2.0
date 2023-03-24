@@ -447,4 +447,13 @@ class Obs{
       }
     }
   };
-}
+};
+
+class Css{
+  constructor(name, css){
+    this.main=document.createElement('style');
+    this.main.textContent=css;
+    if(name) this.main.setAttribute('stylename', name);
+    document.body.appendChild(this.main);
+  }
+};
