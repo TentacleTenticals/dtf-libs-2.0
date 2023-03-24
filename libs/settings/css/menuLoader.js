@@ -81,7 +81,7 @@ let menuLoaderCSS = `
   color: rgb(255 255 255);
   top: 0px;
   left: 0px;
-  z-index: 115;
+  z-index: 1000;
   padding: 3px;
   max-width: 80%;
   max-height: 100%;
@@ -91,6 +91,15 @@ let menuLoaderCSS = `
 .dtf-scriptWindow .header {
   display: block;
   position: relative;
+  background-color: rgb(40 40 40);
+  color: rgb(231 193 255);
+  text-align: center;
+  font-size: 17px;
+  font-weight: 500;
+  font-family: 'Chakra Petch', sans-serif;
+  letter-spacing: 0.5px;
+  border-radius: 2px;
+  box-shadow: 0 0 2px 0px rgb(255 255 255);
   cursor: pointer;
 }
 
