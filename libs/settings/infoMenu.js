@@ -22,21 +22,6 @@ class InfoMenu {
       text: `Инфо ${defaultSettings['scriptInfo'].scriptName}`
     });
 
-    // this.container=new Div({
-    //   path: this.main,
-    //   cName: 'content',
-    //   rtn: []
-    // });
-
-    // new Button({
-    //   path: this.header,
-    //   text: '❌',
-    //   title: 'Закрыть инфо',
-    //   onclick: () => {
-    //     this.main.remove();
-    //   }
-    // })
-
     this.form=new Form({
       path: this.main,
       rtn: []
