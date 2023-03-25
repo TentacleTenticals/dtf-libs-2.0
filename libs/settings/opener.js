@@ -43,7 +43,7 @@ class SettingsOpener{
     if(document.getElementById('DTF-scriptSettingsOpener')) return;
     // console.log(settings)
     this.main=new Div({
-      path: document.body,
+      path: document.querySelector(`.site-header-container`) ? document.querySelector(`.site-header-container`) : document.body,
       cName: 'DTF-scriptSettingsOpener',
       id: 'DTF-scriptSettingsOpener',
       rtn: []
