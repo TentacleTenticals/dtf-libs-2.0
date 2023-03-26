@@ -1,4 +1,4 @@
-let db, mainCfg, initCfg;
+let db, obs = {}, mainCfg, initCfg;
 
 function dbGen(i){
   return {
