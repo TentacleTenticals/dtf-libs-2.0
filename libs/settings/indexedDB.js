@@ -1,4 +1,5 @@
-let db, mainCfg, initCfg, obs = {};
+let db, mainCfg, initCfg;
+
 function dbGen(i){
   return {
     indexedDB: (window.indexedDB||window.mozIndexedDB||window.webkitIndexedDB||window.msIndexedDB||window.shimIndexedDB),
@@ -88,7 +89,7 @@ function getSettings(arr, mode){
     // if(!arr[i].getAttribute('dontread')) console.log('Fox!', arr[i].getAttribute('dontread'));
     if(!arr[i].getAttribute('dontread')){
       if(!o[arr[i].getAttribute('groupName')]) o[arr[i].getAttribute('groupName')] = {};
-      for(let item = 0, a = arr[i].children; item < a.length; item++){
+      for(let item = 0, a = arr[i].lastChild.children; item < a.length; item++){
         if(a[item].tagName === 'FORM'){
           // console.log('FORM', a[item].children)
           for(let fi = 0, form = a[item].children, length = form.length; fi < length; fi++){
@@ -188,6 +189,7 @@ function mergeSettings(defCfg, savCfg){
   }
   merge(newCfg, savCfg);
   console.log('[Settings Merge] Совмещение настроек успешно выполнено', newCfg);
+  return newCfg;
 }
 
 function mergeSettings1(def, sav){
@@ -411,42 +413,6 @@ function settingsUpdater(db, settings, sfg){
       })
     }).catch(err => console.log(err));
   }
-}
-
-class Obs{
-  constructor({target, cfg, mode, check, type, search, name, msg, func}){
-    if(!target) return;
-    if(mode === 'start'){
-      this.callback = (mutationList, o) => {
-        for(const mutation of mutationList){
-          if(mutation.type === 'childList'){
-            // console.log(mutation.target);
-            if(check){
-              if(!mutation.target.classList.length > 0) return;
-              if(!mutation.target.classList.value.match(search)) return;
-            }
-            if(type){
-              func(mutation.target);
-            }else{
-              for(let i = 0, arr = mutation.addedNodes; i < arr.length; i++){
-                func(arr[i]);
-              }
-            }
-          }
-        }
-      };
-      obs[name] = new MutationObserver(this.callback);
-      obs[name].observe(target, cfg);
-      console.log(`[OBS ${name}] запущен`);
-    }else
-    if(mode === 'restart'){
-      if(obs[name]){
-        obs[name].disconnect();
-        obs[name].observe(target, cfg);
-        console.log(`[OBS ${name}] перезапущен`);
-      }
-    }
-  };
 };
 
 class Css{
