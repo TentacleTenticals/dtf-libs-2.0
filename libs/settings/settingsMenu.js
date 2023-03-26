@@ -24,6 +24,7 @@ class SettingsMenu {
 
     this.form=new Form({
       path: this.main,
+      name: 'settings',
       rtn: []
     });
 
@@ -66,7 +67,8 @@ class SettingsMenu {
       container: true,
       rtn: ['container'],
       onclick: () => {
-        settingsUpdater(db, getSettings(document.querySelectorAll(`.DTF-scriptSettings list fieldset`)), {firstRun: false});
+        // console.log('STGLIST', getSettings(document.querySelectorAll(`div[id=DTF-scriptSettings] fieldset`), false))
+        settingsUpdater(db, getSettings(document.querySelectorAll(`div[id=DTF-scriptSettings] fieldset`)), {firstRun: false});
         this.main.remove();
       }
     });
