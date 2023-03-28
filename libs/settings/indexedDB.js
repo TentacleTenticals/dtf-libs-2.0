@@ -451,15 +451,15 @@ class Obs{
   };
 };
 
-function styleChecker(name){
-  for(let i = 0, arr = document.querySelectorAll(`style`); i < arr.length; i++){
-    if(!arr[i].getAttribute('stylename')) continue;
-    if(arr[i].getAttribute('stylename') === name) return true;
-  }
-};
-
 class Css{
-  constructor(name, css){
+  styleChecker(name){
+    for(let i = 0, arr = document.querySelectorAll(`style`); i < arr.length; i++){
+      if(!arr[i].getAttribute('stylename')) continue;
+      if(arr[i].getAttribute('stylename') === name) return true;
+    }
+  }
+  constructor(name, css, check){
+    if(check && this.styleChecker(name)) return;
     this.main=document.createElement('style');
     this.main.textContent=css;
     if(name) this.main.setAttribute('stylename', name);
