@@ -70,7 +70,14 @@ class El{
       return this.obj;
     }
   };
+  styleChecker(name){
+    for(let i = 0, arr = document.querySelectorAll(`style`); i < arr.length; i++){
+      if(!arr[i].getAttribute('stylename')) continue;
+      if(arr[i].getAttribute('stylename') === name) return true;
+    }
+  };
   Css(name, css) {
+    if(this.styleChecker(name)) return;
     this.main = document.createElement('style');
     this.main.textContent = css;
     if(name) this.main.setAttribute('stylename', name);
