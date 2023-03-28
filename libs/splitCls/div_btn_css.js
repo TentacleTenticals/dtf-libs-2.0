@@ -76,7 +76,8 @@ class El{
       if(arr[i].getAttribute('stylename') === name) return true;
     }
   };
-  Css(name, css) {
+  Css(name, css, check) {
+    if(check && this.styleChecker(name)) return;
     this.main = document.createElement('style');
     this.main.textContent = css;
     if(name) this.main.setAttribute('stylename', name);
