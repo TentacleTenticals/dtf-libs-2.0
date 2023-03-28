@@ -77,7 +77,6 @@ class El{
     }
   };
   Css(name, css) {
-    if(this.styleChecker(name)) return;
     this.main = document.createElement('style');
     this.main.textContent = css;
     if(name) this.main.setAttribute('stylename', name);
