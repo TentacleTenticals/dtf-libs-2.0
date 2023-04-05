@@ -376,15 +376,14 @@ class Db{
     console.log('[Settings Merge] Совмещение настроек успешно выполнено', newCfg);
     return newCfg;
   }
+  init(settings, s, cfg){
+    settings ? mainCfg = this.mergeSettings(defaultSettings, settings) : mainCfg = defaultSettings;
+    new SettingsOpener({...defaultSettings.scriptInfo, settings:s.settings});
+    // if(!document.getElementById(`stg-DTF-${s.id}`)) new SettingsItem(s.name, s.id, s.params);
+    console.log(`[Init] Инициализация скрипта успешно выполнена.`, mainCfg);
+    s.func(cfg);
+  };
 }
-
-function init(settings, s, cfg){
-  settings ? mainCfg = mergeSettings(defaultSettings, settings) : mainCfg = defaultSettings;
-  new SettingsOpener({...defaultSettings.scriptInfo, settings:s.settings});
-  // if(!document.getElementById(`stg-DTF-${s.id}`)) new SettingsItem(s.name, s.id, s.params);
-  console.log(`[Init] Инициализация скрипта успешно выполнена.`, mainCfg);
-  s.func(cfg);
-};
 
 
 class Obs{
