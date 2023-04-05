@@ -143,28 +143,28 @@ class Db{
   async settingsLoader(i, initCfg, cfg) {
     if(!i.indexedDB){
       console.log('Ваш браузер не поддерживает базу данных `indexedDB`, которую использует данный скрипт для хранения настроек.\nБудет использоваться дефолтный список настроек...если вы всё же хотите использовать свои собственные настройки, отредактируйте скрипт, импортировав в него свои настройки.');
-      return init(false, initCfg, cfg);
+      return this.init(false, initCfg, cfg);
     }else
     {
       const res = (await indexedDB.databases()).find(ind => ind.name === i.name);
       if(!res){
         console.log(`[indexedDB] Базы данных ${i.name} не найдено. Будут использованы дефолтные настройки.`);
-        return init(false, initCfg, cfg);
+        return this.init(false, initCfg, cfg);
       }else{
         console.log(`[indexedDB] База данных ${i.name} существует.`);
         this.connect(i, res.version).then(c => {
           this.read(i, i.data.uid).then(res => {
             if(res.status === 'fail' && res.type === 'data search'){
               console.log(`[indexedDB] База данных ${i.name} существует, но нет сохранённых настроек. Будут использованы дефолтные настройки.`);
-              init(false, initCfg, cfg);
+              this.init(false, initCfg, cfg);
             }else{
               console.log(`[indexedDB] В базе данных ${i.name} найдены сохранённые настройки, загружаю их.`);
-              init(res.data.settings, initCfg, cfg);
+              this.init(res.data.settings, initCfg, cfg);
             }
           }).catch((err, s, key) => {
             console.log(err);
             console.log(`[indexedDB] Произошла ошибка, или база данных ${i.name} существует, но нет сохранённых настроек. Будут использованы дефолтные настройки.`);
-            init(false, initCfg, cfg);
+            this.init(false, initCfg, cfg);
           });
         }).catch(err => {
           if(err.status === 'fail' && err.type === 'no store'){
@@ -172,15 +172,15 @@ class Db{
               this.read(i, i.data.uid).then(res => {
                 if(res.status === 'fail'){
                   console.log(`[indexedDB] База данных ${i.name} существует, но нет сохранённых настроек. Будут использованы дефолтные настройки.`);
-                  init(false, initCfg, cfg);
+                  this.init(false, initCfg, cfg);
                 }else{
                   console.log(`[indexedDB] В базе данных ${i.name} найдены сохранённые настройки, загружаю их.`);
-                  init(res.data.settings, initCfg, cfg);
+                  this.init(res.data.settings, initCfg, cfg);
                 }
               }).catch((err, s, key) => {
                 console.log(err);
                 console.log(`[indexedDB] Произошла ошибка, или база данных ${i.name} существует, но нет сохранённых настроек. Будут использованы дефолтные настройки.`);
-                init(false, initCfg, cfg);
+                this.init(false, initCfg, cfg);
               })
             })
           }else{
@@ -343,7 +343,7 @@ class Db{
             console.log(`В базе данных ${i.name} найдены сохранённые настройки. Будет выполнено обновление.`);
             this.update(i, i.data.uid, {...i.data, settings:settings}).then(res => {
               console.log('Upddated', res.status);
-              init(settings, initCfg, sfg);
+              this.init(settings, initCfg, sfg);
             }).catch(err => console.log(err))
           }
         }).catch(err => {
@@ -352,7 +352,7 @@ class Db{
             this.connect(i).then(res => {
               this.add(i, {...i.data, settings:settings}).then(res => {
                 console.log(res)
-                init(settings, initCfg, sfg);
+                this.init(settings, initCfg, sfg);
               }).catch(err => {
                 console.log(err)
               });
