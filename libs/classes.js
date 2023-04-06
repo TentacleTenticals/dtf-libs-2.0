@@ -339,11 +339,11 @@ class LiveList{
       func: (e) => {
         if(text){
           e.textContent = text;
-          e.setAttribute('value', v.textContent);
+          e.setAttribute('value', e.textContent);
         }
       },
       onblur: (e) => {
-        e.target.setAttribute('value', v.textContent);
+        e.target.setAttribute('value', e.textContent);
       }
     });
     
