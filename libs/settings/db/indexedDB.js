@@ -363,7 +363,9 @@ class Db{
     }
   }
   mergeSettings(defCfg, savCfg){
+    console.log('D', defCfg);
     let newCfg = defCfg;
+    console.log('N', newCfg);
     function merge(newCfg, savCfg){
       for(var key in savCfg){
         if(key in newCfg){
