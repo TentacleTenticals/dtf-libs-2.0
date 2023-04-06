@@ -374,7 +374,7 @@ class Field{
     if(cnts && cnts.g) return getter(cfg, `${cnts.g}.${name}`);
     else return cfg[name];
   }
-  constructor({path, groupName, cName, dontRead, legend, info, inputs, inputsAuto, select, style, form, func, rtn}){
+  constructor({path, groupName, cName, dontRead, legend, info, inputs, inputsAuto, select, liveList, style, form, func, rtn}){
     this.main=document.createElement('fieldset');
     this.main.groupName=this.main.setAttribute('groupName', groupName);
     dontRead ? this.main.setAttribute('dontread', true) : '';
