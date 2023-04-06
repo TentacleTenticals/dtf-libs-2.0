@@ -314,7 +314,7 @@ class LiveList{
     this.ul.className='liveList';
     this.main.appendChild(this.ul);
 
-    if(arr) arr.forEach(i => {
+    if(value) value.forEach(i => {
       this.Item({
         path: this.ul,
         text: i
