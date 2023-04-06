@@ -1,4 +1,4 @@
-let dtfWindowCSS = `
+let dtfCoreCSS = `
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
 
