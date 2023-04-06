@@ -302,7 +302,7 @@ class List{
 };
 
 class LiveList{
-  List({path, container, value, label, name}){
+  Build({path, container, value, label, name}){
     this.main=new Div({
       path: path,
       cName: container ? container : 'container',
@@ -314,11 +314,14 @@ class LiveList{
     this.ul.className='liveList';
     this.main.appendChild(this.ul);
 
-    if(value) value.forEach(i => {
+    if(value.length > 0) value.forEach(i => {
       this.Item({
         path: this.ul,
         text: i
       })
+    })
+    else this.Item({
+      path: this.ul
     })
   }
   Item({path, text}){
