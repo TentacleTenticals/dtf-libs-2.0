@@ -466,7 +466,7 @@ class Field{
     });
     
     if(liveList) liveList.list.forEach(e => {
-      new LiveList().List({
+      new LiveList().Build({
         path: this.list,
         container: e.c ? e.c : liveList.c,
         label: e.label,
