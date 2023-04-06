@@ -336,14 +336,14 @@ class LiveList{
       cName: 'value',
       editable: true,
       rtn: [],
-      func: () => {
+      func: (e) => {
         if(text){
-          v.textContent = text;
-          v.setAttribute('value', v.textContent);
+          e.textContent = text;
+          e.setAttribute('value', v.textContent);
         }
       },
-      onblur: () => {
-        v.setAttribute('value', v.textContent);
+      onblur: (e) => {
+        e.target.setAttribute('value', v.textContent);
       }
     });
     
