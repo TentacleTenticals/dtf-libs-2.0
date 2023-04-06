@@ -462,12 +462,14 @@ class Field{
       })
     });
     
-    if(liveList) new LiveList({
-      path: this.list,
-      container: liveList.c ? liveList.c : '',
-      label: liveList.label,
-      name: liveList.name,
-      value: liveList.a ? this.auto(liveList.c, false, liveList.name, liveList.a[groupName]) : liveList.value
+    if(liveList) liveList.list.forEach(e => {
+      new LiveList({
+        path: this.list,
+        container: e.c ? e.c : liveList.c,
+        label: e.label,
+        name: e.name,
+        value: liveList.a ? this.auto(e.c, liveList.c, e.name, liveList.a[groupName]) : e.value
+      });
     });
 
     if(form) new Form({
