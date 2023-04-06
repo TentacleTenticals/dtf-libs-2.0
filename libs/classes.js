@@ -353,7 +353,7 @@ class LiveList{
       rtn: []
     });
     
-    let c=new Button({
+    new Button({
       path: cb,
       cName: 'btn',
       onclick: () => {
