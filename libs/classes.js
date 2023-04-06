@@ -463,7 +463,7 @@ class Field{
     });
     
     if(liveList) liveList.list.forEach(e => {
-      new LiveList({
+      new LiveList().List({
         path: this.list,
         container: e.c ? e.c : liveList.c,
         label: e.label,
