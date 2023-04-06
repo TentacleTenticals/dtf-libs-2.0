@@ -159,6 +159,36 @@ let dtfCoreCSS = `
   font-size: 0;
 }
 
+ul.liveList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px 10px;
+}
+
+.liveList li::marker {
+  font-size: 0;
+}
+
+.liveList .cont {
+  display: flex;
+  width: max-content;
+  padding: 0 0 0 0;
+  gap: 0 10px;
+  box-shadow: 0 0 1px 1px rgb(0 0 0);
+}
+.liveList .value {
+  outline: none;
+}
+.liveList .btn {
+  display: inline-block;
+  border: unset;
+  border-radius: 50%;
+  font-size: 10px;
+  padding: 0 3px 0 3px;
+  box-shadow: 0 0 1px 1px rgb(0 0 0);
+}
+
 .ui-autocomplete {
   position: absolute;
   top: 0;
