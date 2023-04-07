@@ -361,7 +361,8 @@ class LiveList{
           e.preventDefault();
 //           e.target.blur();
           this.Item({
-            path: this.ul
+            path: this.ul,
+            focus: true
           });
         }
       }
