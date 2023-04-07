@@ -226,6 +226,18 @@ class Db{
           if(group) pathCheck(group, item.value);
           else
           o[arr[i].getAttribute('groupName')][item.name] = item.value;
+        }else
+        if(item.tagName === 'UL'){
+          function getUl(item){
+            const ulValue = [];
+            o[arr[i].getAttribute('groupName')][item.name] = for(let li = 0, arr = item.children, len = arr.length; li++){
+              ulValue.push(arr[li].getAttribute('value'));
+            }
+            return ulValue;
+          }
+          if(group) pathCheck(group, getUl(item));
+          else
+          o[arr[i].getAttribute('groupName')][item.name] = getUl(item);
         }
       }
     }
