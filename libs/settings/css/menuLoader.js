@@ -83,7 +83,7 @@ let menuLoaderCSS = `
   left: 0px;
   z-index: 1000;
   padding: 3px;
-  max-width: 80%;
+  max-width: 60%;
   max-height: 100%;
   box-shadow: 0px 0px 2px 1px rgb(0 0 0);
   overflow-y: auto;
