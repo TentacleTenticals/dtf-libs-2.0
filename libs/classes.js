@@ -305,8 +305,7 @@ class LiveList{
   Build({path, container, type, value, label, name}){
     this.main=new Div({
       path: path,
-      cName: container ? container : 'container',
-      text: label,
+      cName: 'container',
       rtn: [],
       name: name
     });
@@ -314,6 +313,12 @@ class LiveList{
     this.ul.className='liveList';
     if(type) this.ul.setAttribute(type, true);
     this.main.appendChild(this.ul);
+    
+    if(label){
+      let label=document.createElement('label');
+      label.textContent=label;
+      this.main.appendChild(label);
+    }
 
     if(value.length > 0) value.forEach(i => {
       this.Item({
@@ -469,7 +474,7 @@ class Field{
     if(liveList) liveList.list.forEach(e => {
       new LiveList().Build({
         path: this.list,
-        container: e.c ? e.c : liveList.c,
+//         container: e.c ? e.c : liveList.c,
         label: e.label,
         name: e.name,
         type: e.type,
