@@ -247,7 +247,7 @@ class Db{
         ...mainCfg
       }
     }else o = {
-      data: mainCfg.data
+      'script data': mainCfg['script data']
     }
     for(let i = 0; i < arr.length; i++){
       // console.log(arr)
