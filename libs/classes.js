@@ -361,7 +361,7 @@ class LiveList{
           e.blur();
           this.Item({
             path: this.ul
-          });
+          }).focus();
         }
       }
     });
