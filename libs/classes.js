@@ -351,7 +351,6 @@ class LiveList{
         if(text){
           main.setAttribute('value', e.textContent);
         };
-        if(focus) main.focus();
       },
       onblur: (e) => {
         main.setAttribute('value', e.target.textContent);
@@ -382,6 +381,7 @@ class LiveList{
       main.remove();
     }
     });
+    if(focus) v.focus();
   }
 }
 
