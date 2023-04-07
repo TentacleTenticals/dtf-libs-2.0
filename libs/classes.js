@@ -378,7 +378,7 @@ class LiveList{
       cName: 'btn',
       text: 'x',
       onclick: () => {
-      main.remove();
+      if(this.ul.children.length > 1) main.remove();
     }
     });
     if(focus) v.focus();
