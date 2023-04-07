@@ -315,9 +315,9 @@ class LiveList{
     this.main.appendChild(this.ul);
     
     if(label){
-      let label=document.createElement('label');
-      label.textContent=label;
-      this.main.appendChild(label);
+      let lab=document.createElement('label');
+      lab.textContent=label;
+      this.main.appendChild(lab);
     }
 
     if(value.length > 0) value.forEach(i => {
