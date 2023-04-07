@@ -166,6 +166,11 @@ ul.liveList {
   gap: 5px 10px;
 }
 
+.liveList li {
+  border-radius: 2px;
+  padding: 0 0 0 3px;
+  box-shadow: 0 0 2px 1px rgb(255 255 255);
+}
 .liveList li::marker {
   font-size: 0;
 }
@@ -173,11 +178,11 @@ ul.liveList {
 .liveList .cont {
   display: flex;
   width: max-content;
-  padding: 0 0 0 0;
   gap: 0 10px;
-  box-shadow: 0 0 1px 1px rgb(0 0 0);
 }
+
 .liveList .value {
+  min-width: 40px;
   outline: none;
 }
 .liveList .btn {
