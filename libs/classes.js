@@ -302,7 +302,7 @@ class List{
 };
 
 class LiveList{
-  Build({path, container, value, label, name}){
+  Build({path, container, type, value, label, name}){
     this.main=new Div({
       path: path,
       cName: container ? container : 'container',
@@ -312,6 +312,7 @@ class LiveList{
     });
     this.ul=document.createElement('ul');
     this.ul.className='liveList';
+    if(type) this.ul.setAttribute(type, true);
     this.main.appendChild(this.ul);
 
     if(value.length > 0) value.forEach(i => {
@@ -337,16 +338,16 @@ class LiveList{
     let v=new Div({
       path: c,
       cName: 'value',
+      text: text,
       editable: true,
       rtn: [],
       func: (e) => {
         if(text){
-          e.textContent = text;
-          e.setAttribute('value', e.textContent);
+          main.setAttribute('value', e.textContent);
         }
       },
       onblur: (e) => {
-        e.target.setAttribute('value', e.textContent);
+        main.setAttribute('value', e.target.textContent);
       }
     });
     
@@ -471,6 +472,7 @@ class Field{
         container: e.c ? e.c : liveList.c,
         label: e.label,
         name: e.name,
+        type: e.type,
         value: liveList.a ? this.auto(e.c, liveList.c, e.name, liveList.a[groupName]) : e.value
       });
     });
