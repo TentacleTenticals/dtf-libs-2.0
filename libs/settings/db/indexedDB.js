@@ -230,7 +230,7 @@ class Db{
         if(item.tagName === 'UL'){
           function getUl(item){
             const ulValue = [];
-            o[arr[i].getAttribute('groupName')][item.name] = for(let li = 0, arr = item.children, len = arr.length; li++){
+            for(let li = 0, arr = item.children, len = arr.length; li++){
               ulValue.push(arr[li].getAttribute('value'));
             }
             return ulValue;
@@ -293,35 +293,37 @@ class Db{
               // if(a[item].children[0].type.match(/text|url|number|password/)){
               //   o[arr[i].getAttribute('groupName')][a[item].children[0].name] = a[item].children[0].value;
               // }
+            }else
+            if(a[item].children[0].tagName.match(/UL/)){
+              getValue(a[item].children[0], i, true);
             }
-            getValue(a[item].children[0], i, true);
             // if(a[item].children[0].tagName.match(/SELECT/)){
             //   o[arr[i].getAttribute('groupName')][a[item].children[0].name] = a[item].children[0].value;
             // }
             // if(a[item].children[0].tagName.match(/INPUT|SELECT/)){
             //   o[arr[i].getAttribute('groupName')][a[item].children[0].name] = (a[item].children[0].type === 'checkbox' ? a[item].children[0].checked : (a[item].children[0].checked ? a[item].children[0].value : ''));
             // }
-            if(a[item].children[0].tagName.match(/UL/)){
-              // console.log('UL: ', a[item].children[0]);
-              let ulItems = [];
-              for(let li = 0, ul = a[item].children[0].children; li < ul.length; li++){
-                // console.log('ULLL: ', ul[li]);
-                if(ul[li].getAttribute('value')) ulItems.push(JSON.parse(ul[li].getAttribute('value')));
-                if(ul[li].getAttribute('string')) ulItems.push(ul[li].getAttribute('string'));
-                // let textArr = [];
-                // for(let val = 0, values = ul[li].children; val < values.length; val++){
-                //   if(values[val].classList.value.match(/value/) && values[val].textContent.length > 1){
-                //     textArr.push(values[val].textContent);
-                //   }
-                // }
-                // console.log('TextArr:', textArr);
-                // ulItems.push(JSON.parse(`{${textArr}}`));
-                // if(ul[li].children[0].textContent.length > 1){
-                //   ulItems.push(JSON.parse(`{${ul[li].children[0].textContent}}`));
-                // }
-              }
-              console.log('UlItems: ', ulItems);
-              o[arr[i].getAttribute('groupName')][a[item].children[0].getAttribute('name')] = ulItems;
+//             if(a[item].children[0].tagName.match(/UL/)){
+//               // console.log('UL: ', a[item].children[0]);
+//               let ulItems = [];
+//               for(let li = 0, ul = a[item].children[0].children; li < ul.length; li++){
+//                 // console.log('ULLL: ', ul[li]);
+//                 if(ul[li].getAttribute('value')) ulItems.push(JSON.parse(ul[li].getAttribute('value')));
+//                 if(ul[li].getAttribute('string')) ulItems.push(ul[li].getAttribute('string'));
+//                 // let textArr = [];
+//                 // for(let val = 0, values = ul[li].children; val < values.length; val++){
+//                 //   if(values[val].classList.value.match(/value/) && values[val].textContent.length > 1){
+//                 //     textArr.push(values[val].textContent);
+//                 //   }
+//                 // }
+//                 // console.log('TextArr:', textArr);
+//                 // ulItems.push(JSON.parse(`{${textArr}}`));
+//                 // if(ul[li].children[0].textContent.length > 1){
+//                 //   ulItems.push(JSON.parse(`{${ul[li].children[0].textContent}}`));
+//                 // }
+//               }
+//               console.log('UlItems: ', ulItems);
+//               o[arr[i].getAttribute('groupName')][a[item].children[0].getAttribute('name')] = ulItems;
               // console.log('Items: ', ulItems);
               // o[arr[i].getAttribute('groupName')][a[item].children[0].name] = () => {
               //   let ulItems = [];
