@@ -366,8 +366,6 @@ class LiveList{
           });
         }
       }
-      
-      if(rtn) return main;
     });
     
     let cb=new Div({
@@ -384,6 +382,7 @@ class LiveList{
       main.remove();
     }
     });
+    if(rtn) return main;
   }
 }
 
