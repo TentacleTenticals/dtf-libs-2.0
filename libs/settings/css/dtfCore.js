@@ -176,6 +176,7 @@ ul.liveList {
 }
 
 .liveList .cont {
+  padding: 0 4px 0 2px;
   display: flex;
   width: max-content;
   gap: 0 10px;
@@ -185,13 +186,20 @@ ul.liveList {
   min-width: 40px;
   outline: none;
 }
+
+.liveList .contB {
+  display: flex;
+}
 .liveList .btn {
   display: inline-block;
+  background-color: rgb(255 255 255);
+  color: rgb(0 0 0);
   border: unset;
   border-radius: 50%;
   font-size: 10px;
-  padding: 0 3px 0 3px;
-  box-shadow: 0 0 1px 1px rgb(0 0 0);
+  margin: auto;
+  padding: 0 3px 0 4px;
+  box-shadow: 0 0 1px 1px rgb(223 94 153);
 }
 
 .ui-autocomplete {
