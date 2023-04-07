@@ -306,6 +306,7 @@ class LiveList{
     this.main=new Div({
       path: path,
       cName: 'container',
+      group: container.g,
       rtn: [],
       name: name
     });
@@ -475,7 +476,7 @@ class Field{
     if(liveList) liveList.list.forEach(e => {
       new LiveList().Build({
         path: this.list,
-//         container: e.c ? e.c : liveList.c,
+        container: e.c ? e.c : liveList.c,
         label: e.label,
         name: e.name,
         type: e.type,
