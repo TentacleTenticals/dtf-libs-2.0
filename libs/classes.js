@@ -382,7 +382,6 @@ class LiveList{
       main.remove();
     }
     });
-    if(rtn) return main;
   }
 }
 
