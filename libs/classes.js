@@ -331,7 +331,7 @@ class LiveList{
       path: this.ul
     })
   }
-  Item({path, text}){
+  Item({path, text, rtn}){
     let main=document.createElement('li');
     path.appendChild(main);
     
@@ -359,11 +359,15 @@ class LiveList{
         if(e.code === 'Enter'){
           e.preventDefault();
 //           e.target.blur();
-          this.Item({
-            path: this.ul
-          }).focus();
+          let i=this.Item({
+            path: this.ul,
+            rtn: true
+          });
+          i.focus();
         }
       }
+      
+      if(rtn) return main;
     });
     
     let cb=new Div({
