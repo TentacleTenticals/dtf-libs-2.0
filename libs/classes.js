@@ -354,6 +354,15 @@ class LiveList{
       },
       onblur: (e) => {
         main.setAttribute('value', e.target.textContent);
+      },
+      onkeydown: (e) => {
+        if(e.code === 'Enter'){
+          e.preventDefault();
+          e.blur();
+          this.Item({
+            path: this.ul
+          });
+        }
       }
     });
     
