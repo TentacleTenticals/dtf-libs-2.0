@@ -331,7 +331,7 @@ class LiveList{
       path: this.ul
     })
   }
-  Item({path, text, focus}){
+  Item({path, type, text, focus}){
     let main=document.createElement('li');
     path.appendChild(main);
     
@@ -349,11 +349,11 @@ class LiveList{
       rtn: [],
       func: (e) => {
         if(text){
-          main.setAttribute('value', e.textContent);
+          main.setAttribute(type, e.textContent);
         };
       },
       onblur: (e) => {
-        main.setAttribute('value', e.target.textContent);
+        main.setAttribute(type, e.target.textContent);
       },
       onkeydown: (e) => {
         if(e.code === 'Enter'){
