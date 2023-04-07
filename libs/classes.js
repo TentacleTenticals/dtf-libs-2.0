@@ -358,7 +358,7 @@ class LiveList{
       onkeydown: (e) => {
         if(e.code === 'Enter'){
           e.preventDefault();
-          e.target.blur();
+//           e.target.blur();
           this.Item({
             path: this.ul
           }).focus();
