@@ -365,6 +365,7 @@ class LiveList{
     new Button({
       path: cb,
       cName: 'btn',
+      text: 'x',
       onclick: () => {
       main.remove();
     }
