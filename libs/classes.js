@@ -307,11 +307,11 @@ class LiveList{
       path: path,
       cName: 'container',
       group: container.g,
-      rtn: [],
-      name: name
+      rtn: []
     });
     this.ul=document.createElement('ul');
     this.ul.className='liveList';
+    if(name) this.ul.setAttribute('name', name);
     if(type) this.ul.setAttribute(type, true);
     this.main.appendChild(this.ul);
     
