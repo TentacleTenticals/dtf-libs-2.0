@@ -292,19 +292,19 @@ class Db{
             //   console.log(i)
             // })
           }
-//           if(a[item].children[0]){
-//             console.log('TYPe', a[item].children[0])
-//             if(a[item].children[0].tagName.match(/INPUT/)){
-//               getValue(a[item].children[0], i);
-//             }else
-//             if(a[item].children[0].tagName.match(/SELECT/)){
-//               console.log('SS')
-//               getValue(a[item].children[0], i, true);
-//             }else
-//             if(a[item].children[0].tagName.match(/UL/)){
-//               getValue(a[item].children[0], i, true);
-//             }
-//           }
+          if(a[item].children[0]){
+            console.log('TYPe', a[item].children[0])
+            if(a[item].children[0].tagName.match(/INPUT/)){
+              getValue(a[item].children[0], i);
+            }else
+            if(a[item].children[0].tagName.match(/SELECT/)){
+              console.log('SS')
+              getValue(a[item].children[0], i, true);
+            }else
+            if(a[item].children[0].tagName.match(/UL/)){
+              getValue(a[item].children[0], i, true);
+            }
+          }
         }
       }
     }
