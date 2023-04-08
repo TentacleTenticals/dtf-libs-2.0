@@ -295,47 +295,16 @@ class Db{
           if(a[item].children[0]){
             // console.log('TYPe', a[item].children[0])
             if(a[item].children[0].tagName.match(/INPUT/)){
-              // a[item].children[0].type === 'checkbox' ? o[arr[i].getAttribute('groupName')][a[item].children[0].name] = a[item].children[0].checked : (a[item].children[0].checked ? o[arr[i].getAttribute('groupName')][a[item].children[0].name] = a[item].children[0].value : '');
-
               getValue(a[item].children[0], i);
-
-              // if(a[item].children[0].type === 'checkbox'){
-              //   o[arr[i].getAttribute('groupName')][a[item].children[0].name] = a[item].children[0].checked;
-              // }
-
-              // if(a[item].children[0].type === 'password'){
-              //   console.log('Pswrd', a[item].children[0].name)
-              //   o[arr[i].getAttribute('groupName')][a[item].children[0].name] = a[item].children[0].value;
-              // }
-
-              // if(a[item].children[0].type.match(/text|url|number|password/)){
-              //   o[arr[i].getAttribute('groupName')][a[item].children[0].name] = a[item].children[0].value;
-              // }
             }else
-            // getValue(a[item].children[0], i, true);
-            // if(a[item].children[0].tagName.match(/SELECT/)){
-            //   o[arr[i].getAttribute('groupName')][a[item].children[0].name] = a[item].children[0].value;
-            // }
-            // if(a[item].children[0].tagName.match(/INPUT|SELECT/)){
-            //   o[arr[i].getAttribute('groupName')][a[item].children[0].name] = (a[item].children[0].type === 'checkbox' ? a[item].children[0].checked : (a[item].children[0].checked ? a[item].children[0].value : ''));
-            // }
             if(a[item].children[0].tagName.match(/SELECT/)){
+              console.log('SS')
               getValue(a[item].children[0], i, true);
             }else
             if(a[item].children[0].tagName.match(/UL/)){
-              // console.log('UL: ', a[item].children[0]);
               getValue(a[item].children[0], i, true);
-              // let ulItems = [];
-              // for(let li = 0, ul = a[item].children[0].children; li < ul.length; li++){
-              //   // console.log('ULLL: ', ul[li]);
-              //   if(ul[li].getAttribute('value')) ulItems.push(JSON.parse(ul[li].getAttribute('value')));
-              //   if(ul[li].getAttribute('string')) ulItems.push(ul[li].getAttribute('string'));
-              // }
-              // console.log('UlItems: ', ulItems);
-              // o[arr[i].getAttribute('groupName')][a[item].children[0].getAttribute('name')] = ulItems;
             }
           }
-          // a[item].children[0] ? (a[item].children[0].tagName.match(/INPUT|SELECT/) ? o[arr[i].getAttribute('groupName')][a[item].children[0].name] = (a[item].children[0].type === 'checkbox' ? a[item].children[0].checked : a[item].children[0].value) : '') : '';
         }
       }
     }
