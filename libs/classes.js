@@ -349,11 +349,11 @@ class LiveList{
       rtn: [],
       func: (e) => {
         if(text){
-          main.setAttribute(type, e.textContent);
+          main.setAttribute('value', e.textContent);
         };
       },
       onblur: (e) => {
-        main.setAttribute(type, e.target.textContent);
+        main.setAttribute('value', e.target.textContent);
       },
       onkeydown: (e) => {
         if(e.code === 'Enter'){
