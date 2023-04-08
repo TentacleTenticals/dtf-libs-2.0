@@ -220,8 +220,7 @@ class Db{
           if(group) pathCheck(group, item.value);
           else
           o[arr[i].getAttribute('groupName')][item.name] = item.value;
-        }
-      }else{
+        }else{
         if(item.tagName === 'SELECT'){
           if(group) pathCheck(group, item.value);
           else
@@ -230,7 +229,7 @@ class Db{
         if(item.tagName === 'UL'){
           function getUl(item){
             const ulValue = [];
-            for(let li = 0, arr = item.children, len = arr.length; li++){
+            for(let li = 0, arr = item.children, len = arr.length; li < len; li++){
               ulValue.push(arr[li].getAttribute('value'));
             }
             return ulValue;
