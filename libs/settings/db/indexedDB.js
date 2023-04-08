@@ -293,7 +293,7 @@ class Db{
             // })
           }
           if(a[item].children[0]){
-            // console.log('TYPe', a[item].children[0])
+            console.log('TYPe', a[item].children[0])
             if(a[item].children[0].tagName.match(/INPUT/)){
               getValue(a[item].children[0], i);
             }else
