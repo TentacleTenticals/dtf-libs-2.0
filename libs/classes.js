@@ -312,7 +312,7 @@ class LiveList{
     this.ul=document.createElement('ul');
     this.ul.className='liveList';
     if(name) this.ul.setAttribute('name', name);
-    if(type) this.ul.setAttribute(type, true);
+    if(type) this.ul.setAttribute('type', type);
     this.main.appendChild(this.ul);
     
     if(label){
@@ -331,7 +331,7 @@ class LiveList{
       path: this.ul
     })
   }
-  Item({path, type, text, focus}){
+  Item({path, text, focus}){
     let main=document.createElement('li');
     path.appendChild(main);
     
