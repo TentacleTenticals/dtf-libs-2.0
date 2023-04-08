@@ -236,7 +236,6 @@ class Db{
         }
       }else{
         if(item.tagName === 'SELECT'){
-          console.log('Select detected!');
           if(group) pathCheck(group, item.value);
           else
           o[arr[i].getAttribute('groupName')][item.name] = item.value;
@@ -245,12 +244,10 @@ class Db{
           function getUl(item){
             let ulItems = [];
             for(let li = 0, ul = item.children; li < ul.length; li++){
-              // console.log('ULLL: ', ul[li]);
               if(item.getAttribute('type') === 'array') ulItems.push(JSON.parse(ul[li].getAttribute('value')));
               else
               if(item.getAttribute('type') === 'string') ulItems.push(ul[li].getAttribute('value'));
             }
-            // console.log('UlItems: ', ulItems);
             return ulItems;
           }
           if(group) pathCheck(group, getUl(item));
@@ -308,8 +305,8 @@ class Db{
         }
       }
     }
-    console.log('OO: ', o);
-    // this.mergeSettings(defaultSettings, o);
+    console.log('[Settings Getter] got settings', o);
+    this.mergeSettings(defaultSettings, o);
     return o;
   }
   settingsUpdater(i, settings, sfg){
