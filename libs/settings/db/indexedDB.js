@@ -191,21 +191,12 @@ class Db{
     }
   }
   getSettings(arr, mode){
-    let o;
-    if(mode){
-      o = {
-        ...mainCfg
-      }
-    }else o = {
-      'script data': mainCfg['script data']
-    }
     function getValue(item, i, tag){
       // console.log('GROUP', item.parentNode.getAttribute('group'));
       let group;
       function pathCheck(group, value){
-        group += `.${item.name}`;
+        group += `.${item.getAttribute('name')}`;
         let path = group.split('.');
-        // path.push(item.name);
         path.reduce((prev,curr,i)=>{
           if(!prev[curr]){
             if(i+1 === path.length) prev[curr] = value;
@@ -216,7 +207,21 @@ class Db{
         }, o[arr[i].getAttribute('groupName')]);
       }
       if(item.parentNode.getAttribute('group') !== null){
+        // console.log('GROUP', item.parentNode.getAttribute('group'))
         group = item.parentNode.getAttribute('group');
+        // let path = group.split('.');
+        // function pathCheck(group, value){
+        //   let path = group.split('.');
+        //   path.reduce((prev,curr,i)=>{
+        //     if(!prev[curr]){
+        //       if(i+1 === path.length) prev[curr] = value;
+        //       else
+        //       prev[curr] = {};
+        //     }
+        //     return prev[curr]
+        //   }, o[arr[i].getAttribute('groupName')]);
+        // }
+        // if(!o[arr[i].getAttribute('groupName')][group]) o[arr[i].getAttribute('groupName')][group] = {};
       }
       if(!tag){
         if(item.type === 'checkbox'){
@@ -228,7 +233,8 @@ class Db{
           if(group) pathCheck(group, item.value);
           else
           o[arr[i].getAttribute('groupName')][item.name] = item.value;
-        }else{
+        }
+      }else{
         if(item.tagName === 'SELECT'){
           if(group) pathCheck(group, item.value);
           else
@@ -236,17 +242,28 @@ class Db{
         }else
         if(item.tagName === 'UL'){
           function getUl(item){
-            const ulValue = [];
-            for(let li = 0, arr = item.children, len = arr.length; li < len; li++){
-              ulValue.push(arr[li].getAttribute('value'));
+            let ulItems = [];
+            for(let li = 0, ul = item.children; li < ul.length; li++){
+              // console.log('ULLL: ', ul[li]);
+              if(ul[li].getAttribute('value')) ulItems.push(JSON.parse(ul[li].getAttribute('value')));
+              if(ul[li].getAttribute('string')) ulItems.push(ul[li].getAttribute('string'));
             }
-            return ulValue;
+            // console.log('UlItems: ', ulItems);
+            return ulItems;
           }
           if(group) pathCheck(group, getUl(item));
           else
           o[arr[i].getAttribute('groupName')][item.name] = getUl(item);
         }
       }
+    }
+    let o;
+    if(mode){
+      o = {
+        ...mainCfg
+      }
+    }else o = {
+      'script data': mainCfg['script data']
     }
     for(let i = 0; i < arr.length; i++){
       // console.log(arr)
@@ -292,47 +309,25 @@ class Db{
               // if(a[item].children[0].type.match(/text|url|number|password/)){
               //   o[arr[i].getAttribute('groupName')][a[item].children[0].name] = a[item].children[0].value;
               // }
-            }else
-            if(a[item].children[0].tagName.match(/UL/)){
-              getValue(a[item].children[0], i, true);
             }
+            // getValue(a[item].children[0], i, true);
             // if(a[item].children[0].tagName.match(/SELECT/)){
             //   o[arr[i].getAttribute('groupName')][a[item].children[0].name] = a[item].children[0].value;
             // }
             // if(a[item].children[0].tagName.match(/INPUT|SELECT/)){
             //   o[arr[i].getAttribute('groupName')][a[item].children[0].name] = (a[item].children[0].type === 'checkbox' ? a[item].children[0].checked : (a[item].children[0].checked ? a[item].children[0].value : ''));
             // }
-//             if(a[item].children[0].tagName.match(/UL/)){
-//               // console.log('UL: ', a[item].children[0]);
-//               let ulItems = [];
-//               for(let li = 0, ul = a[item].children[0].children; li < ul.length; li++){
-//                 // console.log('ULLL: ', ul[li]);
-//                 if(ul[li].getAttribute('value')) ulItems.push(JSON.parse(ul[li].getAttribute('value')));
-//                 if(ul[li].getAttribute('string')) ulItems.push(ul[li].getAttribute('string'));
-//                 // let textArr = [];
-//                 // for(let val = 0, values = ul[li].children; val < values.length; val++){
-//                 //   if(values[val].classList.value.match(/value/) && values[val].textContent.length > 1){
-//                 //     textArr.push(values[val].textContent);
-//                 //   }
-//                 // }
-//                 // console.log('TextArr:', textArr);
-//                 // ulItems.push(JSON.parse(`{${textArr}}`));
-//                 // if(ul[li].children[0].textContent.length > 1){
-//                 //   ulItems.push(JSON.parse(`{${ul[li].children[0].textContent}}`));
-//                 // }
-//               }
-//               console.log('UlItems: ', ulItems);
-//               o[arr[i].getAttribute('groupName')][a[item].children[0].getAttribute('name')] = ulItems;
-              // console.log('Items: ', ulItems);
-              // o[arr[i].getAttribute('groupName')][a[item].children[0].name] = () => {
-              //   let ulItems = [];
-              //   for(let li = 0, ul = a[item].children[0].children; li < ul.length; li++){
-              //     console.log(ul[li]);
-              //     ulItems.push(ul[li].textContent);
-              //   }
-              //   return ulItems;
+            if(a[item].children[0].tagName.match(/UL/)){
+              // console.log('UL: ', a[item].children[0]);
+              getValue(a[item].children[0], i, true);
+              // let ulItems = [];
+              // for(let li = 0, ul = a[item].children[0].children; li < ul.length; li++){
+              //   // console.log('ULLL: ', ul[li]);
+              //   if(ul[li].getAttribute('value')) ulItems.push(JSON.parse(ul[li].getAttribute('value')));
+              //   if(ul[li].getAttribute('string')) ulItems.push(ul[li].getAttribute('string'));
               // }
               // console.log('UlItems: ', ulItems);
+              // o[arr[i].getAttribute('groupName')][a[item].children[0].getAttribute('name')] = ulItems;
             }
           }
           // a[item].children[0] ? (a[item].children[0].tagName.match(/INPUT|SELECT/) ? o[arr[i].getAttribute('groupName')][a[item].children[0].name] = (a[item].children[0].type === 'checkbox' ? a[item].children[0].checked : a[item].children[0].value) : '') : '';
@@ -340,7 +335,7 @@ class Db{
       }
     }
     console.log('OO: ', o);
-    this.mergeSettings(defaultSettings, o);
+    // this.mergeSettings(defaultSettings, o);
     return o;
   }
   settingsUpdater(i, settings, sfg){
