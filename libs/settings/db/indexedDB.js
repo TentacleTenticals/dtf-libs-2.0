@@ -191,6 +191,14 @@ class Db{
     }
   }
   getSettings(arr, mode){
+    let o;
+    if(mode){
+      o = {
+        ...mainCfg
+      }
+    }else o = {
+      'script data': mainCfg['script data']
+    }
     function getValue(item, i, tag){
       // console.log('GROUP', item.parentNode.getAttribute('group'));
       let group;
@@ -239,14 +247,6 @@ class Db{
           o[arr[i].getAttribute('groupName')][item.name] = getUl(item);
         }
       }
-    }
-    let o;
-    if(mode){
-      o = {
-        ...mainCfg
-      }
-    }else o = {
-      'script data': mainCfg['script data']
     }
     for(let i = 0; i < arr.length; i++){
       // console.log(arr)
