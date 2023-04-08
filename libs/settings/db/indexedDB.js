@@ -245,8 +245,9 @@ class Db{
             let ulItems = [];
             for(let li = 0, ul = item.children; li < ul.length; li++){
               // console.log('ULLL: ', ul[li]);
-              if(ul[li].getAttribute('value')) ulItems.push(JSON.parse(ul[li].getAttribute('value')));
-              if(ul[li].getAttribute('string')) ulItems.push(ul[li].getAttribute('string'));
+              if(item.getAttribute('type') === 'array') ulItems.push(JSON.parse(ul[li].getAttribute('value')));
+              else
+              if(item.getAttribute('type') === 'string') ulItems.push(ul[li].getAttribute('value'));
             }
             // console.log('UlItems: ', ulItems);
             return ulItems;
