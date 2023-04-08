@@ -67,8 +67,8 @@ class SettingsMenu {
       container: true,
       rtn: ['container'],
       onclick: () => {
-        console.log('STGLIST', new Db().getSettings(document.querySelectorAll(`div[id=DTF-scriptSettings] fieldset`), false))
-//         new Db().settingsUpdater(db, getSettings(document.querySelectorAll(`div[id=DTF-scriptSettings] fieldset`)), {firstRun: false});
+//         console.log('STGLIST', new Db().getSettings(document.querySelectorAll(`div[id=DTF-scriptSettings] fieldset`), false))
+        new Db().settingsUpdater(db, getSettings(document.querySelectorAll(`div[id=DTF-scriptSettings] fieldset`)), {firstRun: false});
         this.main.remove();
       }
     });
