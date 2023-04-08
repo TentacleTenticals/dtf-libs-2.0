@@ -236,6 +236,7 @@ class Db{
         }
       }else{
         if(item.tagName === 'SELECT'){
+          console.log('Select detected!');
           if(group) pathCheck(group, item.value);
           else
           o[arr[i].getAttribute('groupName')][item.name] = item.value;
