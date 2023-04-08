@@ -310,7 +310,7 @@ class Db{
               // if(a[item].children[0].type.match(/text|url|number|password/)){
               //   o[arr[i].getAttribute('groupName')][a[item].children[0].name] = a[item].children[0].value;
               // }
-            }
+            }else
             // getValue(a[item].children[0], i, true);
             // if(a[item].children[0].tagName.match(/SELECT/)){
             //   o[arr[i].getAttribute('groupName')][a[item].children[0].name] = a[item].children[0].value;
@@ -318,6 +318,9 @@ class Db{
             // if(a[item].children[0].tagName.match(/INPUT|SELECT/)){
             //   o[arr[i].getAttribute('groupName')][a[item].children[0].name] = (a[item].children[0].type === 'checkbox' ? a[item].children[0].checked : (a[item].children[0].checked ? a[item].children[0].value : ''));
             // }
+            if(a[item].children[0].tagName.match(/SELECT/)){
+              getValue(a[item].children[0], i, true);
+            }else
             if(a[item].children[0].tagName.match(/UL/)){
               // console.log('UL: ', a[item].children[0]);
               getValue(a[item].children[0], i, true);
