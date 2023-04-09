@@ -1,3 +1,4 @@
+const initMenu = {};
 class SettingsOpener{
   SettingsItem(name, id){
     const main=document.createElement('div');
