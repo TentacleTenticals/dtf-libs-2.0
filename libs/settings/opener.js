@@ -15,9 +15,9 @@ class SettingsOpener{
       path: main,
       text: '🔧',
       cName: 'main',
-      disabled: setSettings ? false : true,
+      disabled: initMenu.setSettings ? false : true,
       onclick: () => {
-        if(setSettings) new SettingsMenu(setSettings);
+        if(initMenu.setSettings) new SettingsMenu(initMenu.setSettings);
       }
     });
 
@@ -25,9 +25,9 @@ class SettingsOpener{
       path: main,
       text: '💾',
       cName: 'main',
-      disabled: setData ? false : true,
+      disabled: initMenu.setData ? false : true,
       onclick: () => {
-        if(setData) new DataMenu(setData);
+        if(initMenu.setData) new DataMenu(initMenu.setData);
       }
     });
 
@@ -35,9 +35,9 @@ class SettingsOpener{
       path: main,
       text: '❓',
       cName: 'main',
-      dispabled: setInfo ? false : true,
+      disabled: initMenu.setInfo ? false : true,
       onclick: () => {
-        if(setInfo) new InfoMenu(setInfo);
+        if(initMenu.setInfo) new InfoMenu(initMenu.setInfo);
       }
     });
   };
