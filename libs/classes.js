@@ -121,15 +121,13 @@ class Video{
 };
 
 class Select{
+  class Option({path, value, text}){
+    let main=document.createElement('option');
+    main.value=value;
+    main.textContent=text;
+    path.appendChild(main);
+  };
   constructor({path, container, label, name, value, body, options, optgroups, onchange, rtn}){
-    class Option{
-      constructor({path, text}){
-        this.main=document.createElement('option');
-        this.main.textContent=text;
-        path.appendChild(this.main);
-      }
-    };
-
     class Optgroup{
       constructor({path, label, option, options, rtn}){
         this.main=document.createElement('optgroup');
@@ -139,9 +137,10 @@ class Select{
           text: option
         });
         if(options) options.forEach(e => {
-          new Option({
+          this.Option({
             path: this.main,
-            text: e
+            value: e[0],
+            text: e[1]
           })
         });
         path.appendChild(this.main);
@@ -174,9 +173,10 @@ class Select{
     if(body) body(this.main, Optgroup, Option);
 
     if(options) options.forEach(e => {
-      new Option({
+      this.Option({
         path: this.main,
-        text: e
+        value: e[0],
+        text: e[1]
       })
     });
     if(optgroups) optgroups.forEach(e => {
