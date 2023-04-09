@@ -26,7 +26,7 @@ class SettingsOpener{
       cName: 'main',
       disabled: true,
       onclick: () => {
-        new SettingsMenu(setSettings);
+        new DataMenu(setData);
       }
     });
 
