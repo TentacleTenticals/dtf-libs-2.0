@@ -38,7 +38,7 @@ class Db{
             reject({status:'fail', msg:`[createDB] ${i.name}, ${err.request.errorCode}`});
           };
         }else{
-          resolve({status:'sucess', msg:'key already here'})
+          resolve({status:'success', type:'key here', msg:'key already here'})
         }
         // resolve({status:'success', type:'create/update', msg:`[connectDB] База данных успешно создана/обновлена до новой версии.`});
       }
@@ -65,7 +65,7 @@ class Db{
           reject({status:'fail', msg:`[createDB] ${i.name}, ${event.request.errorCode}`});
         };
       }else{
-        resolve({status:'sucess', msg:'key already here'})
+        resolve({status:'success', msg:'key already here'})
       }
         // var trx = i.db.transaction(i.store, "readwrite").objectStore(i.store);
         // // i.data.map(row => trx.add(row));
