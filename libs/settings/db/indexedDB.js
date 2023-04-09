@@ -90,11 +90,11 @@ class Db{
       // console.log('TRX', trx)
       trx = trx.get(key);
       trx.onsuccess = (e) => {
-        if (!e.target.result) {
-          reject({status:'fail', type:'data search', msg:`[readDB] ${i.store}, id:${key} не найден!`});
+        if(!e.target.result){
+          reject({status:'fail', type:'key search', msg:`[readDB] ${i.store}, id:${key} не найден!`});
         }else{
           console.log(`Запись в базе данных ${i.name} по id:${key} успешно найдена.`)
-          resolve({status:'success', type:'data search', msg:`Запись в базе данных ${i.name} по id:${key} успешно найдена.`, data:e.target.result});
+          resolve({status:'success', type:'key search', msg:`Запись в базе данных ${i.name} по id:${key} успешно найдена.`, data:e.target.result});
         }
       }
       trx.onerror = (e) => {
@@ -154,7 +154,7 @@ class Db{
         console.log(`[indexedDB] База данных ${i.name} существует.`);
         this.connect(i, res.version).then(c => {
           this.read(i, i.data.uid).then(res => {
-            if(res.status === 'fail' && res.type === 'data search'){
+            if(res.status === 'fail' && res.type === 'key search'){
               console.log(`[indexedDB] База данных ${i.name} существует, но нет сохранённых настроек. Будут использованы дефолтные настройки.`);
               this.init(false, initCfg, cfg);
             }else{
