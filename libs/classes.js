@@ -121,7 +121,7 @@ class Video{
 };
 
 class Select{
-  class Option({path, value, text}){
+  Option({path, value, text}){
     let main=document.createElement('option');
     main.value=value;
     main.textContent=text;
