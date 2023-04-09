@@ -15,7 +15,7 @@ class SettingsOpener{
       path: main,
       text: '🔧',
       cName: 'main',
-      disabled: setSettings ? '' : true,
+      disabled: setSettings ? false : true,
       onclick: () => {
         if(setSettings) new SettingsMenu(setSettings);
       }
@@ -25,7 +25,7 @@ class SettingsOpener{
       path: main,
       text: '💾',
       cName: 'main',
-      disabled: setData ? '' : true,
+      disabled: setData ? false : true,
       onclick: () => {
         if(setData) new DataMenu(setData);
       }
@@ -35,7 +35,7 @@ class SettingsOpener{
       path: main,
       text: '❓',
       cName: 'main',
-      dispabled: setInfo ? '' : true,
+      dispabled: setInfo ? false : true,
       onclick: () => {
         if(setInfo) new InfoMenu(setInfo);
       }
