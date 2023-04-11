@@ -348,7 +348,7 @@ class LiveList{
     let v=new Div({
       path: c,
       cName: 'value',
-      text: type === 'object' JSON.stringify(value) : value,
+      text: type === 'object' ? JSON.stringify(value) : value,
       editable: edit ? true : '',
       rtn: [],
       func: (e) => {
