@@ -302,7 +302,7 @@ class List{
 };
 
 class LiveList{
-  Build({path, container, type, edit, value, label, name}){
+  Build({path, container, type, view, edit, value, label, name}){
     this.main=new Div({
       path: path,
       cName: 'container',
@@ -326,16 +326,18 @@ class LiveList{
         path: this.ul,
         value: i,
         type: type,
+        view: view,
         edit: edit
       })
     })
     else this.Item({
       path: this.ul,
       type: type,
+      view: view,
       edit: edit
     })
   }
-  Item({path, value, type, edit, focus}){
+  Item({path, value, type, view, edit, focus}){
     let main=document.createElement('li');
     path.appendChild(main);
     
@@ -348,7 +350,7 @@ class LiveList{
     let v=new Div({
       path: c,
       cName: 'value',
-      text: type === 'object' ? JSON.stringify(value) : value,
+      text: type === 'object' ? (view ? view(value) : JSON.stringify(value)) : value,
       editable: edit ? true : '',
       rtn: [],
       func: (e) => {
