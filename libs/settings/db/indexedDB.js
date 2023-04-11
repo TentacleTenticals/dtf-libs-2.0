@@ -319,6 +319,7 @@ class Db{
       this.connect(i, res.version)
       .then(() => {
         this.read(i, i.data.uid).then(res => {
+          console.log('Update RES', res);
           if(res.status === 'success' && res.type === 'data search'){
             console.log(`В базе данных ${i.name} найдены сохранённые настройки. Будет выполнено обновление.`);
             this.update(i, i.data.uid, {...i.data, settings:settings}).then(res => {
