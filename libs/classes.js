@@ -399,7 +399,7 @@ class LiveList{
       rtn: []
     });
     
-    if(buttons) buttons(cb);
+    if(buttons) buttons(cb, value);
     new Button({
       path: cb,
       cName: 'btn',
