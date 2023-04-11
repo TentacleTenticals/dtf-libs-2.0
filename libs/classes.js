@@ -302,7 +302,7 @@ class List{
 };
 
 class LiveList{
-  Build({path, container, type, value, label, name}){
+  Build({path, container, type, edit, value, label, name}){
     this.main=new Div({
       path: path,
       cName: 'container',
@@ -324,14 +324,16 @@ class LiveList{
     if(value.length > 0) value.forEach(i => {
       this.Item({
         path: this.ul,
-        text: i
+        text: i,
+        edit: edit
       })
     })
     else this.Item({
-      path: this.ul
+      path: this.ul,
+      edit: edit
     })
   }
-  Item({path, text, focus}){
+  Item({path, text, edit, focus}){
     let main=document.createElement('li');
     path.appendChild(main);
     
@@ -345,7 +347,7 @@ class LiveList{
       path: c,
       cName: 'value',
       text: text,
-      editable: true,
+      editable: edit ? true : '',
       rtn: [],
       func: (e) => {
         if(text){
@@ -358,9 +360,9 @@ class LiveList{
       onkeydown: (e) => {
         if(e.code === 'Enter'){
           e.preventDefault();
-//           e.target.blur();
           this.Item({
             path: this.ul,
+            edit: edit,
             focus: true
           });
         }
