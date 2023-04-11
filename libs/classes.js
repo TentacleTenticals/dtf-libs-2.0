@@ -521,7 +521,8 @@ class Field{
         view: e.view,
         edit: e.edit,
         value: liveList.a ? this.auto(e.c, liveList.c, e.name, liveList.a[groupName]) : e.value,
-        buttons: e.buttons
+        buttons: e.buttons,
+        clearList: e.clearList
       });
     });
 
