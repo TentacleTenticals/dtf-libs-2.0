@@ -309,7 +309,7 @@ class Db{
     this.mergeSettings(defaultSettings, o);
     return o;
   }
-  settingsUpdater(i, settings, sfg){
+  async settingsUpdater(i, settings, sfg){
     if(!i.indexedDB){
       console.log('Ваш браузер не поддерживает базу данных `indexedDB`, которую использует данный скрипт для хранения настроек.\nБудет использоваться дефолтный список настроек...если вы всё же хотите использовать свои собственные настройки, отредактируйте скрипт, импортировав в него свои настройки.');
       return
