@@ -315,12 +315,12 @@ class Db{
       return
     }else
     {
-      const res = (await indexedDB.databases()).find(ind => ind.name === dbGen(defaultSettings['scriptInfo']).name);
-      this.connect(i, res.version)
+//       const res = (await indexedDB.databases()).find(ind => ind.name === dbGen(defaultSettings['scriptInfo']).name);
+      this.connect(i)
       .then(() => {
         this.read(i, i.data.uid).then(res => {
           console.log('Update RES', res);
-          if(res.status === 'success' && res.type === 'data search'){
+          if(res.status === 'success' && res.type === 'key search'){
             console.log(`В базе данных ${i.name} найдены сохранённые настройки. Будет выполнено обновление.`);
             this.update(i, i.data.uid, {...i.data, settings:settings}).then(res => {
               console.log('Upddated', res.status);
