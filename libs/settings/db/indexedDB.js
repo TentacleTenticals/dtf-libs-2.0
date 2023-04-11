@@ -315,7 +315,8 @@ class Db{
       return
     }else
     {
-      this.connect(i)
+      const res = (await indexedDB.databases()).find(ind => ind.name === dbGen(defaultSettings['scriptInfo']).name);
+      this.connect(i, res.version)
       .then(() => {
         this.read(i, i.data.uid).then(res => {
           if(res.status === 'success' && res.type === 'data search'){
