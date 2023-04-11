@@ -338,6 +338,7 @@ class LiveList{
     })
   }
   Item({path, value, type, view, edit, focus}){
+    console.log('VIEW', view);
     let main=document.createElement('li');
     path.appendChild(main);
     
