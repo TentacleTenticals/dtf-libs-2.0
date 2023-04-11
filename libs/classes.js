@@ -302,8 +302,7 @@ class List{
 };
 
 class LiveList{
-  Build({path, container, type, view, edit, value, label, name}){
-    console.log('VIEW', view);
+  Build({path, container, type, view, edit, value, label, name, clearList, buttons}){
     this.main=new Div({
       path: path,
       cName: 'container',
@@ -315,6 +314,23 @@ class LiveList{
     if(name) this.ul.setAttribute('name', name);
     if(type) this.ul.setAttribute('type', type);
     this.main.appendChild(this.ul);
+    
+    if(clearList){
+      let cb=new Button({
+        path: this.main,
+        text: 'Clear',
+        onclick: () => {
+          this.ul.replaceChildren();
+          if(edit) this.Item({
+            path: this.ul,
+            type: type,
+            view: view,
+            edit: edit,
+            buttons: buttons
+          })
+        }
+      })
+    }
     
     if(label){
       let lab=document.createElement('label');
@@ -328,18 +344,19 @@ class LiveList{
         value: i,
         type: type,
         view: view,
-        edit: edit
-      })
+        edit: edit,
+        buttons: buttons
+      });
     })
     else this.Item({
       path: this.ul,
       type: type,
       view: view,
-      edit: edit
+      edit: edit,
+      buttons: buttons
     })
   }
-  Item({path, value, type, view, edit, focus}){
-    console.log('VIEW item', view);
+  Item({path, value, type, view, edit, buttons, focus}){
     let main=document.createElement('li');
     path.appendChild(main);
     
@@ -369,6 +386,7 @@ class LiveList{
           this.Item({
             path: this.ul,
             edit: edit,
+            buttons: buttons,
             focus: true
           });
         }
@@ -381,6 +399,7 @@ class LiveList{
       rtn: []
     });
     
+    if(buttons) buttons(cb);
     new Button({
       path: cb,
       cName: 'btn',
@@ -501,7 +520,8 @@ class Field{
         type: e.type,
         view: e.view,
         edit: e.edit,
-        value: liveList.a ? this.auto(e.c, liveList.c, e.name, liveList.a[groupName]) : e.value
+        value: liveList.a ? this.auto(e.c, liveList.c, e.name, liveList.a[groupName]) : e.value,
+        buttons: e.buttons
       });
     });
 
