@@ -324,16 +324,18 @@ class LiveList{
     if(value.length > 0) value.forEach(i => {
       this.Item({
         path: this.ul,
-        text: i,
+        value: i,
+        type: type,
         edit: edit
       })
     })
     else this.Item({
       path: this.ul,
+      type: type,
       edit: edit
     })
   }
-  Item({path, text, edit, focus}){
+  Item({path, value, type, edit, focus}){
     let main=document.createElement('li');
     path.appendChild(main);
     
@@ -346,18 +348,18 @@ class LiveList{
     let v=new Div({
       path: c,
       cName: 'value',
-      text: text,
+      text: type === 'object' JSON.stringify(value) : value,
       editable: edit ? true : '',
       rtn: [],
       func: (e) => {
-        if(text){
+        if(value){
           main.setAttribute('value', e.textContent);
         };
       },
-      onblur: (e) => {
+      onblur: edit ? (e) => {
         main.setAttribute('value', e.target.textContent);
-      },
-      onkeydown: (e) => {
+      } : '',
+      onkeydown: edit ? (e) => {
         if(e.code === 'Enter'){
           e.preventDefault();
           this.Item({
@@ -366,7 +368,7 @@ class LiveList{
             focus: true
           });
         }
-      }
+      } : ''
     });
     
     let cb=new Div({
