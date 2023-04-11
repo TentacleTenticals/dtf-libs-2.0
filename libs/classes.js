@@ -303,6 +303,7 @@ class List{
 
 class LiveList{
   Build({path, container, type, view, edit, value, label, name}){
+    console.log('VIEW', view);
     this.main=new Div({
       path: path,
       cName: 'container',
@@ -338,7 +339,7 @@ class LiveList{
     })
   }
   Item({path, value, type, view, edit, focus}){
-    console.log('VIEW', view);
+    console.log('VIEW item', view);
     let main=document.createElement('li');
     path.appendChild(main);
     
