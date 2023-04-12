@@ -515,6 +515,7 @@ class Field{
       new LiveList().Build({
         path: this.list,
         container: e.c ? e.c : liveList.c,
+        cName: e.cName,
         label: e.label,
         name: e.name,
         type: e.type,
