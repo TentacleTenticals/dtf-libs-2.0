@@ -165,6 +165,10 @@ ul.liveList {
   flex-wrap: wrap;
   gap: 5px 10px;
 }
+ul.liveList.horisontal {
+  flex-direction: column;
+  gap: 8px 0;
+}
 
 .liveList li {
   border-radius: 2px;
@@ -180,6 +184,12 @@ ul.liveList {
   display: flex;
   width: max-content;
   gap: 0 10px;
+}
+ul.liveList.horisontal .cont {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
 }
 
 .liveList .value {
