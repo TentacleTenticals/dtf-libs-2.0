@@ -302,7 +302,7 @@ class List{
 };
 
 class LiveList{
-  Build({path, container, type, view, edit, value, label, name, clearList, buttons}){
+  Build({path, container, cName, type, view, edit, value, label, name, clearList, buttons}){
     this.main=new Div({
       path: path,
       cName: 'container',
@@ -310,7 +310,7 @@ class LiveList{
       rtn: []
     });
     this.ul=document.createElement('ul');
-    this.ul.className='liveList';
+    this.ul.className=`liveList${cName ? `${ cName}` : ''}`;
     if(name) this.ul.setAttribute('name', name);
     if(type) this.ul.setAttribute('type', type);
     this.main.appendChild(this.ul);
