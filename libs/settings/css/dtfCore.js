@@ -167,6 +167,7 @@ ul.liveList {
 }
 ul.liveList.vertical {
   flex-direction: column;
+  width: 100%;
   gap: 8px 0;
 }
 
