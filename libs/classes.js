@@ -310,7 +310,7 @@ class LiveList{
       rtn: []
     });
     this.ul=document.createElement('ul');
-    this.ul.className=`liveList${cName ? `${ cName}` : ''}`;
+    this.ul.className=`liveList${cName ? ` ${cName}` : ''}`;
     if(name) this.ul.setAttribute('name', name);
     if(type) this.ul.setAttribute('type', type);
     this.main.appendChild(this.ul);
