@@ -302,7 +302,7 @@ class List{
 };
 
 class LiveList{
-  Build({path, container, cName, type, view, edit, value, label, name, clearList, buttons}){
+  Build({path, container, cName, type, mode, view, edit, value, label, name, clearList, buttons}){
     this.main=new Div({
       path: path,
       cName: 'container',
@@ -348,7 +348,8 @@ class LiveList{
         buttons: buttons
       });
     })
-    else this.Item({
+    else
+    if(mode && mode !== 'view-del') this.Item({
       path: this.ul,
       type: type,
       view: view,
