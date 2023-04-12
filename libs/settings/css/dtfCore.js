@@ -192,7 +192,7 @@ ul.liveList.horisontal .cont {
   width: 100%;
 }
 
-ul.liveList .vertical~label {
+ul.liveList.vertical~label {
   text-orientation: upright;
   writing-mode: vertical-rl;
   letter-spacing: -3px;
