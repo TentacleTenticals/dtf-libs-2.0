@@ -406,14 +406,22 @@ class Obs{
 };
 
 class Css{
-  styleChecker(name){
+  styleChecker(name, mode){
     for(let i = 0, arr = document.querySelectorAll(`style`); i < arr.length; i++){
       if(!arr[i].getAttribute('stylename')) continue;
-      if(arr[i].getAttribute('stylename') === name) return true;
+      if(arr[i].getAttribute('stylename') === name) return mode === 'replace' ? arr[i] : true;
     }
   }
-  constructor(name, css, check){
-    if(check && this.styleChecker(name)) return;
+  replacer(item, css){
+    item.textContent = css;
+  }
+  constructor(name, css, mode){
+    if(mode){
+      this.item=this.styleChecker(name, mode);
+      if(mode === 'replace' && this.item) this.replacer(this.item, css);
+      else
+      if(this.item) return;
+    }
     this.main=document.createElement('style');
     this.main.textContent=css;
     if(name) this.main.setAttribute('stylename', name);
