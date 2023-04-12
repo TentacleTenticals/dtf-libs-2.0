@@ -165,7 +165,7 @@ ul.liveList {
   flex-wrap: wrap;
   gap: 5px 10px;
 }
-ul.liveList.horisontal {
+ul.liveList.vertical {
   flex-direction: column;
   gap: 8px 0;
 }
@@ -185,7 +185,7 @@ ul.liveList.horisontal {
   width: max-content;
   gap: 0 10px;
 }
-ul.liveList.horisontal .cont {
+ul.liveList.vertical .cont {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
