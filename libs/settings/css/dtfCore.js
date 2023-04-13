@@ -206,17 +206,21 @@ ul.liveList.vertical~label {
 
 .liveList .contB {
   display: flex;
+  padding: 4px 0 0 0;
+  gap: 0 5px;
 }
 .liveList .btn {
   display: inline-block;
-  background-color: rgb(255 255 255);
-  color: rgb(0 0 0);
+  background-color: rgb(0 0 0);
+  color: rgb(255 255 255);
   border: unset;
   border-radius: 50%;
-  font-size: 10px;
+  font-size: 11px;
   margin: auto;
-  padding: 0 3px 0 4px;
-  box-shadow: 0 0 1px 1px rgb(223 94 153);
+  padding: 0 3px 0 3px;
+  line-height: 0;
+  aspect-ratio: 1/1;
+  box-shadow: 0 0 2px 1px rgb(255 255 255);
 }
 
 .ui-autocomplete {
