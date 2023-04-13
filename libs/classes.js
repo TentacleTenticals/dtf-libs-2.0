@@ -404,7 +404,7 @@ class LiveList{
     new Button({
       path: cb,
       cName: 'btn',
-      text: 'x',
+      text: '❌',
       onclick: () => {
       if(this.ul.children.length > 1) main.remove();
     }
