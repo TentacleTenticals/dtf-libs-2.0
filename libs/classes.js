@@ -90,7 +90,7 @@ class Image{
   }
 };
 class Video{
-  constructor({path, cName, url, poster, autoplay, loop, muted, controls, pIp, text, style, preload, onclick, onplay, onpause, onended, rtn}){
+  constructor({path, cName, url, poster, autoplay, loop, muted, controls, pIp, text, style, preload, onloadeddata, onclick, onplay, onpause, onended, rtn}){
     this.main=document.createElement('video');
     if(cName) this.main.className=cName;
     if(url) this.main.src=url;
@@ -103,6 +103,7 @@ class Video{
     if(controls) this.main.controls=controls;
     pIp ? this.main.disablePictureInPicture=false : this.main.disablePictureInPicture=true;
     if(style) this.main.style=style;
+    if(onloadeddata) this.main.onloadeddata=onloadeddata;
     if(onclick) this.main.onclick=onclick;
     if(onplay) this.main.onplay=onplay;
     if(onpause) this.main.onpause=onpause;
