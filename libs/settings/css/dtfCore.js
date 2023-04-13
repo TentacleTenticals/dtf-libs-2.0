@@ -168,7 +168,10 @@ ul.liveList {
 ul.liveList.vertical {
   flex-direction: column;
   width: 100%;
+  margin: 3px 0 3px 0;
+  padding: 15px 5px 15px 5px;
   gap: 8px 0;
+  box-shadow: 0 0 1px 1px rgb(207 87 87);
 }
 
 .liveList li {
@@ -178,6 +181,10 @@ ul.liveList.vertical {
 }
 .liveList li::marker {
   font-size: 0;
+}
+ul.liveList.vertical li {
+  background-color: rgb(40 40 40);
+  box-shadow: 0 0 2px 0px rgb(255 255 255);
 }
 
 .liveList .cont {
@@ -194,14 +201,16 @@ ul.liveList.vertical .cont {
 }
 
 ul.liveList.vertical~label {
-  text-orientation: upright;
   writing-mode: vertical-rl;
-  letter-spacing: -3px;
 }
 
 .liveList .value {
   min-width: 40px;
   outline: none;
+}
+ul.liveList.vertical .value {
+  font-size: 13px;
+  line-height: 18px;
 }
 
 .liveList .contB {
