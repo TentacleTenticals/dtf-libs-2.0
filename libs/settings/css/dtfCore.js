@@ -218,6 +218,11 @@ ul.liveList.vertical .value {
   padding: 4px 0 0 0;
   gap: 0 5px;
 }
+.liveList.vertical .contB {
+  flex-direction: column;
+  padding: 4px 0 0 0;
+  gap: 5px 5px;
+}
 .liveList .btn {
   display: inline-block;
   background-color: rgb(0 0 0);
