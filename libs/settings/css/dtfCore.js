@@ -232,6 +232,10 @@ ul.liveList.vertical .value {
   box-shadow: 0 0 2px 1px rgb(255 255 255);
 }
 
+.liveList.vertical .value {
+  background-color: rgb(44 44 44);
+}
+
 .ui-autocomplete {
   position: absolute;
   top: 0;
