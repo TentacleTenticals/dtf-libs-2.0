@@ -232,7 +232,6 @@ ul.liveList.vertical .value {
   font-size: 11px;
   margin: auto;
   padding: 0 3px 0 3px;
-  line-height: 0;
   aspect-ratio: 1/1;
   box-shadow: 0 0 2px 1px rgb(255 255 255);
 }
