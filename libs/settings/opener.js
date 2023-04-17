@@ -42,15 +42,13 @@ class SettingsOpener{
       }
     });
   };
-  constructor({scriptName, scriptId}){
-    if(document.getElementById('DTF-scriptSettingsOpener')) return;
-    // console.log(settings)
+  Build(){
     this.main=new Div({
-      path: document.querySelector(`.site-header-container`) ? document.querySelector(`.site-header-container`) : document.body,
-      cName: 'DTF-scriptSettingsOpener',
-      id: 'DTF-scriptSettingsOpener',
-      rtn: []
-    });
+        path: document.querySelector(`.site-header-container`) ? document.querySelector(`.site-header-container`) : document.body,
+        cName: 'DTF-scriptSettingsOpener',
+        id: 'DTF-scriptSettingsOpener',
+        rtn: []
+      });
 
     this.label=new Div({
       path: this.main,
@@ -66,7 +64,10 @@ class SettingsOpener{
       path: this.main,
       cName: 'list'
     });
+  }
+  constructor({scriptName, scriptId}){
+    if(!document.getElementById('DTF-scriptSettingsOpener')) this.Build();
 
-    this.SettingsItem(scriptName, scriptId);
+    if(!document.getElementById('DTF-scriptSettingsOpener').querySelector(`div[id='stg-DTF-${id}']`)) this.SettingsItem(scriptName, scriptId);
   }
 };
