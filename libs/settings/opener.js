@@ -68,6 +68,6 @@ class SettingsOpener{
   constructor({scriptName, scriptId}){
     if(!document.getElementById('DTF-scriptSettingsOpener')) this.Build();
 
-    if(!document.getElementById('DTF-scriptSettingsOpener').querySelector(`div[id='stg-DTF-${id}']`)) this.SettingsItem(scriptName, scriptId);
+    if(!document.getElementById('DTF-scriptSettingsOpener').querySelector(`div[id='stg-DTF-${scriptId}']`)) this.SettingsItem(scriptName, scriptId);
   }
 };
