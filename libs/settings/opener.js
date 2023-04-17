@@ -14,7 +14,7 @@ class SettingsOpener{
 
     new Button({
       path: main,
-      text: '🔧',
+      text: '🔧\uFE0E',
       cName: 'main',
       disabled: initMenu.setSettings ? false : true,
       onclick: () => {
@@ -24,7 +24,7 @@ class SettingsOpener{
 
     new Button({
       path: main,
-      text: '💾',
+      text: '💾\uFE0E',
       cName: 'main',
       disabled: initMenu.setData ? false : true,
       onclick: () => {
@@ -34,7 +34,7 @@ class SettingsOpener{
 
     new Button({
       path: main,
-      text: '❓',
+      text: '❓\uFE0E',
       cName: 'main',
       disabled: initMenu.setInfo ? false : true,
       onclick: () => {
@@ -58,7 +58,7 @@ class SettingsOpener{
     this.header=new Div({
       path: this.main,
       cName: 'header',
-      text: '🛠️'
+      text: '🛠️\uFE0E'
     });
     this.list=new Div({
       path: this.main,
