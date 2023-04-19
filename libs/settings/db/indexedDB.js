@@ -350,6 +350,8 @@ class Db{
     function merge(newCfg, savCfg){
       for(var key in savCfg){
         if(key in newCfg){
+          if(typeof defCfg[key] === 'object' && !defCfg[key].length > 0) newCfg[key] = savCfg[key];
+          else
           newCfg[key] = typeof newCfg[key] === 'object' && typeof savCfg[key] === 'object' ? merge(newCfg[key], savCfg[key]) : savCfg[key];
         }
       }
