@@ -344,14 +344,29 @@ class Db{
     }
   }
   mergeSettings(defCfg, savCfg){
+    function getType(item){
+      if(!item) return;
+      return Object.prototype.toString.call(item).slice(8, -1).toLowerCase();
+    }
     console.log('D', defCfg);
     let newCfg = defCfg;
     console.log('N', newCfg);
     function merge(newCfg, savCfg){
       for(var key in savCfg){
         if(key in newCfg){
-          if(typeof defCfg[key] === 'object' && !defCfg[key].length > 0) newCfg[key] = savCfg[key];
-          else
+          {
+            if(defCfg[key]){
+              if(getType(defCfg[key]) === 'array'){
+//                 console.log(defCfg[key].length);
+                if(defCfg[key].length === 0) newCfg[key] = savCfg[key];
+              }else
+              if(getType(defCfg[key]) === 'object'){
+//                 console.log(Object.keys(defCfg[key]).length);
+                if(Object.keys(defCfg[key]).length === 0) newCfg[key] = savCfg[key];
+              }
+            }
+          }
+          
           newCfg[key] = typeof newCfg[key] === 'object' && typeof savCfg[key] === 'object' ? merge(newCfg[key], savCfg[key]) : savCfg[key];
         }
       }
