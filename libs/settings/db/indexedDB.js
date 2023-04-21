@@ -345,7 +345,6 @@ class Db{
   }
   mergeSettings(defCfg, savCfg){
     function getType(item){
-      if(!item) return;
       return Object.prototype.toString.call(item).slice(8, -1).toLowerCase();
     }
     console.log('D', defCfg);
@@ -355,14 +354,14 @@ class Db{
       for(var key in savCfg){
         if(key in newCfg){
           {
-            if(defCfg[key]){
-              if(getType(defCfg[key]) === 'array'){
-//                 console.log(defCfg[key].length);
-                if(defCfg[key].length === 0) newCfg[key] = savCfg[key];
+            if(newCfg[key]){
+              if(getType(newCfg[key]) === 'array'){
+                // console.log(newCfg[key].length);
+                if(newCfg[key].length === 0) newCfg[key] = savCfg[key];
               }else
-              if(getType(defCfg[key]) === 'object'){
-//                 console.log(Object.keys(defCfg[key]).length);
-                if(Object.keys(defCfg[key]).length === 0) newCfg[key] = savCfg[key];
+              if(getType(newCfg[key]) === 'object'){
+                // console.log(Object.keys(defCfg[key]).length);
+                if(Object.keys(newCfg[key]).length === 0) newCfg[key] = savCfg[key];
               }
             }
           }
