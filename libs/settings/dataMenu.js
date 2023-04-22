@@ -58,7 +58,7 @@ class DataMenu {
       container: true,
       rtn: ['container'],
       onclick: () => {
-        new Db().settingsUpdater(dbGen(defaultSettings['scriptInfo']), mainCfg, false);
+        new Db().settingsUpdater(dbGen(defaultSettings['scriptInfo']), new Db().getSettings(document.querySelectorAll(`div[id=DTF-scriptData] fieldset`), true), false);
         this.main.remove();
       }
     });
