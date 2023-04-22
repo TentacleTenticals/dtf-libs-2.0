@@ -191,6 +191,12 @@ class Db{
     }
   }
   getSettings(arr, mode){
+    let o;
+    if(mode) o = {
+        ...mainCfg
+    }else o = {
+      'script data': mainCfg['script data']
+    };
     function getValue(item, i, tag){
       // console.log('GROUP', item.parentNode.getAttribute('group'));
       let group;
@@ -248,7 +254,6 @@ class Db{
               else
               if(item.getAttribute('type') === 'string') ulItems.push(ul[li].getAttribute('value'));
             }
-            console.log('UL', ulItems);
             return ulItems;
           }
           if(group) pathCheck(group, getUl(item));
@@ -256,14 +261,6 @@ class Db{
           o[arr[i].getAttribute('groupName')][item.name] = getUl(item);
         }
       }
-    }
-    let o;
-    if(mode){
-      o = {
-        ...mainCfg
-      }
-    }else o = {
-      'script data': mainCfg['script data']
     }
     for(let i = 0; i < arr.length; i++){
       // console.log(arr)
