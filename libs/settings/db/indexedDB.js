@@ -377,6 +377,7 @@ class Db{
     return newCfg;
   }
   init(settings, s, cfg){
+    console.log('[Init]', defaultSettings);
     settings ? mainCfg = this.mergeSettings(defaultSettings, settings) : mainCfg = defaultSettings;
     new SettingsOpener({...defaultSettings.scriptInfo, settings:s.settings});
     // if(!document.getElementById(`stg-DTF-${s.id}`)) new SettingsItem(s.name, s.id, s.params);
