@@ -376,7 +376,12 @@ class LiveList{
       rtn: [],
       func: (e) => {
         if(value){
-          main.setAttribute('value', e.textContent);
+          if(view && type === 'string') main.setAttribute('value', value));
+          else
+          if(view && type === 'object') main.setAttribute('value', JSON.stringify(value)));
+          else
+          if(type === 'string') main.setAttribute('value', value));
+//           main.setAttribute('value', e.textContent);
         };
       },
       onblur: edit ? (e) => {
