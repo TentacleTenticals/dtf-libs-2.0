@@ -20,6 +20,23 @@ let dtfCoreCSS = `
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400;500;600;700&display=swap');
 
+.content_editable {
+  outline: none;
+  min-height: 100px;
+}
+
+:is(.site-header-container, .comments_updates_rail).hidden {
+  display: none;
+}
+.layout__right-column {
+  z-index: 0;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+}
+
 .dtf-window :is(input, select) {
   outline: none;
 }
