@@ -357,11 +357,11 @@ class Db{
             if(newCfg[key]){
               if(getType(newCfg[key]) === 'array'){
                 // console.log(newCfg[key].length);
-                if(newCfg[key].length === 0) newCfg[key] = savCfg[key];
+                if(newCfg[key].length === 0) newCfg[key] = savCfg[key] ? savCfg[key] : newCfg[key];
               }else
               if(getType(newCfg[key]) === 'object'){
                 // console.log(Object.keys(defCfg[key]).length);
-                if(Object.keys(newCfg[key]).length === 0) newCfg[key] = savCfg[key];
+                if(Object.keys(newCfg[key]).length === 0) newCfg[key] = savCfg[key] ? savCfg[key] : newCfg[key];
               }
             }
           }
