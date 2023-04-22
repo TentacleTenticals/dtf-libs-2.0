@@ -58,7 +58,7 @@ class DataMenu {
       container: true,
       rtn: ['container'],
       onclick: () => {
-        new Db().settingsUpdater(dbGen(defaultSettings['scriptInfo']), cfgMain, false);
+        new Db().settingsUpdater(dbGen(defaultSettings['scriptInfo']), mainCfg, false);
         this.main.remove();
       }
     });
@@ -68,7 +68,7 @@ class DataMenu {
       text: 'Бэкап настроек в файл',
       title: 'Сохранение настроек в .txt файл',
       onclick: () => {
-        backupSettingsToFile(JSON.stringify(cfgMain, null, 2), `${cfgMain.srciptInfo.scriptName} ${new Date()} (бэкап настроек).txt`, 'text/plain');
+        backupSettingsToFile(JSON.stringify(mainCfg, null, 2), `${mainCfg.srciptInfo.scriptName} ${new Date()} (бэкап настроек).txt`, 'text/plain');
       }
     });
   }
