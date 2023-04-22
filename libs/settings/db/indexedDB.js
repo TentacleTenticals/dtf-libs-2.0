@@ -196,7 +196,7 @@ class Db{
       o = {
         ...mainCfg
       }
-      o['script data'].delete();
+      delete o['script data'];
     }else o = {
       'script data': mainCfg['script data']
     };
