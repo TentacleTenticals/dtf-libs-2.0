@@ -192,10 +192,12 @@ class Db{
   }
   getSettings(arr, mode){
     let o;
-    if(mode) o = {
+    if(mode){
+      o = {
         ...mainCfg
-    }
-    else o = {
+      }
+      o['script data'].delete();
+    }else o = {
       'script data': mainCfg['script data']
     };
     function getValue(item, i, tag){
