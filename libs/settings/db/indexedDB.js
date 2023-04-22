@@ -158,7 +158,7 @@ class Db{
               console.log(`[indexedDB] База данных ${i.name} существует, но нет сохранённых настроек. Будут использованы дефолтные настройки.`);
               this.init(false, initCfg, cfg);
             }else{
-              console.log(`[indexedDB] В базе данных ${i.name} найдены сохранённые настройки, загружаю их.`);
+              console.log(`[indexedDB] В базе данных ${i.name} найдены сохранённые настройки, загружаю их.`, defaultSettings);
               this.init(res.data.settings, initCfg, cfg);
             }
           }).catch((err, s, key) => {
