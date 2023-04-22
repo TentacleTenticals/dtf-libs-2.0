@@ -51,6 +51,17 @@ class DataMenu {
 //         }
 //       ]}
     });
+    
+    this.submit=new Button({
+      path: this.form,
+      text: 'Сохранить данные',
+      container: true,
+      rtn: ['container'],
+      onclick: () => {
+        new Db().settingsUpdater(dbGen(defaultSettings['scriptInfo']), cfgMain, false);
+        this.main.remove();
+      }
+    });
 
     new Button({
       path: this.dataActions,
