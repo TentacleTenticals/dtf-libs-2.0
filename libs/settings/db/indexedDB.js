@@ -248,6 +248,7 @@ class Db{
               else
               if(item.getAttribute('type') === 'string') ulItems.push(ul[li].getAttribute('value'));
             }
+            console.log('UL', ulItems);
             return ulItems;
           }
           if(group) pathCheck(group, getUl(item));
