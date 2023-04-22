@@ -57,7 +57,7 @@ class SettingsMenu {
       text: 'Бэкап настроек в файл',
       title: 'Сохранение настроек в .txt файл',
       onclick: () => {
-        backupSettingsToFile(JSON.stringify(cfgMain, null, 2), `${cfgMain.srciptInfo.scriptName} ${new Date()} (бэкап настроек).txt`, 'text/plain');
+        backupSettingsToFile(JSON.stringify(mainCfg, null, 2), `${mainCfg.srciptInfo.scriptName} ${new Date()} (бэкап настроек).txt`, 'text/plain');
       }
     });
 
