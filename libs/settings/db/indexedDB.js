@@ -194,7 +194,8 @@ class Db{
     let o;
     if(mode) o = {
         ...mainCfg
-    }else o = {
+    }
+    else o = {
       'script data': mainCfg['script data']
     };
     function getValue(item, i, tag){
