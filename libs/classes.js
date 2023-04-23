@@ -350,6 +350,14 @@ class LiveList{
       });
     })
     else
+    if(mode && mode === 'view-del') this.Item({
+        path: this.ul,
+        type: type,
+        view: view,
+        edit: edit,
+        buttons: buttons
+      });
+    else
     if(mode && mode !== 'view-del') this.Item({
       path: this.ul,
       type: type,
