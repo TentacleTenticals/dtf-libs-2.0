@@ -377,8 +377,7 @@ class Db{
     return newCfg;
   }
   init(settings, s, cfg){
-    console.log('[Init]', defaultSettings);
-    settings ? mainCfg = this.mergeSettings(defaultSettings, settings) : mainCfg = defaultSettings;
+    settings ? mainCfg = this.mergeSettings(defaultSettings, settings) : mainCfg = structuredClone(defaultSettings);
     new SettingsOpener({...defaultSettings.scriptInfo, settings:s.settings});
     // if(!document.getElementById(`stg-DTF-${s.id}`)) new SettingsItem(s.name, s.id, s.params);
     console.log(`[Init] Инициализация скрипта успешно выполнена.`, mainCfg);
