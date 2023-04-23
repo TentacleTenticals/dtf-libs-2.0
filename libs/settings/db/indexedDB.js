@@ -193,7 +193,7 @@ class Db{
   getSettings(arr, mode){
     let o;
     if(mode){
-      o = sctructuredClone(mainCfg);
+      o = structuredClone(mainCfg);
 //       delete o['script data'];
     }else o = {
       'script data': mainCfg['script data']
