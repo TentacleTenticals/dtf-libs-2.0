@@ -76,7 +76,7 @@ class SettingsMenu {
       path: this.submit.container,
       text: 'Сбросить настройки',
       onclick: () => {
-        mainCfg = defaultSettings;
+        mainCfg = structuredClone(defaultSettings);
         console.log(`Сброшены настройки, десу.`, mainCfg);
         this.main.remove();
       }
