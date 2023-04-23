@@ -194,7 +194,8 @@ class Db{
     let o;
     if(mode){
       o = structuredClone(mainCfg);
-//       delete o['script data'];
+//       o['script data'] = structuredClone(defaultSettings['scriptData']);
+      delete o['script data'];
     }else o = {
       'script data': mainCfg['script data']
     };
@@ -210,7 +211,7 @@ class Db{
             else
             prev[curr] = {};
           }
-          return prev[curr]
+          return prev[curr];
         }, o[arr[i].getAttribute('groupName')]);
       }
       if(item.parentNode.getAttribute('group') !== null){
