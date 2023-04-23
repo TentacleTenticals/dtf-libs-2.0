@@ -232,7 +232,7 @@ ul.liveList.vertical .value {
 
 .liveList .contB {
   display: flex;
-  padding: 4px 0 0 0;
+  padding: 3px 0 3px 0;
   gap: 0 5px;
 }
 .liveList.vertical .contB {
