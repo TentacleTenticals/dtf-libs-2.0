@@ -140,8 +140,7 @@ class Db{
       }
     });
   }
-  async settingsLoader(i, initCfg, cfg) {
-    console.log('B', defaultSettings);
+  async settingsLoader(i, initCfg, cfg){
     if(!i.indexedDB){
       console.log('Ваш браузер не поддерживает базу данных `indexedDB`, которую использует данный скрипт для хранения настроек.\nБудет использоваться дефолтный список настроек...если вы всё же хотите использовать свои собственные настройки, отредактируйте скрипт, импортировав в него свои настройки.');
       return this.init(false, initCfg, cfg);
@@ -159,7 +158,7 @@ class Db{
               console.log(`[indexedDB] База данных ${i.name} существует, но нет сохранённых настроек. Будут использованы дефолтные настройки.`);
               this.init(false, initCfg, cfg);
             }else{
-              console.log(`[indexedDB] В базе данных ${i.name} найдены сохранённые настройки, загружаю их.`, defaultSettings);
+              console.log(`[indexedDB] В базе данных ${i.name} найдены сохранённые настройки, загружаю их.`);
               this.init(res.data.settings, initCfg, cfg);
             }
           }).catch((err, s, key) => {
@@ -197,7 +196,7 @@ class Db{
       o = {
         ...mainCfg
       }
-      delete o['script data'];
+//       delete o['script data'];
     }else o = {
       'script data': mainCfg['script data']
     };
@@ -346,11 +345,11 @@ class Db{
     }
   }
   mergeSettings(defCfg, savCfg){
+    let newCfg = structuredClone(defCfg);
     function getType(item){
       return Object.prototype.toString.call(item).slice(8, -1).toLowerCase();
     }
     console.log('D', defCfg);
-    let newCfg = defCfg;
     console.log('N', newCfg);
     function merge(newCfg, savCfg){
       for(var key in savCfg){
