@@ -350,7 +350,7 @@ class LiveList{
       });
     })
     else
-    if(mode && mode === 'view-del') this.Item({
+    if(mode && mode === 'edit-del') this.Item({
         path: this.ul,
         type: type,
         view: view,
@@ -490,27 +490,6 @@ class Field{
     // get value(){
     //   return getter(mainCfg[test.groupName], this.c.g, this.name)
     // }
-    if(inputsAuto) inputsAuto.list.forEach(e => {
-      new Input({
-        path: this.list,
-        type: e.type,
-        name: e.name,
-        title: e.title,
-        value: getter(inputsAuto.cfg[groupName], e.c ? e.c : inputsAuto.c.g, e.name),
-        accepted: e.accepted,
-        number: e.number,
-        min: e.min,
-        max: e.max,
-        step: e.step,
-        checked: e.checked,
-        text: e.text,
-        label: e.label,
-        iText: e.iText,
-        onchange: e.onchange,
-        num: e.num,
-        container: e.c ? e.c : inputsAuto.c
-      })
-    });
 
     if(select) select.list.forEach(e => {
       new Select({
