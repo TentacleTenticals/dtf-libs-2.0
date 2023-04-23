@@ -240,13 +240,13 @@ ul.liveList.vertical .value {
   padding: 4px 0 0 0;
   gap: 5px 5px;
 }
-.liveList .btn {
+.liveList .contB .btn {
   display: inline-block;
   background-color: rgb(0 0 0);
   color: rgb(255 255 255);
   border: unset;
   border-radius: 50%;
-  font-size: 11px;
+  font-size: 8px;
   margin: auto;
   padding: 0 3px 0 3px;
   aspect-ratio: 1/1;
