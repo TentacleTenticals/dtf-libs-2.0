@@ -441,7 +441,7 @@ let menuLoaderCSS = `
 .dtf-scriptWindow input[type="checkbox"]::before {
   display: block;
   content: '✅\uFE0E';
-  content: '✔️\uFE0E';
+  content: '✔\uFE0E';
   font-size: 10px;
   background-color: rgb(74 74 74);
   color: rgb(131 131 131);
