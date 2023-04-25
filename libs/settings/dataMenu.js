@@ -68,6 +68,18 @@ class DataMenu {
       text: 'Бэкап настроек в файл',
       title: 'Сохранение настроек в .txt файл',
       onclick: () => {
+        function backupSettingsToFile(data, filename, type) {
+          let file = new Blob([data], {type: type});
+          if(window.navigator.msSaveOrOpenBlob) window.navigator.msSaveOrOpenBlob(file, filename);
+          else{
+            var a = document.createElement("a"),
+            url = URL.createObjectURL(file);
+            a.href = url;
+            a.download = filename;
+            a.click();
+            window.URL.revokeObjectURL(url);
+          }
+        };
         backupSettingsToFile(JSON.stringify(mainCfg, null, 2), `${mainCfg.srciptInfo.scriptName} ${new Date()} (бэкап настроек).txt`, 'text/plain');
       }
     });
