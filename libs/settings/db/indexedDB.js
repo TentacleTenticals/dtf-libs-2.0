@@ -15,6 +15,17 @@ function dbGen(i){
 };
 
 class Db{
+  async check(i){
+    return new Promise((resolve, reject) => {
+      var req = indexedDB.open(i.name);
+      req.onsuccess = (e) => {
+        console.log('[checkDB] Success!');
+        i.db = e.target.result;
+        resolve({status:'success', type:'check', version:i.db.version, msg:`[checkDB] Успешная проверка датабазы.`});
+        reject({status:'fail', type:'check', msg:`[checkDB] При проверке датабазы произошла ошибка.`});
+      }
+    })
+  }
   async connect(i, ver){
     return new Promise((resolve, reject) => {
       var req = indexedDB.open(i.name, ver);
@@ -146,8 +157,9 @@ class Db{
       return this.init(false, initCfg, cfg);
     }else
     {
-      const res = (await indexedDB.databases()).find(ind => ind.name === i.name);
-      if(!res){
+//       const res = (await indexedDB.databases()).find(ind => ind.name === i.name);
+      const res = this.check(i);
+      if(!res.version){
         console.log(`[indexedDB] Базы данных ${i.name} не найдено. Будут использованы дефолтные настройки.`);
         return this.init(false, initCfg, cfg);
       }else{
