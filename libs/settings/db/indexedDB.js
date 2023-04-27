@@ -22,6 +22,9 @@ class Db{
         console.log('[checkDB] Success!');
         i.db = e.target.result;
         resolve({status:'success', type:'check', version:i.db.version, msg:`[checkDB] Успешная проверка датабазы.`});
+        i.db.close();
+      }
+      req.onerror = (e) => {
         reject({status:'fail', type:'check', msg:`[checkDB] При проверке датабазы произошла ошибка.`});
       }
     })
@@ -158,7 +161,7 @@ class Db{
     }else
     {
 //       const res = (await indexedDB.databases()).find(ind => ind.name === i.name);
-      const res = this.check(i);
+      const res = await this.check(i);
       if(!res.version){
         console.log(`[indexedDB] Базы данных ${i.name} не найдено. Будут использованы дефолтные настройки.`);
         return this.init(false, initCfg, cfg);
