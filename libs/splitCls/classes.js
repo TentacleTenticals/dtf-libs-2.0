@@ -5,7 +5,7 @@ class El{
     if(id) this.main.id = id;
     if(text) this.main.textContent = text;
     if(title) this.main.title = title;
-    if(attr) this.main.setAttribute(attr);
+    if(attr) this.main.setAttribute(attr[0], attr[1]);
     if(name) this.main.setAttribute('name', name);
     if(group) this.main.setAttribute('group', group);
     if(tab) this.main.tabIndex = tab;
