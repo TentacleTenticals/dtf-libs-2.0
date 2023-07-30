@@ -139,4 +139,20 @@ class El{
     if(name) this.main.setAttribute('stylename', name);
     document.body.appendChild(this.main);
   };
+  onPageLoad(run){
+    {
+    const log = console.log.bind(console);
+    console.log = (...args) => {
+      if(Array.isArray(args)){
+        if(args[0]){
+          if(typeof args[0] === 'string'){
+            if(args[0].match(/\[ Air \] Ready.*/)){
+              run();
+            }
+          }
+        }
+      }
+      log(...args);
+    }}
+  };
 };
