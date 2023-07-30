@@ -139,7 +139,7 @@ class El{
     if(name) this.main.setAttribute('stylename', name);
     document.body.appendChild(this.main);
   };
-  Obs({target, cfg, mode, check, type, search, name, msg, func}){
+  Obs({obs, target, cfg, mode, check, type, search, name, msg, func}){
     if(!target) return;
     if(mode === 'start'){
       this.callback = (mutationList, o) => {
