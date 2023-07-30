@@ -139,6 +139,39 @@ class El{
     if(name) this.main.setAttribute('stylename', name);
     document.body.appendChild(this.main);
   };
+  Obs({target, cfg, mode, check, type, search, name, msg, func}){
+    if(!target) return;
+    if(mode === 'start'){
+      this.callback = (mutationList, o) => {
+        for(const mutation of mutationList){
+          if(mutation.type === 'childList'){
+            // console.log(mutation.target);
+            if(check){
+              if(!mutation.target.classList.length > 0) return;
+              if(!mutation.target.classList.value.match(search)) return;
+            }
+            if(type){
+              func(mutation.target);
+            }else{
+              for(let i = 0, arr = mutation.addedNodes; i < arr.length; i++){
+                func(arr[i]);
+              }
+            }
+          }
+        }
+      };
+      obs[name] = new MutationObserver(this.callback);
+      obs[name].observe(target, cfg);
+      console.log(`[OBS ${name}] запущен`);
+    }else
+    if(mode === 'restart'){
+      if(obs[name]){
+        obs[name].disconnect();
+        obs[name].observe(target, cfg);
+        console.log(`[OBS ${name}] перезапущен`);
+      }
+    }
+  };
   onPageLoad(run){
     {
     const log = console.log.bind(console);
