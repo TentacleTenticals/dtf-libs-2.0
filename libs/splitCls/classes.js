@@ -11,7 +11,7 @@ class El{
     if(tab) this.main.tabIndex = tab;
     if(editable) this.main.setAttribute('contenteditable', true);
     if(style) this.main.style = style;
-    if(onclick) this.main.onclick = onclick;
+    if(onclick) this.main.onmousedown = onclick;
     if(onRclick) this.main.oncontextmenu = onRclick;
     if(onkeyup) this.main.onkeyup = onkeyup;
     if(onkeydown) this.main.onkeydown = onkeydown;
