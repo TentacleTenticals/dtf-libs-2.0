@@ -1,5 +1,5 @@
 class El{
-  Div({ path, addBefore, cName, id, text, label, title, attr, name, group, tab, value, valueName, editable, style, onclick, onkeydown, onkeyup, onwheel, onfocus, onblur, onpaste, onmouseenter, onmouseleave, rtn, func }){
+  Div({ path, addBefore, cName, id, text, label, title, attr, name, group, tab, value, valueName, editable, style, onclick, onRclick, onkeydown, onkeyup, onwheel, onfocus, onblur, onpaste, onmouseenter, onmouseleave, rtn, func }){
     this.main = document.createElement('div');
     if(cName) this.main.className = cName;
     if(id) this.main.id = id;
@@ -12,6 +12,7 @@ class El{
     if(editable) this.main.setAttribute('contenteditable', true);
     if(style) this.main.style = style;
     if(onclick) this.main.onclick = onclick;
+    if(onRclick) this.main.oncontextmenu = onRclick;
     if(onkeyup) this.main.onkeyup = onkeyup;
     if(onkeydown) this.main.onkeydown = onkeydown;
     if(onwheel) this.main.onwheel = onwheel;
