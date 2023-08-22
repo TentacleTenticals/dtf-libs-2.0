@@ -24,6 +24,7 @@ const widgetCss = () => `
     display: flex;
   }
   .widget.showing .widgetPanel>.header {
+    padding: 2px 1px 2px 1px;
     background-color: rgb(137 97 114);
     color: rgb(255 255 255);
   }
@@ -47,10 +48,11 @@ const widgetCss = () => `
   }
   .widgetPanel .header {
     display: flex;
+    justify-content: center;
+    padding: 0 3px 0 3px;
     text-align: center;
     font-size: 12px;
     cursor: pointer;
-    justify-content: center;
   }
   .widget .widgetPanel>.list {
     display: none;
