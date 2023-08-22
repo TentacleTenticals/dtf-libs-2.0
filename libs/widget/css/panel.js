@@ -36,7 +36,6 @@ const widgetCss = () => `
     display: none;
     flex-direction: column;
     flex-grow: 1;
-    gap: 3px 3px;
   }
 
   .widgetPanel {
@@ -81,6 +80,7 @@ const widgetCss = () => `
   .widget .w-item {
     display: flex;
     flex-direction: column;
+    gap: 3px 3px;
     background-color: rgb(53 53 53);
     color: rgb(255,255,255);
     padding: 2px;
