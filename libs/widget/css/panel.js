@@ -88,7 +88,6 @@ const widgetCss = () => `
   .widget .w-item>.header {
     background-color: rgb(107 63 82);
     color: rgb(255 255 255);
-    margin-bottom: 5px;
     padding: 0 2px 0 2px;
     font-size: 12px;
     text-align: center;
