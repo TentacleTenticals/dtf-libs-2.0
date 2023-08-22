@@ -34,8 +34,8 @@ const widgetCss = () => `
 
   .widget .wList {
     display: none;
-    max-width: 248px;
     flex-direction: column;
+    flex-grow: 1;
   }
 
   .widgetPanel {
