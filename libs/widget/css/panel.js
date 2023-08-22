@@ -40,6 +40,7 @@ const widgetCss = () => `
   }
 
   .widgetPanel {
+    repeating-linear-gradient(140deg, rgb(255 255 255 / 30%), transparent 50%);
     background-color: rgb(0,0,0);
     color: rgb(255,255,255);
     padding: 0 0 0 0;
