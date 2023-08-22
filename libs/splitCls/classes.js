@@ -181,7 +181,13 @@ class El{
         if(args[0]){
           if(typeof args[0] === 'string'){
             if(args[0].match(/\[ Air \] Ready.*/)){
-              run();
+              run({page:'def', status:'ready'});
+            }else
+            if(args[0].match(/\[Editor in popup\] Ready/)){
+              run({page:'editor', status:'ready'});
+            }else
+            if(args[0].match(/\[Editor in popup\] Closed/)){
+              run({page:'editor', status:'closed'});
             }
           }
         }
