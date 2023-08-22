@@ -36,6 +36,7 @@ const widgetCss = () => `
     display: none;
     flex-direction: column;
     flex-grow: 1;
+    gap: 3px 3px;
   }
 
   .widgetPanel {
