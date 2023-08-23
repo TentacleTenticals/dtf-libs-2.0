@@ -66,8 +66,8 @@ class WidgetPanel{
     
     const wItem=new El().Div({
       path: widget.children[1].children[1],
-      cName: `w-item ${cName}`,
-      id: `w-${id}`,
+      cName: `wl-item ${cName}`,
+      id: `wl-${id}`,
       rtn: true
     });
     new El().Div({
