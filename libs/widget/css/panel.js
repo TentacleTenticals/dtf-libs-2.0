@@ -4,7 +4,7 @@ const widgetCss = () => `
   flex-shrink: 0;
   flex-direction: row;
   position: fixed;
-  top: 60px;
+  top: 58px;
   width: 265px;
   z-index: 20;
 }
