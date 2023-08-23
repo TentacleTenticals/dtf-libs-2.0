@@ -118,18 +118,18 @@ const widgetCss = () => `
   background-color: rgb(0,0,0);
 }
 
-.widgetPanel .w-list .w-item {
+.widgetPanel .w-list .wl-item {
   display: none;
   flex-direction: column;
   gap: 3px 0;
   padding: 1px 1px 2px 1px;
   background-color: rgb(55 55 55);
 }
-.widgetPanel .w-list .w-item.active {
+.widgetPanel .w-list .wl-item.active {
   display: flex;
 }
 
-.widgetPanel .w-list .w-item>.header {
+.widgetPanel .w-list .wl-item>.header {
   text-align: center;
   font-size: 13px;
   background-color: rgb(28 28 28);
@@ -138,11 +138,11 @@ const widgetCss = () => `
   border-radius: 2px;
   cursor: pointer;
 }
-.widgetPanel .w-list .w-item>.header:hover {
+.widgetPanel .w-list .wl-item>.header:hover {
   opacity: 0.9;
 }
 
-.widgetPanel .w-list .w-item>.list {
+.widgetPanel .w-list .wl-item>.list {
   display: flex;
   flex-direction: column;
   text-align: center;
