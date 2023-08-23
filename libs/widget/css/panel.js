@@ -3,7 +3,10 @@ const widgetCss = () => `
   display: flex;
   flex-shrink: 0;
   flex-direction: row;
-  width: 200px;
+  position: fixed;
+  top: 60px;
+  width: 265px;
+  z-index: 20;
 }
 
 .sidePanel {
