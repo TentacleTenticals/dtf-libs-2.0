@@ -21,7 +21,7 @@ const widgetCss = () => `
   width: max-content;
 }
 .sidePanel>.header {
-  padding: 0px 3px 1px 3px;
+  padding: 1px 3px 1px 3px;
   font-size: 12px;
   text-align: center;
   color: rgb(255,255,255);
