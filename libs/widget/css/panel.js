@@ -79,6 +79,10 @@ const widgetCss = () => `
   flex-grow: 1;
 }
 
+.mainPanel:hover .w-list {
+  display: flex;
+}
+
 .mainPanel>.header {
   display: flex;
   justify-content: center;
@@ -104,9 +108,6 @@ const widgetCss = () => `
   opacity: 0.9;
 }
 
-.mainPanel>.header:hover+.w-list {
-  display: flex;
-}
 .mainPanel.active>.header+.w-list {
   display: flex;
 }
