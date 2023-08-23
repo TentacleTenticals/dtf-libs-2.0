@@ -43,6 +43,10 @@ const widgetCss = () => `
   display: flex;
 }
 
+.sidePanel:hover+.mainPanel .w-list {
+    display: flex;
+}
+
 .sidePanel.active>.header {
   background-color: rgb(57 69 97);
 }
