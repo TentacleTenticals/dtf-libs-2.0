@@ -12,7 +12,7 @@ const widgetCss = () => `
 .sidePanel {
   display: flex;
   flex-direction: column;
-  height: max-content;
+  background: repeating-linear-gradient(315deg, rgb(95 22 22), transparent 80%);
   background-color: rgb(0,0,0);
   border-radius: 0 4px 2px 5px;
   box-shadow: 0 0 3px 0px rgb(0,0,0);
