@@ -37,7 +37,7 @@ class El{
       })
       return this.obj;
     }
-    if(focus) const main.focus();
+    if(focus) main.focus();
   };
   Button({ path, cName, id, text, label, container, style, onclick, disabled, rtn }){
     this.main = document.createElement('button');
