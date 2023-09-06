@@ -1,5 +1,5 @@
 class El{
-  Div({ path, addBefore, cName, id, text, label, title, attr, name, group, tab, value, valueName, editable, style, onclick, onRclick, onkeydown, onkeyup, onwheel, onfocus, onblur, onpaste, onmouseenter, onmouseleave, rtn, func }){
+  Div({ path, addBefore, cName, id, text, label, title, attr, name, group, tab, focus, value, valueName, editable, style, onclick, onRclick, onkeydown, onkeyup, onwheel, onfocus, onblur, onpaste, onmouseenter, onmouseleave, rtn, func }){
     this.main = document.createElement('div');
     if(cName) this.main.className = cName;
     if(id) this.main.id = id;
@@ -37,6 +37,7 @@ class El{
       })
       return this.obj;
     }
+    if(focus) const main.focus();
   };
   Button({ path, cName, id, text, label, container, style, onclick, disabled, rtn }){
     this.main = document.createElement('button');
