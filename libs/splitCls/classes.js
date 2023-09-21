@@ -1,3 +1,4 @@
+const obs = {};
 class El{
   Div({ path, addBefore, cName, id, text, label, title, attr, name, group, tab, value, valueName, editable, style, onclick, onRclick, onkeydown, onkeyup, onwheel, onfocus, onblur, onpaste, onmouseenter, onmouseleave, focus, rtn, func }){
     const main= document.createElement('div');
@@ -438,7 +439,13 @@ class El{
         if(args[0]){
           if(typeof args[0] === 'string'){
             if(args[0].match(/\[ Air \] Ready.*/)){
-              run();
+              run({page:'def', status:'ready'});
+            }else
+            if(args[0].match(/\[Editor in popup\] Ready.*/)){
+              run({page:'editor', status:'ready'});
+            }else
+            if(args[0].match(/\[Editor in popup\] Closed.*/)){
+              run({page:'editor', status:'closed'});
             }
           }
         }
