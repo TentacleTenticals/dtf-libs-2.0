@@ -1,3 +1,5 @@
+const db = {};
+
 class Odb{
   typeOf(t){
     return Object.prototype.toString.call(t).slice(8, -1).toLowerCase();
