@@ -6,12 +6,12 @@ class Odb{
     if(name === 'supabase') return `https://${id||''}.supabase.co/rest/v1/`;
   }
   fetch(cmd){
-    return fetch(`${cmd.db.url}${cmd.path}`, {
+    return fetch(`${db.url}${cmd.path}`, {
       method: cmd.method,
       headers: {
         'Content-Type': 'application/json',
-        'apiKey': cmd.db.apiKey,
-        'Authorization': `Bearer ${cmd.db.token}`,
+        'apiKey': db.apiKey,
+        'Authorization': `Bearer ${db.token}`,
         'Content-Type': 'application/json',
         ...cmd.method !== 'GET' ? {'Prefer': 'return=minimal'} : {}
       },
