@@ -79,7 +79,7 @@ class Odb{
     switch(true){
       case cmd.run === 'find':{
         cmd.method = 'GET';
-        cmd.path = `${cmd.type}?id=eq.${cmd.target}`;
+        cmd.path = this.typeOf(cmd.target) !== 'array' ? `${cmd.type}?id=eq.${cmd.target}` : `${cmd.type}?id=in.${(cmd.target).toString().replace(/([^]+)/gm, '\%28$1\%29')}`;
 
         return this.fetch(cmd);
       }
@@ -149,7 +149,7 @@ class Odb{
       break;
       case cmd.run === 'delete':{
         cmd.method = 'DELETE';
-        cmd.path = `${cmd.type}?id=eq.${cmd.target}`;
+        cmd.path = this.typeOf(cmd.target) !== 'array' ? `${cmd.type}?id=eq.${cmd.target}` : `${cmd.type}?id=in.${(cmd.target).toString().replace(/([^]+)/gm, '\%28$1\%29')}`;
 
         return this.fetch(cmd);
       }
