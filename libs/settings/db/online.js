@@ -1,4 +1,4 @@
-const db = {};
+let db;
 
 class Odb{
   typeOf(t){
