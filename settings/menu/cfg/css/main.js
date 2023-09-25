@@ -71,4 +71,8 @@ const settingsMenuCss = () => `
 .dtf-scriptWindow legend {
   cursor: pointer;
 }
+
+.dtf-scriptWindow.settings .iList ul {
+  background-color: rgb(0,0,0);
+}
 `;
