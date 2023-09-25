@@ -142,6 +142,7 @@ ul.flex li {
 }
 ul.flex li .value {
   min-width: 40px;
+  color: rgb(0,0,0);
   outline: none;
 }
 ul.flex li .buttons {
