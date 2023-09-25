@@ -63,6 +63,8 @@ const tabberCss = () => `
 .tabber .panel .load {
   flex-grow: 1;
   flex-basis: 100%;
+  color: rgb(255,255,255);
+  box-shadow: 0 0 2px 1px rgb(255,255,255);
 }
 .tabber .panel .srch {
   flex-grow: 1;
