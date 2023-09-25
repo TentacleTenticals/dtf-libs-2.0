@@ -3,28 +3,28 @@ class BookMenu{
     let t = new Date(d * 1000);
     return `${t.getFullYear()}/${t.getMonth()+1 < 10 ? `0${t.getMonth()+1}` : t.getMonth()+1}/${t.getDate() < 10 ? `0${t.getDate()}` : t.getDate()} ${t.getHours() < 10 ? `0${t.getHours()}` : t.getHours()}:${t.getMinutes() < 10 ? `0${t.getMinutes()}` : t.getMinutes()}:${t.getSeconds() < 10 ? `0${t.getSeconds()}` : t.getSeconds()}`
   };
-  prevItem(path, target, type){
+  prevItem(path, target, type, mainCfg){
     if((+path.children[0].children[0].children[0].children[0].textContent - 1) < 1) return;
     path.children[1].replaceChildren();
     this.rewriteText({target:path.children[0].children[0].children[0].children[0], mode:'--'});
     for(let i = 0, arr = mainCfg.menu[type].sz, length = arr; i < length; i++){
       new MenuItem()[type]({
         path:path.children[1],
-        num:this.getList(path.children[0].children[0].children[0].children[0].textContent-1, i, type),
+        num:this.getList(path.children[0].children[0].children[0].children[0].textContent-1, i, type, mainCfg),
         get item(){
           return target[this.num]
         }
       });
     }
   }
-  nextItem(path, target, type){
+  nextItem(path, target, type, mainCfg){
     if((+path.children[0].children[0].children[0].children[0].textContent + 1) > +path.children[0].children[0].children[0].children[1].textContent) return;
     path.children[1].replaceChildren();
     this.rewriteText({target:path.children[0].children[0].children[0].children[0], mode:'++'});
     for(let i = 0, arr = mainCfg.menu[type].sz, length = arr; i < length; i++){
       new MenuItem()[type]({
         path:path.children[1],
-        num:this.getList(path.children[0].children[0].children[0].children[0].textContent-1, i, type),
+        num:this.getList(path.children[0].children[0].children[0].children[0].textContent-1, i, type, mainCfg),
         get item(){
           return target[this.num];
         },
@@ -39,20 +39,20 @@ class BookMenu{
       this.rewriteText({target:e.children[0].children[0].children[1].children[0], text:'0'});
     }
   };
-  getList(num, i, type){
+  getList(num, i, type, mainCfg){
     return (mainCfg.menu[type].sz * num) + i;
   }
-  itemList({path, target, type}){
+  itemList({path, target, type, mainCfg}){
     console.log('TYPE', type)
     console.log('TARGET', target)
     if(!target && !target.length > 0) return;
     path.parentNode.setAttribute('type', type);
 
     path.children[0].children[1].children[0].onclick = (e) => {
-      this.prevItem(e.target.parentNode.parentNode.parentNode, target, type);
+      this.prevItem(e.target.parentNode.parentNode.parentNode, target, type, mainCfg);
     }
     path.children[0].children[1].children[1].onclick = (e) => {
-      this.nextItem(e.target.parentNode.parentNode.parentNode, target, type);
+      this.nextItem(e.target.parentNode.parentNode.parentNode, target, type, mainCfg);
     }
 
     if(target.length > 0){
@@ -62,7 +62,7 @@ class BookMenu{
       for(let i = 0, arr = mainCfg.menu[type].sz, length = arr; i < length; i++){
         new MenuItem()[type]({
           path:path.children[1],
-          num:this.getList(path.children[0].children[0].children[0].children[0].textContent-1, i, type),
+          num:this.getList(path.children[0].children[0].children[0].children[0].textContent-1, i, type, mainCfg),
           get item(){
             return target[this.num]
           }
@@ -170,7 +170,7 @@ class BookMenu{
               text: '🔜\uFE0E',
               onclick: (e) => {
                 console.log('TYPE', target)
-                this.nextItem(e.target.parentNode.parentNode.nextElementSibling, target, e.target.parentNode.parentNode.parentNode.parentNode.getAttribute('type'));
+                this.nextItem(e.target.parentNode.parentNode.nextElementSibling, target, e.target.parentNode.parentNode.parentNode.parentNode.getAttribute('type'), mainCfg);
               }
             });
           }
