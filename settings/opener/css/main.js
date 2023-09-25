@@ -4,11 +4,14 @@ const openerCss = () => `
   flex-direction: column;
   gap: 5px 0;
   position: absolute;
+  top: 33%;
   right: 20%;
   width: fit-content;
   padding: 2px;
   border-radius: 1px;
+  background-color: rgb(255,255,255);
   box-shadow: 0 0 2px 1px rgb(0,0,0);
+  z-index: 100;
 }
 .DTF-scriptSettingsOpener>.header {
   display: flex;
@@ -20,6 +23,12 @@ const openerCss = () => `
 }
 .DTF-scriptSettingsOpener:hover .header>.label {
   display: block;
+}
+.DTF-scriptSettingsOpener .header>.icon {
+  display: flex;
+  font-size: 15px;
+  line-height: 15px;
+  padding: 3px 0 0 0;
 }
 
 .DTF-scriptSettingsOpener .header+.list {
