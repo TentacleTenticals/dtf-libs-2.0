@@ -1,4 +1,3 @@
-const initCfg = {};
 class Db{
   run(d){
     if(d.mode === 'start'){
