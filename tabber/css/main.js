@@ -64,7 +64,7 @@ const tabberCss = () => `
   flex-grow: 1;
   flex-basis: 100%;
 }
-.tabber .panel .search {
+.tabber .panel .srch {
   flex-grow: 1;
 }
 
@@ -88,16 +88,5 @@ const tabberCss = () => `
 
 .tabber .tabs input:checked+.tab {
   background-color: rgb(75 10 40);
-}
-
-.tabs .panel .load {
-  flex-basis: 100%;
-}
-.tabs .panel .search {
-  flex-grow: 1;
-}
-
-.tabs .panel :is(label.full, label.full input) {
-  flex-grow: 1;
 }
 `
