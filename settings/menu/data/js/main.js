@@ -23,15 +23,6 @@ class DataMenu {
         });
 
         if(func) func(this.form, cfg, dat);
-
-        new El().Button({
-          path: this.form,
-          text: 'Сохранить данные',
-          onclick: () => {
-            new Db().settingsUpdater(dbGen(defaultCfg['scriptInfo']), new Db().getSettings(document.querySelectorAll(`div[id=DTF-scriptData] fieldset`), true), false);
-            this.main.remove();
-          }
-        });
         
         this.dataActions = new El().Field({
           path: this.form,
