@@ -6,7 +6,7 @@ const tabberCss = () => `
   flex-direction: column;
   gap: 5px 0;
 }
-.tabber.hide .panel {
+.tabber.panelHidden .panel {
   max-height: 29px;
   overflow: hidden;
 }
