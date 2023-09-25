@@ -44,8 +44,7 @@ class Tabber{
           cName: 'header',
           text: title,
           onclick: () => {
-            if(!titleBtn) return;
-            m.remove();
+            m.classList.toggle('panelHidden');
           }
         });
 
