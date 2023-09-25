@@ -1,5 +1,5 @@
 class DataMenu {
-  constructor(func, dat){
+  constructor(func, cfg, dat){
     if(document.getElementById('DTF-scriptData')) return;
     new El().Div({
       path: document.body,
@@ -62,6 +62,6 @@ class DataMenu {
       }
     });
 
-    if(func) func(this.form, dat);
+    if(func) func(this.form, cfg, dat);
   }
 };
