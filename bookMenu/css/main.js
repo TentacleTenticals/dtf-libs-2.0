@@ -27,6 +27,11 @@ const bookMenuCss = () => `
   gap: 0 4px;
 }
 
+.bookMenu .panelBar .btns button {
+  flex-grow: 1;
+  background-color: rgb(155 70 70);
+}
+
 .bookMenu .panelBar .nums>div {
   display: flex;
   gap: 0 4px;
@@ -41,9 +46,6 @@ const bookMenuCss = () => `
   gap: 0 10px;
   flex-grow: 1;
   width: 100%;
-}
-.bookMenu .panelBar .btns button {
-  flex-grow: 1;
 }
 
 .bookMenu .itemsList {
