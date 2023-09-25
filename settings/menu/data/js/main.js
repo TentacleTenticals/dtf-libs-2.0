@@ -3,7 +3,7 @@ class DataMenu {
     if(document.getElementById('DTF-scriptData')) return;
     new El().Div({
       path: document.body,
-      cName: 'dtf-scriptWindow data',
+      cName: 'dtf-scriptWindow data scrollMid',
       id: 'DTF-scriptData',
       func: (m) => {
         new El().Div({
@@ -17,6 +17,7 @@ class DataMenu {
 
         this.form=new El().Form({
           path: m,
+          cName: 'scrollMid',
           name: 'data',
           rtn: true
         });
