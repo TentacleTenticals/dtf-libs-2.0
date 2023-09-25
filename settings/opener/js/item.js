@@ -27,7 +27,7 @@ function SettingsOpenerItem(name, id, initMenu, cfg, dat){
           cName: 'main',
           disabled: initMenu.setData ? false : true,
           onclick: () => {
-            if(initMenu.setData) new DataMenu(initMenu.setData, dat);
+            if(initMenu.setData) new DataMenu(initMenu.setData, cfg, dat);
           }
         });
 
