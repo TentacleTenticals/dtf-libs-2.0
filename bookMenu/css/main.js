@@ -53,7 +53,7 @@ const bookMenuCss = () => `
   flex-direction: column;
   gap: 10px 0;
   padding: 10px 8px 10px 10px;
-  max-height: 300px;
+  max-height: 400px;
   overflow: auto;
   box-shadow: inset 0 0 1px 1px rgb(0,0,0);
 }
