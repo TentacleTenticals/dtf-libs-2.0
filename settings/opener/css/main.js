@@ -47,4 +47,11 @@ const openerCss = () => `
   display: flex;
   flex-direction: row;
   gap: 0 3px;
+  background-color: rgb(221 239 249);
+  box-shadow: 0 0 2px 0px rgb(0,0,0);
+}
+
+.DTF-scriptSettingsOpener .scriptName {
+  font-size: 13px;
+  font-weight: 600;
 }`;
