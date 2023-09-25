@@ -1,5 +1,5 @@
 class SettingsMenu {
-  constructor(func){
+  constructor(func, cfg){
     if(document.getElementById('DTF-scriptSettings')) return;
     new El().Div({
       path: document.body,
@@ -40,8 +40,8 @@ class SettingsMenu {
               path: c,
               text: 'Сбросить настройки',
               onclick: () => {
-                mainCfg = structuredClone(defaultSettings);
-                console.log(`Сброшены настройки, десу.`, mainCfg);
+                cfg = structuredClone(defaultSettings);
+                console.log(`Сброшены настройки, десу.`, cfg);
                 this.main.remove();
               }
             });
@@ -50,7 +50,7 @@ class SettingsMenu {
       }
     });
 
-    if(func) func(this.form, mainCfg);
+    if(func) func(this.form, cfg);
 
     this.dataActions = new El().Field({
       path: this.form,
@@ -73,8 +73,8 @@ class SettingsMenu {
               let path = e.target;
               fr.onloadend = (e) => {
                 // console.log(JSON.parse(e.target.result));
-                mainCfg = JSON.parse(e.target.result);
-                console.log(`Настройки успешно восстановлены.`, mainCfg);
+                cfg = JSON.parse(e.target.result);
+                console.log(`Настройки успешно восстановлены.`, cfg);
                 new Alert({
                   type: 'Settings import',
                   text: 'Настройки успешно импортированы, но не сохранены. Переоткройте окно настроек и удостовертесь в том, что результат вас устраивает, после чего нажмите кнопку сохранения настроек.',
@@ -111,7 +111,7 @@ class SettingsMenu {
             window.URL.revokeObjectURL(url);
           }
         };
-        backupSettingsToFile(JSON.stringify(mainCfg, null, 2), `${mainCfg.srciptInfo.scriptName} ${new Date()} (бэкап настроек).txt`, 'text/plain');
+        backupSettingsToFile(JSON.stringify(cfg, null, 2), `${cfg.srciptInfo.scriptName} ${new Date()} (бэкап настроек).txt`, 'text/plain');
       }
     });
   }
