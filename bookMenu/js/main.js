@@ -73,7 +73,7 @@ class BookMenu{
   build({path, cName, target}){
     this.main=new El().Div({
       path: path,
-      cName: 'menu',
+      cName: 'bookMenu',
       rtn: true
     });
     new El().Div({
