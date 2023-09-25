@@ -3,7 +3,7 @@ class SettingsMenu {
     if(document.getElementById('DTF-scriptSettings')) return;
     new El().Div({
       path: document.body,
-      cName: 'dtf-scriptWindow settings',
+      cName: 'dtf-scriptWindow settings scrollMid',
       id: 'DTF-scriptSettings',
       func: (m) => {
         new El().Div({
@@ -17,6 +17,7 @@ class SettingsMenu {
 
         this.form=new El().Form({
           path: m,
+          cName: 'scrollMid',
           name: 'settings',
           rtn: true
         });
