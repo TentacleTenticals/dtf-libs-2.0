@@ -1,3 +1,4 @@
+const initMenu = {};
 function SettingsOpener(){
   new El().Div({
     path: document.querySelector(`.site-header-container`) ? document.querySelector(`.site-header-container`) : document.body,
