@@ -1,3 +1,4 @@
+const initMenu = {};
 function SettingsOpenerItem(name, id, initMenu){
     new El().Div({
       path: document.getElementById('DTF-scriptSettingsOpener').children[1],
