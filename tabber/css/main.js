@@ -68,6 +68,9 @@ const tabberCss = () => `
 }
 .tabber .panel .srch {
   flex-grow: 1;
+  height: fit-content;
+  color: rgb(255,255,255);
+  box-shadow: 0 0 2px 1px rgb(255,255,255);
 }
 
 .tabber .tabs .tab {
