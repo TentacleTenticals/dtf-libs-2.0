@@ -1,5 +1,5 @@
 const initMenu = {};
-function SettingsOpenerItem(name, id, initMenu){
+function SettingsOpenerItem(name, id, initMenu, cfg){
     new El().Div({
       path: document.getElementById('DTF-scriptSettingsOpener').children[1],
       cName: 'container',
@@ -17,7 +17,7 @@ function SettingsOpenerItem(name, id, initMenu){
           cName: 'main',
           disabled: !initMenu.setSettings && true,
           onclick: () => {
-            if(initMenu.setSettings) new SettingsMenu(initMenu.setSettings);
+            if(initMenu.setSettings) new SettingsMenu(initMenu.setSettings, cfg);
           }
         });
 
@@ -27,7 +27,7 @@ function SettingsOpenerItem(name, id, initMenu){
           cName: 'main',
           disabled: initMenu.setData ? false : true,
           onclick: () => {
-            if(initMenu.setData) new DataMenu(initMenu.setData);
+            if(initMenu.setData) new DataMenu(initMenu.setData, cfg);
           }
         });
 
@@ -37,7 +37,7 @@ function SettingsOpenerItem(name, id, initMenu){
           cName: 'main',
           disabled: initMenu.setInfo ? false : true,
           onclick: () => {
-            if(initMenu.setInfo) new InfoMenu(initMenu.setInfo);
+            if(initMenu.setInfo) new InfoMenu(initMenu.setInfo, cfg);
           }
         });
       }
