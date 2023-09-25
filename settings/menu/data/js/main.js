@@ -22,6 +22,8 @@ class DataMenu {
           rtn: true
         });
 
+        if(func) func(this.form, cfg, dat);
+
         new El().Button({
           path: this.form,
           text: 'Сохранить данные',
@@ -62,7 +64,5 @@ class DataMenu {
         });
       }
     });
-
-    if(func) func(this.form, cfg, dat);
   }
 };
