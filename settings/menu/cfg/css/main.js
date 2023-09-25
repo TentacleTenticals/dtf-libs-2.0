@@ -1,4 +1,4 @@
-export const settingsMenuCss = `
+const settingsMenuCss = `
 .dtf-scriptWindow {
   position: fixed;
   background-color: rgb(0 0 0);
