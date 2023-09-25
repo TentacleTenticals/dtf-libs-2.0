@@ -75,4 +75,9 @@ const settingsMenuCss = () => `
 .dtf-scriptWindow.settings .iList>ul {
   background-color: rgb(0,0,0);
 }
+
+.dtf-scriptWindow button {
+  color: rgb(255,255,255);
+  box-shadow: 0 0 2px 1px rgb(255,255,255);
+}
 `;
