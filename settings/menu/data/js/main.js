@@ -1,5 +1,5 @@
 class DataMenu {
-  constructor(func){
+  constructor(func, cfg){
     if(document.getElementById('DTF-scriptData')) return;
     new El().Div({
       path: document.body,
@@ -56,7 +56,7 @@ class DataMenu {
                 window.URL.revokeObjectURL(url);
               }
             };
-            backupSettingsToFile(JSON.stringify(mainCfg, null, 2), `${mainCfg.srciptInfo.scriptName} ${new Date()} (бэкап настроек).txt`, 'text/plain');
+            backupSettingsToFile(JSON.stringify(cfg, null, 2), `${cfg.srciptInfo.scriptName} ${new Date()} (бэкап настроек).txt`, 'text/plain');
           }
         });
       }
