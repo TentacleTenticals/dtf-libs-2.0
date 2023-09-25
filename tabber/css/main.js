@@ -56,8 +56,9 @@ const tabberCss = () => `
   gap: 10px 7px;
   max-width: 100%;
   padding: 5px;
-  background-color: rgb(237 223 230);
-  box-shadow: inset 0 0 1px 0px rgb(0,0,0);
+  background-color: rgb(39 38 38);
+  color: rgb(255 255 255);
+  box-shadow: inset 0 0 3px 0px rgb(255 255 255);
 }
 .tabber .panel .load {
   flex-grow: 1;
