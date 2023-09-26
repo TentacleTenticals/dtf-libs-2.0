@@ -1,5 +1,5 @@
 class SettingsMenu {
-  constructor(func, cfg){
+  constructor(func){
     if(document.getElementById('DTF-scriptSettings')) return;
     new El().Div({
       path: document.body,
@@ -17,18 +17,17 @@ class SettingsMenu {
 
         this.form=new El().Form({
           path: m,
-          cName: 'scrollMid',
           name: 'settings',
           rtn: true
         });
 
         new El().Div({
           path: m,
+          cName: 'actions',
           func: (c) => {
             new El().Button({
               path: c,
               text: 'Сохранить настройки',
-              container: true,
               onclick: () => {
         //         console.log('STGLIST', new Db().getSettings(document.querySelectorAll(`div[id=DTF-scriptSettings] fieldset`), false))
         new Db().saveSettings(new Db().getSettings(document.querySelectorAll(`#DTF-scriptSettings fieldset`)));
@@ -41,8 +40,8 @@ class SettingsMenu {
               path: c,
               text: 'Сбросить настройки',
               onclick: () => {
-                cfg = structuredClone(defaultSettings);
-                console.log(`Сброшены настройки, десу.`, cfg);
+                mainCfg = structuredClone(defaultSettings);
+                console.log(`Сброшены настройки, десу.`, mainCfg);
                 this.main.remove();
               }
             });
@@ -51,7 +50,7 @@ class SettingsMenu {
       }
     });
 
-    if(func) func(this.form, cfg);
+    if(func) func(this.form, mainCfg);
 
     this.dataActions = new El().Field({
       path: this.form,
@@ -60,7 +59,7 @@ class SettingsMenu {
       groupName: 'data actions',
       legend: `Управление сохранёнными данными`,
       rtn: [],
-      inputs: {containers:true,
+      inputs: {
         list:[
         {
           type: 'file',
@@ -74,13 +73,13 @@ class SettingsMenu {
               let path = e.target;
               fr.onloadend = (e) => {
                 // console.log(JSON.parse(e.target.result));
-                cfg = JSON.parse(e.target.result);
-                console.log(`Настройки успешно восстановлены.`, cfg);
-                new Alert({
-                  type: 'Settings import',
-                  text: 'Настройки успешно импортированы, но не сохранены. Переоткройте окно настроек и удостовертесь в том, что результат вас устраивает, после чего нажмите кнопку сохранения настроек.',
-                  timer: 10000
-                })
+                mainCfg = JSON.parse(e.target.result);
+                console.log(`Настройки успешно восстановлены.`, mainCfg);
+                // new Alert({
+                //   type: 'Settings import',
+                //   text: 'Настройки успешно импортированы, но не сохранены. Переоткройте окно настроек и удостовертесь в том, что результат вас устраивает, после чего нажмите кнопку сохранения настроек.',
+                //   timer: 10000
+                // })
                 path.parentNode.children[1].textContent = 'Настройки успешно загружены.';
                 submit.disabled = true;
               };
@@ -112,7 +111,7 @@ class SettingsMenu {
             window.URL.revokeObjectURL(url);
           }
         };
-        backupSettingsToFile(JSON.stringify(cfg, null, 2), `${cfg.srciptInfo.scriptName} ${new Date()} (бэкап настроек).txt`, 'text/plain');
+        backupSettingsToFile(JSON.stringify(mainCfg, null, 2), `${defaultCfg.scriptInfo.name} ${new Date()} (бэкап настроек).txt`, 'text/plain');
       }
     });
   }
