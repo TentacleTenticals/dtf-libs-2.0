@@ -13,11 +13,16 @@ const mainCSS = () => `
 :is(.scrollLite, .scrollMid)::-webkit-scrollbar-thumb {
   background-color: rgb(189 164 164);
 }
+:is(.scrollLite, .scrollMid)::-webkit-scrollbar-corner {
+  background-color: unset;
+}
 .scrollLite::-webkit-scrollbar {
   width: 2px;
+  height: 2px;
 }
 .scrollMid::-webkit-scrollbar {
   width: 4px;
+  height: 4px;
 }
 
 ul.itemsList {
@@ -129,7 +134,6 @@ ul.flex {
   margin: 0;
   max-width: 100%;
   min-height: 20px;
-  background-color: rgb(229 229 229);
   box-shadow: inset 0 0 1px 0px rgb(0,0,0);
 }
 ul.flex li {
@@ -137,12 +141,10 @@ ul.flex li {
   gap: 0 5px;
   padding: 2px;
   border-radius: 2px;
-  background-color: rgb(255,255,255);
   box-shadow: 0 0 2px 0 rgb(0,0,0);
 }
 ul.flex li .value {
-  min-width: 40px;
-  color: rgb(0,0,0);
+  min-width: 20px;
   outline: none;
 }
 ul.flex li .buttons {
