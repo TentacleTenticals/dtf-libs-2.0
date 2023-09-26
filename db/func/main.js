@@ -26,7 +26,7 @@ class Db{
         }
       }).catch(err => console.log(err));
     }else{
-      console.log(`Loading local settings...`);
+      console.log(`Loading local settings...`, config);
       this.init({cfg:config});
     }
   }
@@ -63,9 +63,10 @@ class Db{
     return newCfg;
   }
   init(c){
+    // console.log('Coin', c);
     if(!c.restart){
       c.settings ? mainCfg = this.mergeSettings(defaultCfg, c.settings) : mainCfg = structuredClone(defaultCfg);
-      new SettingsOpener({...defaultCfg.scriptInfo});
+      OpenerItem(defaultCfg.scriptInfo.name);
       console.log(`[Init] Инициализация скрипта успешно выполнена.`, mainCfg);
       if(c.cfg && c.cfg.start) c.cfg.start(mainCfg);
     }else{
