@@ -34,43 +34,50 @@ class Tabber{
     });
 
   }
-  tabList({path, title, titleBtn, tabs, body}){
+  tabList({path, cName, title, titleBtn, tabs, body}){
     new El().Div({
       path: path,
-      cName: 'tabber',
+      cName: `tabber${cName ? ' '+cName : ''}`,
       func: (m) => {
         new El().Div({
           path: m,
-          cName: 'header',
-          text: title,
-          onclick: () => {
-            m.classList.toggle('panelHidden');
+          cName: 'main',
+          func: (i) => {
+            new El().Div({
+              path: i,
+              cName: 'header',
+              text: title,
+              onclick: () => {
+                if(!titleBtn) return;
+                m.remove();
+              }
+            });
+
+            new El().Div({
+              path: i,
+              cName: 'tabs',
+              func: (t) => tabs.forEach(e => {
+                this.tab({
+                  path: t,
+                  text: e.text,
+                  tName: title,
+                  name: e.name,
+                  onclick: e.onclick
+                });
+              })
+            });
+
+            new El().Div({
+              path: i,
+              cName: 'panel'
+            });
           }
         });
 
         new El().Div({
           path: m,
-          cName: 'tabs',
-          func: (t) => tabs.forEach(e => {
-            this.tab({
-              path: t,
-              text: e.text,
-              tName: title,
-              name: e.name,
-              onclick: e.onclick
-            });
-          })
-        });
-
-        new El().Div({
-          path: m,
-          cName: 'panel'
-        });
-
-        new El().Div({
-          path: m,
           cName: 'data',
-          func: (d) => body && body(d, m.children[2])
+          func: (d) => body && body(d, m.children[0].children[2])
         });
 
         // if(tabs) tabs.forEach(e => {
