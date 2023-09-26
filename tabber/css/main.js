@@ -4,23 +4,22 @@ const tabberCss = () => `
 .tabber {
   display: flex;
   flex-direction: column;
-  gap: 5px 0;
+  gap: 8px 5px;
 }
-.tabber.panelHidden .panel {
-  max-height: 29px;
-  overflow: hidden;
+.tabber>.main {
+  box-shadow: 0 0 1px 1px rgb(85 85 85);
 }
 
-.tabber>.header {
+.tabber>.main>.header {
   display: flex;
   justify-content: center;
   background-color: rgb(0,0,0);
   color: rgb(255,255,255);
 }
-.tabber>.header .title {
+.tabber>.main>.header .title {
   color: rgb(255,255,255);
 }
-.tabber>.header .title::before {
+.tabber>.main>.header .title::before {
   display: block;
   position: relative;
   content: '';
@@ -30,7 +29,7 @@ const tabberCss = () => `
   border-top: 1px solid rgb(237 73 153);
   box-shadow: 0 0 2px 1px rgb(227 98 98);
 }
-.tabber>.header .title::after {
+.tabber>.main>.header .title::after {
   display: block;
   position: relative;
   content: '';
@@ -41,7 +40,7 @@ const tabberCss = () => `
   box-shadow: 0 0 2px 1px rgb(227 98 98);
 }
 
-.tabber .tabs {
+.tabber>.main .tabs {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -49,35 +48,30 @@ const tabberCss = () => `
   padding: 3px 2px 3px 2px;
   background-color: rgb(0,0,0);
 }
-.tabber .tabs .tab:hover {
+.tabber>.main .tabs .tab:hover {
   filter: brightness(1.2);
 }
 
-.tabber .panel {
+.tabber>.main .panel {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 10px 7px;
+  gap: 7px 7px;
   max-width: 100%;
-  padding: 5px;
-  background-color: rgb(39 38 38);
-  color: rgb(255 255 255);
-  box-shadow: inset 0 0 3px 0px rgb(255 255 255);
+  box-shadow: inset 0 0 1px 0px rgb(0,0,0);
 }
-.tabber .panel .load {
+.tabber>.main .panel:has(*) {
+  padding: 5px;
+}
+.tabber>.main .panel .load {
   flex-grow: 1;
   flex-basis: 100%;
-  color: rgb(255,255,255);
-  box-shadow: 0 0 2px 1px rgb(255,255,255);
 }
-.tabber .panel .srch {
+.tabber>.main .panel .search {
   flex-grow: 1;
-  height: fit-content;
-  color: rgb(255,255,255);
-  box-shadow: 0 0 2px 1px rgb(255,255,255);
 }
 
-.tabber .tabs .tab {
+.tabber>.main .tabs .tab {
   display: flex;
   justify-content: center;
   gap: 0 5px;
@@ -90,12 +84,12 @@ const tabberCss = () => `
   box-shadow: inset 0 0 4px 0px rgb(255,255,255);
   cursor: pointer;
 }
-.tabber .tabs .tb input {
+.tabber>.main .tabs .tb input {
   display: none;
   appearance: none;
 }
 
-.tabber .tabs input:checked+.tab {
+.tabber>.main .tabs input:checked+.tab {
   background-color: rgb(75 10 40);
 }
 `
