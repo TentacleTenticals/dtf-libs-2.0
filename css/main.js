@@ -93,10 +93,6 @@ li.texter {
   flex-direction: column !important;
 }
 
-input {
-  outline: none;
-}
-
 .point {
   cursor: pointer;
 }
