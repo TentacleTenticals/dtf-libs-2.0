@@ -9,13 +9,13 @@ class Db{
   }
   loadSettings(c){
     if(db.name){
-      new Odb()[db.name]({
+      return new Odb()[db.name]({
         run: 'find',
         type: 'settings',
         target: 1,
         db: db
       }).then(res => {
-        console.log(res);
+        // console.log(res);
         if(res.length === 0){
           console.log(`[Load Settings] There's no saved settings, loading default...`);
           return this.init(c);
