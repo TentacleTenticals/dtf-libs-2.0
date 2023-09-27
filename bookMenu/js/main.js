@@ -7,7 +7,7 @@ class BookMenu{
     if((+path.children[0].children[0].children[0].children[0].textContent - 1) < 1) return;
     path.children[1].replaceChildren();
     this.rewriteText({target:path.children[0].children[0].children[0].children[0], mode:'--'});
-    for(let i = 0, arr = mainCfg.menu[type].sz, length = arr; i < length; i++){
+    for(let i = 0, arr = mainCfg.bookMenu.size[type], length = arr; i < length; i++){
       new MenuItem()[type]({
         path:path.children[1],
         num:this.getList(path.children[0].children[0].children[0].children[0].textContent-1, i, type),
@@ -21,7 +21,7 @@ class BookMenu{
     if((+path.children[0].children[0].children[0].children[0].textContent + 1) > +path.children[0].children[0].children[0].children[1].textContent) return;
     path.children[1].replaceChildren();
     this.rewriteText({target:path.children[0].children[0].children[0].children[0], mode:'++'});
-    for(let i = 0, arr = mainCfg.menu[type].sz, length = arr; i < length; i++){
+    for(let i = 0, arr = mainCfg.bookMenu.size[type], length = arr; i < length; i++){
       new MenuItem()[type]({
         path:path.children[1],
         num:this.getList(path.children[0].children[0].children[0].children[0].textContent-1, i, type),
@@ -40,7 +40,7 @@ class BookMenu{
     }
   };
   getList(num, i, type){
-    return (mainCfg.menu[type].sz * num) + i;
+    return (mainCfg.bookMenu.size[type] * num) + i;
   }
   itemList({path, target, type}){
     console.log('TYPE', type)
@@ -57,9 +57,9 @@ class BookMenu{
 
     if(target.length > 0){
       this.rewriteText({target:path.children[0].children[0].children[0].children[0], text:'1'});
-      this.rewriteText({target:path.children[0].children[0].children[0].children[1], text:Math.ceil(target.length / mainCfg.menu[type].sz)});
+      this.rewriteText({target:path.children[0].children[0].children[0].children[1], text:Math.ceil(target.length / mainCfg.bookMenu.size[type])});
       this.rewriteText({target:path.children[0].children[0].children[1].children[0], text:target.length});
-      for(let i = 0, arr = mainCfg.menu[type].sz, length = arr; i < length; i++){
+      for(let i = 0, arr = mainCfg.bookMenu.size[type], length = arr; i < length; i++){
         new MenuItem()[type]({
           path:path.children[1],
           num:this.getList(path.children[0].children[0].children[0].children[0].textContent-1, i, type),
