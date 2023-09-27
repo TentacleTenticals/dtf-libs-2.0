@@ -24,7 +24,7 @@ class DataMenu {
         
         this.dataActions = new El().Field({
           path: this.form,
-          cName: 'textInfo',
+          cName: 'textInfo hide',
           dontRead: true,
           groupName: 'data actions',
           legend: `Управление сохранёнными данными`,
@@ -32,7 +32,7 @@ class DataMenu {
         });
 
         new El().Button({
-          path: this.dataActions,
+          path: this.dataActions.children[1],
           text: 'Бэкап настроек в файл',
           title: 'Сохранение настроек в .txt файл',
           onclick: () => {
