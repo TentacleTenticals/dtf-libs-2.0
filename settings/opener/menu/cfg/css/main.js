@@ -32,6 +32,10 @@ const cfgMenuCss = () => `
   cursor: pointer;
 }
 
+fieldset.hide .fList {
+  display: none;
+}
+
 .dtf-scriptWindow legend {
   font-weight: 500;
   font-size: 15px;
