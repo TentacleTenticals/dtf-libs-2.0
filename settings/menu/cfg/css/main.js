@@ -70,12 +70,17 @@ const cfgMenuCss = () => `
 }
 
 .dtf-scriptWindow button {
-  background-color: rgb(0,0,0);
+  background-image: repeating-linear-gradient(315deg, rgb(0 0 0), transparent 10%);
+  background-color: rgb(67 47 60);
   color: rgb(255,255,255);
   height: fit-content;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.7px;
+  text-align: center;
   border: none;
   border-radius: 2px;
-  box-shadow: 0 0 1px 1px rgb(80,80,80);
+  box-shadow: 0 0 1px 1px rgb(141 140 140);
   cursor: pointer;
 }
 
