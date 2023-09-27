@@ -18,10 +18,10 @@ class Db{
         console.log(res);
         if(res.length === 0){
           console.log(`[Load Settings] There's no saved settings, loading default...`);
-          this.init(c);
+          return this.init(c);
         }else{
           console.log(`[Load Settings] Founded saved settings, loading...`, res[0].cfg);
-          this.init({...c, settings:res[0].cfg});
+          return this.init({...c, settings:res[0].cfg});
         }
       }).catch(err => console.log(err));
     }else{
