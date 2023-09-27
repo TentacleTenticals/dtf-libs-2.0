@@ -8,7 +8,7 @@ body:has(.dtf-scriptWindow) {
   flex-direction: column;
   gap: 5px 0;
   position: fixed;
-  background-color: rgb(0 0 0);
+  background-color: rgb(26 5 21);
   color: rgb(255 255 255);
   top: 0px;
   left: 0px;
