@@ -1,4 +1,8 @@
 const cfgMenuCss = () => `
+body:has(.dtf-scriptWindow) {
+  overflow: hidden;
+}
+
 .dtf-scriptWindow {
   display: flex;
   flex-direction: column;
