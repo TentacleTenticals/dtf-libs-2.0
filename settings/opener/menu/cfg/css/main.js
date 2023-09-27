@@ -107,6 +107,10 @@ fieldset.hide .fList {
   cursor: pointer;
 }
 
+.dtf-scriptWindow>form[name=data] {
+  background-color: rgb(0 0 0);
+}
+
 .dtf-scriptWindow .actions {
   display: flex;
   gap: 5px 10px;
