@@ -1,14 +1,13 @@
 class Db{
   run(d){
     if(d.mode === 'start'){
-      this.loadSettings(d.cfg);
+      return this.loadSettings(d);
     }else
     if(d.mode === 'restart'){
-      this.loadSettings({...d.cfg, restart:true});
+      return this.loadSettings({...d, restart:true});
     }
   }
-  loadSettings(config){
-    // console.log('Loading settings...', config);
+  loadSettings(c){
     if(db.name){
       new Odb()[db.name]({
         run: 'find',
@@ -18,16 +17,16 @@ class Db{
       }).then(res => {
         console.log(res);
         if(res.length === 0){
-          console.log(`There's no saved settings, loading default...`);
-          this.init({cfg:config});
+          console.log(`[Load Settings] There's no saved settings, loading default...`);
+          this.init(c);
         }else{
-          console.log(`Founded saved settings, loading...`, res[0].cfg);
-          this.init({settings:res[0].cfg, cfg:config});
+          console.log(`[Load Settings] Founded saved settings, loading...`, res[0].cfg);
+          this.init({...c, settings:res[0].cfg});
         }
       }).catch(err => console.log(err));
     }else{
-      console.log(`Loading local settings...`, config);
-      this.init({cfg:config});
+      console.log(`[Load Settings] Loading local settings...`);
+      return this.init(c);
     }
   }
   mergeSettings(defCfg, savCfg){
@@ -59,21 +58,33 @@ class Db{
       return newCfg;
     }
     merge(newCfg, savCfg);
-    console.log('[Settings Merge] Совмещение настроек успешно выполнено', newCfg);
+    console.log('[Settings Merge] Совмещение настроек успешно выполнено');
     return newCfg;
   }
   init(c){
+    return new Promise((res, err) => {
+      if(!c.restart){
+        c.settings ? mainCfg = this.mergeSettings(defaultCfg, c.settings) : mainCfg = structuredClone(defaultCfg);
+        OpenerItem(defaultCfg.scriptInfo.name);
+        // console.log(`[Init] Инициализация скрипта успешно выполнена.`);
+        res({result:'success', process:'init', data:mainCfg});
+      }else{
+        mainCfg = structuredClone(c.settings);
+        // console.log(`[Init] Реинициализация скрипта успешно выполнена.`);
+        res({result:'success', process:'reInit', data:mainCfg});
+      }
+    });
     // console.log('Coin', c);
-    if(!c.restart){
-      c.settings ? mainCfg = this.mergeSettings(defaultCfg, c.settings) : mainCfg = structuredClone(defaultCfg);
-      OpenerItem(defaultCfg.scriptInfo.name);
-      console.log(`[Init] Инициализация скрипта успешно выполнена.`, mainCfg);
-      if(c.cfg && c.cfg.start) c.cfg.start(mainCfg);
-    }else{
-      mainCfg = structuredClone(c.settings);
-      console.log(`[Init] Реинициализация скрипта успешно выполнена.`, mainCfg);
-      if(c.cfg && c.cfg.restart) c.cfg.restart(mainCfg);
-    }
+    // if(!c.restart){
+    //   c.settings ? mainCfg = this.mergeSettings(defaultCfg, c.settings) : mainCfg = structuredClone(defaultCfg);
+    //   OpenerItem(defaultCfg.scriptInfo.name);
+    //   console.log(`[Init] Инициализация скрипта успешно выполнена.`, mainCfg);
+    //   if(c.cfg && c.cfg.start) c.cfg.start(mainCfg);
+    // }else{
+    //   mainCfg = structuredClone(c.settings);
+    //   console.log(`[Init] Реинициализация скрипта успешно выполнена.`, mainCfg);
+    //   if(c.cfg && c.cfg.restart) c.cfg.restart(mainCfg);
+    // }
   };
   getSettings(arr, mode){
     let o;
