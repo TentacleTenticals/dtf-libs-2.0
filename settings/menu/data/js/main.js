@@ -20,7 +20,7 @@ class DataMenu {
           name: 'data',
           rtn: true
         });
-        if(func) func(this.form, mainData);
+        if(func) func(this.form, sData);
         
         this.dataActions = new El().Field({
           path: this.form,
