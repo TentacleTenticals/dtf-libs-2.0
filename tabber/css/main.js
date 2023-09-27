@@ -70,7 +70,7 @@ const tabberCss = () => `
   flex-grow: 1;
   flex-basis: 100%;
 }
-.tabber>.main .panel .search {
+.tabber>.main .panel .srch {
   flex-grow: 1;
 }
 
