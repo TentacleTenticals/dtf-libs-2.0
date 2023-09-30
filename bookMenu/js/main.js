@@ -8,7 +8,7 @@ class BookMenu{
     path.children[1].replaceChildren();
     this.rewriteText({target:path.children[0].children[0].children[0].children[0], mode:'--'});
     for(let i = 0, arr = mainCfg.bookMenu.size[type], length = arr; i < length; i++){
-      new MenuItem()[type]({
+      new BookItem()[type]({
         path:path.children[1],
         num:this.getList(path.children[0].children[0].children[0].children[0].textContent-1, i, type),
         get item(){
@@ -22,7 +22,7 @@ class BookMenu{
     path.children[1].replaceChildren();
     this.rewriteText({target:path.children[0].children[0].children[0].children[0], mode:'++'});
     for(let i = 0, arr = mainCfg.bookMenu.size[type], length = arr; i < length; i++){
-      new MenuItem()[type]({
+      new BookItem()[type]({
         path:path.children[1],
         num:this.getList(path.children[0].children[0].children[0].children[0].textContent-1, i, type),
         get item(){
@@ -30,11 +30,6 @@ class BookMenu{
         },
       });
     }
-  }
-  sortByValue(t, value, ascend){
-    if(!ascend) t.sort((a, b) => a.info[value] > b.info[value] ? 1 : -1);
-    else
-    t.sort((a, b) => a.info[value] > b.info[value] ? -1 : 1);
   }
   clear(e, full){
     if(e.children[1].children.length > 0) e.children[1].replaceChildren();
@@ -48,7 +43,6 @@ class BookMenu{
     return (mainCfg.bookMenu.size[type] * num) + i;
   }
   itemList({path, target, type}){
-    this.sortByValue(target, 'date', true);
     console.log('TYPE', type)
     console.log('TARGET', target)
     if(!target && !target.length > 0) return;
@@ -66,7 +60,7 @@ class BookMenu{
       this.rewriteText({target:path.children[0].children[0].children[0].children[1], text:Math.ceil(target.length / mainCfg.bookMenu.size[type])});
       this.rewriteText({target:path.children[0].children[0].children[1].children[0], text:target.length});
       for(let i = 0, arr = mainCfg.bookMenu.size[type], length = arr; i < length; i++){
-        new MenuItem()[type]({
+        new BookItem()[type]({
           path:path.children[1],
           num:this.getList(path.children[0].children[0].children[0].children[0].textContent-1, i, type),
           get item(){
