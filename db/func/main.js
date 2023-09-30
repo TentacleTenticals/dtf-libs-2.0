@@ -17,15 +17,15 @@ class Db{
       }).then(res => {
         // console.log(res);
         if(res.length === 0){
-          console.log(`[Load Settings] There's no saved settings, loading default...`);
+          console.log(`[Load Settings] Не найдено сохранённых настроек, загрузка дефолта...`);
           return this.init(c);
         }else{
-          console.log(`[Load Settings] Founded saved settings, loading...`, res[0].cfg);
-          return this.init({...c, settings:res[0].cfg});
+          console.log(`[Load Settings] Найдены сохранённые настройки, загрузка...`, res.cfg);
+          return this.init({...c, settings:res.cfg});
         }
       }).catch(err => console.log(err));
     }else{
-      console.log(`[Load Settings] Loading local settings...`);
+      console.log(`[Load Settings] Загрузка локальных настроек...`);
       return this.init(c);
     }
   }
