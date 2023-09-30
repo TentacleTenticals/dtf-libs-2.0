@@ -263,6 +263,18 @@ class El{
     path.appendChild(main);
   }
 
+  Tarea(c){
+    const main=document.createElement('textarea');
+    if(c.name) main.name=c.name;
+    if(c.cName) main.className=c.cName;
+    if(c.id) main.id=c.id;
+    if(c.placeholder) main.placeholder=c.placeholder;
+    if(c.rows) main.rows=c.rows;
+    if(c.cols) main.cols=c.cols;
+    if(c.text) main.textContent=c.text;
+    c.path.appendChild(main);
+  }
+
   typeOf(target){
     return Object.prototype.toString.call(target).slice(8, -1).toLowerCase();
   }
@@ -625,13 +637,7 @@ class El{
         if(args[0]){
           if(typeof args[0] === 'string'){
             if(args[0].match(/\[ Air \] Ready.*/)){
-              run({page:'def', status:'ready'});
-            }else
-            if(args[0].match(/\[Editor in popup\] Ready.*/)){
-              run({page:'editor', status:'ready'});
-            }else
-            if(args[0].match(/\[Editor in popup\] Closed.*/)){
-              run({page:'editor', status:'closed'});
+              run();
             }
           }
         }
