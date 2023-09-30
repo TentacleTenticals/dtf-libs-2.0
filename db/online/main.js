@@ -21,7 +21,16 @@ class Odb{
     }).then(r => {
       // console.log(r);
       return r.json().then(res => {
-        // console.log('Odb', res);
+        console.log('Odb', res);
+        if(!res) return undefined;
+        if(this.typeOf(res) === 'array'){
+          if(res.length < 1) return undefined;
+          else
+          if(res.length > 1) return res;
+          else
+          if(res.length === 1) return res[0];
+        }
+        else
         return res;
       }).catch(err => {
         if(err.message === 'Unexpected end of JSON input') return r;
@@ -32,50 +41,6 @@ class Odb{
   }
   supabase(cmd){
     console.log('SUP', cmd);
-
-    function findOrUpdate(cmd){
-      return this.supabase({
-        run: 'find',
-        type: i.type,
-        target: i.id
-      }).then(db => {
-        if(!db){
-          console.log('No item, adding...');
-          this.supabase({
-            run: 'add',
-            type: i.type,
-            target: i.id,
-            data: i.obj
-          }).then(ia => {
-            // console.log(db);
-            console.log('Item added!', ia);
-          }).catch(er => {
-            console.log('Err on adding');
-            // console.log(er.code);
-            console.log(er);
-          });
-        }else
-        if(db){
-          console.log('Item founded, updating...');
-          this.supabase({
-            run: 'update',
-            type: i.type,
-            target: i.id,
-            data: i.obj
-          }).then(iu => {
-            console.log('Item updated!', iu);
-          }).catch(er => {
-            console.log('Error on updating');
-            // console.log(er.code);
-            console.log(er);
-          });
-        }
-      }).catch(er => {
-        console.log('Error at...');
-        console.log(er.code);
-        console.log(er);
-      });
-    }
     // this.fetch({run:'find', method:'GET', path:`${cmd.type}?id=eq.${cmd.target}`});
 
     switch(true){
@@ -101,7 +66,7 @@ class Odb{
 
         return this.fetch(cmd).then(db => {
           console.log('DB', db);
-          if(!db||this.typeOf(db) === 'array' && db.length === 0){
+          if(!db){
             console.log('Item not founded, adding...');
             cmd.method = 'POST';
             cmd.path = cmd.type;
