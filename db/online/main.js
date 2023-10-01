@@ -26,9 +26,7 @@ class Odb{
         if(this.typeOf(res) === 'array'){
           if(res.length < 1) return undefined;
           else
-          if(res.length > 1) return res;
-          else
-          if(res.length === 1) return res[0];
+          if(res.length >= 1) return res;
         }
         else
         return res;
