@@ -19,7 +19,7 @@ class Db{
         db: db
       }).then(res => {
         // console.log(res);
-        if(res.length === 0){
+        if(!res){
           console.log(`[Load Settings] Не найдено сохранённых настроек, загрузка дефолта...`);
           return this.init(c);
         }else{
