@@ -11,6 +11,9 @@ const dialogCss = () => {
     box-shadow: 0 0 3px 1px rgb(0 0 0);
     z-index: 1000;
   }
+  .dialog::backdrop {
+    background-color: rgb(0 0 0 / 80%);
+  }
   .dialog>.header {
     text-align: center;
     background-color: rgb(40,40,40);
