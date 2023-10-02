@@ -1,11 +1,12 @@
 class Dialog{
   build(c){
-    new El().Div({
+    new El().Dialog({
       path: c.path,
-      style: c.coord && `
-        top: ${c.coord.top + (window.scrollY||window.scrollHeight||0)}px;
-        left: ${c.coord.left}px;
-      `,
+      modal: true,
+      // style: c.coord && `
+      //   top: ${c.coord.top + (window.scrollY||window.scrollHeight||0)}px;
+      //   left: ${c.coord.left}px;
+      // `,
       cName: 'dialog',
       func: (m) => {
         new El().Div({
