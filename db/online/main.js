@@ -58,8 +58,8 @@ class Odb{
         return this.fetch(cmd);
       }
       break;
-      case cmd.run === 'findOrAdd':{
-        console.log('FindOrAdd');
+      case cmd.run === 'addOrUpdate':{
+        console.log('addOrUpdate');
         cmd.method = 'GET';
         cmd.run = 'find';
         cmd.path = `${cmd.type}?id=eq.${cmd.target}`;
