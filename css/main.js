@@ -10,7 +10,7 @@ const mainCSS = () => `
 
 @import url('https://fonts.googleapis.com/css2?family=Kurale&display=swap');
 
-body:has(.dtf-scriptWindow, .dialog) {
+body:has(.dtf-scriptWindow) {
   overflow: hidden;
 }
 
