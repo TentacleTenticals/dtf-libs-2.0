@@ -15,6 +15,7 @@ class Db{
       return new Odb()[db.name]({
         run: 'find',
         type: 'settings',
+        rType: 'object',
         target: 1,
         db: db
       }).then(res => {
@@ -23,8 +24,8 @@ class Db{
           console.log(`[Load Settings] Не найдено сохранённых настроек, загрузка дефолта...`);
           return this.init(c);
         }else{
-          console.log(`[Load Settings] Найдены сохранённые настройки, загрузка...`, this.typeOf(res.cfg) === 'object' ? res.cfg:res[0].cfg);
-          return this.init({...c, settings:this.typeOf(res.cfg) === 'array' ? res[0].cfg:res.cfg});
+          console.log(`[Load Settings] Найдены сохранённые настройки, загрузка...`, res.cfg);
+          return this.init({...c, settings:res.cfg});
         }
       }).catch(err => console.log(err));
     }else{
