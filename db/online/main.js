@@ -26,6 +26,8 @@ class Odb{
         if(this.typeOf(res) === 'array'){
           if(res.length < 1) return undefined;
           else
+          if(res.length === 1 && cmd.rType === 'object') return res[0];
+          else
           if(res.length >= 1) return res;
         }
         else
@@ -122,3 +124,4 @@ class Odb{
     }
   }
 }
+
