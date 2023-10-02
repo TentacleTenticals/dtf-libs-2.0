@@ -10,6 +10,10 @@ const mainCSS = () => `
 
 @import url('https://fonts.googleapis.com/css2?family=Kurale&display=swap');
 
+body:has(.dtf-scriptWindow, .dialog) {
+  overflow: hidden;
+}
+
 :is(.scrollLite, .scrollMid)::-webkit-scrollbar-thumb {
   background-color: rgb(189 164 164);
 }
