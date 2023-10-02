@@ -275,6 +275,17 @@ class El{
     c.path.appendChild(main);
   }
 
+  Dialog(c){
+    const main=document.createElement('dialog');
+    if(c.name) main.name=c.name;
+    if(c.cName) main.className=c.cName;
+    if(c.id) main.id=c.id;
+    if(c.text) main.textContent=c.text;
+    if(c.func) c.func(main);
+    c.path.appendChild(main);
+    if(c.modal) main.showModal();
+  }
+
   typeOf(target){
     return Object.prototype.toString.call(target).slice(8, -1).toLowerCase();
   }
