@@ -10,10 +10,6 @@ const mainCSS = () => `
 
 @import url('https://fonts.googleapis.com/css2?family=Kurale&display=swap');
 
-body:has(.dtf-scriptWindow) {
-  overflow: hidden;
-}
-
 :is(.scrollLite, .scrollMid)::-webkit-scrollbar-thumb {
   background-color: rgb(189 164 164);
 }
@@ -130,7 +126,7 @@ ul.flex {
   display: flex;
   flex-wrap: wrap;
   gap: 10px 15px;
-  padding: 7px;
+  padding: 0 3px 0 3px;
   margin: 0;
   max-width: 100%;
   min-height: 20px;
@@ -202,5 +198,9 @@ ul.flex li::marker {
 }
 .nl {
   flex-basis: 100%;
+}
+
+.fs10px {
+  font-size: 10px;
 }
 `
