@@ -1,43 +1,43 @@
 class El{
-  Div({ path, addBefore, cName, id, text, label, title, attr, name, group, tab, value, valueName, editable, style, onclick, onRclick, onkeydown, onkeyup, onwheel, onfocus, onblur, onpaste, onmouseenter, onmouseleave, focus, rtn, func }){
-    const main= document.createElement('div');
-    if(cName) main.className = cName;
-    if(id) main.id = id;
-    if(text) main.textContent = text;
-    if(title) main.title = title;
-    if(attr) main.setAttribute(attr[0], attr[1]);
-    if(name) main.setAttribute('name', name);
-    if(group) main.setAttribute('group', group);
-    if(tab) main.tabIndex = tab;
-    if(editable) main.setAttribute('contenteditable', true);
-    if(style) main.style = style;
-    if(onclick) main.onmousedown = onclick;
-    if(onRclick) main.oncontextmenu = onRclick;
-    if(onkeyup) main.onkeyup = onkeyup;
-    if(onkeydown) main.onkeydown = onkeydown;
-    if(onwheel) main.onwheel = onwheel;
-    if(onfocus) main.onfocus = onfocus;
-    if(onblur) main.onblur = onblur;
-    if(onpaste) main.onpaste = onpaste;
-    if(onmouseenter) main.onmouseenter = onmouseenter;
-    if(onpointerenter) main.onpointerenter = onpointerenter;
-    if(label) this.label = new Div({
+  Div(o){
+    const main=document.createElement('div');
+    if(o.cName) main.className = o.cName;
+    if(o.id) main.id = o.id;
+    if(o.text) main.textContent = o.text;
+    if(o.title) main.title = o.title;
+    if(o.attr) main.setAttribute(o.attr[0], o.attr[1]);
+    if(o.name) main.setAttribute('name', o.name);
+    if(o.group) main.setAttribute('group', o.group);
+    if(o.tab) main.tabIndex = o.tab;
+    if(o.editable) main.setAttribute('contenteditable', true);
+    if(o.style) main.style = o.style;
+    if(o.onclick) main.onmousedown = o.onclick;
+    if(o.onRclick) main.oncontextmenu = o.onRclick;
+    if(o.onkeyup) main.onkeyup = o.onkeyup;
+    if(o.onkeydown) main.onkeydown = o.onkeydown;
+    if(o.onwheel) main.onwheel = o.onwheel;
+    if(o.onfocus) main.onfocus = o.onfocus;
+    if(o.onblur) main.onblur = o.onblur;
+    if(o.onpaste) main.onpaste = o.onpaste;
+    if(o.onmouseenter) main.onmouseenter = o.onmouseenter;
+    if(o.onpointerenter) main.onpointerenter = o.onpointerenter;
+    if(o.label) this.label = new Div({
       path: main,
       cName: 'title',
-      text: label
+      text: o.label
     });
-    addBefore ? path.insertBefore(main, addBefore) : path.appendChild(main);
+    o.addBefore ? o.path.insertBefore(main, o.addBefore) : o.path.appendChild(main);
 
-    if(func) func(main);
-    if(rtn) {
-      if(!rtn.length > 0) return main;
+    if(o.func) o.func(main);
+    if(o.rtn) {
+      if(!o.rtn.length > 0) return main;
       this.obj = {};
-      rtn.forEach(e => {
+      o.rtn.forEach(e => {
         this.obj[e] = this[e];
       })
       return this.obj;
     }
-    if(focus) main.focus();
+    if(o.focus) main.focus();
   };
   Button({path, cName, id, title, text, label, container, style, onclick, disabled, rtn}){
     const main= document.createElement('button');
@@ -281,10 +281,30 @@ class El{
     if(c.cName) main.className=c.cName;
     if(c.id) main.id=c.id;
     if(c.text) main.textContent=c.text;
+    if(c.onclose) main.onclose=c.onclose;
     if(c.func) c.func(main);
     c.path.appendChild(main);
-    if(c.modal) main.showModal();
+    if(c.show) main.show();
+    if(c.showM) main.showModal();
   }
+
+  loading(c){
+    new El().Div({
+      path: c.path,
+      cName: 'loading',
+      func: (r) => {
+        new El().Div({
+          path: r,
+          cName: 'anim'
+        });
+        if(c.text) new El().Div({
+          path: r,
+          cName: 'text',
+          text: c.text
+        });
+      }
+    })
+  };
 
   typeOf(target){
     return Object.prototype.toString.call(target).slice(8, -1).toLowerCase();
@@ -444,7 +464,7 @@ class El{
     path.appendChild(main);
   }
 
-  Field({path, groupName, cName, dontRead, legend, info, inputs, list, select, style, form, func, rtn}){
+  Field({path, groupName, cName, dontRead, legend, info, items, autocfg, inputs, list, select, style, form, func, rtn}){
     const main=document.createElement('fieldset');
     main.groupName=main.setAttribute('groupName', groupName);
     dontRead ? main.setAttribute('dontread', true) : '';
@@ -471,6 +491,62 @@ class El{
       cName: 'fList',
       rtn: []
     });
+
+    if(items) items.forEach(e => {
+      if(e.t === 'select') this.Select({
+        path: iList,
+        label: e.label,
+        lName: e.lName,
+        name: e.name,
+        value: (autocfg && autocfg[0]) ? this.auto(e.group, e.c, e.name, autocfg[0][groupName]) : e.value,
+        options: e.options,
+        optgroups: e.optgroups,
+        lAttr: e.group ? ['group', e.group] : ['group', autocfg && autocfg[1]]
+      })
+      else
+      if(e.t === 'input') this.Input({
+        path: iList,
+        type: e.type,
+        cName: e.cName,
+        lName: e.lName,
+        name: e.name,
+        title: e.title,
+        [e.type === 'checkbox' ? 'checked' : 'value']: (autocfg && autocfg[0]) ? this.auto(e.group, autocfg[1], e.name, autocfg[0][groupName]) : e[type],
+        accepted: e.accepted,
+        number: e.number,
+        min: e.min,
+        max: e.max,
+        step: e.step,
+        text: e.text,
+        label: e.label,
+        iText: e.iText,
+        onchange: e.onchange,
+        num: e.num,
+        lAttr: e.group ? ['group', e.group] : ['group', autocfg && autocfg[1]]
+      });
+      else
+      if(e.t === 'list') this.List({
+        path: iList,
+        mode: e.mode,
+        name: e.name,
+        lName: e.lName,
+        cName: e.cName,
+        type: e.type,
+        items: (autocfg && autocfg[0]) ? this.auto(e.group, autocfg[1], e.name, autocfg[0][groupName]) : e.items,
+        title: e.title,
+        label: e.label,
+        focus: e.focus,
+        canDel: e.canDel,
+        onRclick: e.onRclick,
+        lAttr: e.group ? ['group', e.group] : ['group', autocfg && autocfg[1]]
+      });
+      else
+      if(e.t === 'separator') this.Div({
+        path: iList,
+        cName: 'separator',
+        text: e.text
+      });
+    })
 
     if(inputs) inputs.list.forEach(e => {
       let type;
