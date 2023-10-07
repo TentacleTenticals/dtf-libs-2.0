@@ -3,7 +3,7 @@ body:has(.dtf-scriptWindow) {
   overflow: hidden;
 }
 
-.dtf-scriptWindow.settings {
+.dtf-scriptWindow {
   display: flex;
   flex-direction: column;
   gap: 5px 0;
