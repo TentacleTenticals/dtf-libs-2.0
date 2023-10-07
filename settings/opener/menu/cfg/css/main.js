@@ -1,5 +1,9 @@
 const cfgMenuCss = () => `
-.dtf-scriptWindow {
+body:has(.dtf-scriptWindow) {
+  overflow: hidden;
+}
+
+.dtf-scriptWindow.settings {
   display: flex;
   flex-direction: column;
   gap: 5px 0;
@@ -10,7 +14,7 @@ const cfgMenuCss = () => `
   left: 0px;
   z-index: 1000;
   padding: 3px;
-  max-width: 60%;
+  max-width: 90%;
   height: 100%;
   box-shadow: 0px 0px 2px 1px rgb(0 0 0);
   overflow-y: auto;
@@ -42,6 +46,7 @@ fieldset.hide .fList {
   cursor: pointer;
 }
 .dtf-scriptWindow form .info {
+  margin: 0 0 3px 0;
   font-size: 12px;
 }
 .dtf-scriptWindow form .fList {
@@ -110,5 +115,20 @@ fieldset.hide .fList {
 .dtf-scriptWindow .actions {
   display: flex;
   gap: 5px 10px;
+}
+
+.dtf-scriptWindow .separator {
+  padding: 2px 3px 2px 3px;
+  margin: 0 10px 0 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgb(0,0,0);
+  background-color: rgb(175 119 179);
+  border-radius: 2px;
+}
+
+.dtf-scriptWindow input[type="color"] {
+  width: 25px;
+  aspect-ratio: 1/1;
 }
 `;
