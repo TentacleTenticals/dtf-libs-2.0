@@ -72,6 +72,7 @@ const tabberCss = () => `
 }
 .tabber>.main .panel .srch {
   flex-grow: 1;
+  flex-basis: 100%;
 }
 
 .tabber>.main .tabs .tab {
