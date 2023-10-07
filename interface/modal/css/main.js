@@ -1,11 +1,14 @@
 const modalCss = () => {
   return `
+  body:has(.modal) {
+    overflow: hidden;
+  }
+
   .modal {
     display: flex;
     flex-direction: column;
     gap: 5px 0;
     padding: 0;
-    position: absolute;
     width: max-content;
     height: max-content;
     background-color: rgb(255,255,255);
