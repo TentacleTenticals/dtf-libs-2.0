@@ -1,4 +1,13 @@
 class Db{
+  dbGen(i){
+    return {
+      indexedDB: (window.indexedDB||window.mozIndexedDB||window.webkitIndexedDB||window.msIndexedDB||window.shimIndexedDB),
+      name: 'DTF scripts database',
+      version: 1,
+      store: i,
+      key: 'id'
+    };
+  };
   run(d){
     if(d.mode === 'start'){
       return this.loadSettings(d);
@@ -10,27 +19,26 @@ class Db{
   typeOf(t){
     return Object.prototype.toString.call(t).slice(8, -1).toLowerCase();
   }
-  loadSettings(c){
-    if(db.name){
-      return new Odb()[db.name]({
+  async loadSettings(o){
+    if(db.online){
+      return new Odb()[db.online]({
         run: 'find',
         type: 'settings',
         rType: 'object',
         target: 1,
-        db: db
       }).then(res => {
         // console.log(res);
         if(!res){
           console.log(`[Load Settings] Не найдено сохранённых настроек, загрузка дефолта...`);
-          return this.init(c);
+          return this.init(o);
         }else{
           console.log(`[Load Settings] Найдены сохранённые настройки, загрузка...`, res.cfg);
-          return this.init({...c, settings:res.cfg});
+          return this.init({...o, settings:res.cfg});
         }
       }).catch(err => console.log(err));
     }else{
       console.log(`[Load Settings] Загрузка локальных настроек...`);
-      return this.init(c);
+      return this.init(o);
     }
   }
   mergeSettings(defCfg, savCfg){
@@ -66,18 +74,28 @@ class Db{
     return newCfg;
   }
   init(c){
-    return new Promise((res, err) => {
-      if(!c.restart){
-        c.settings ? mainCfg = this.mergeSettings(defaultCfg, c.settings) : mainCfg = structuredClone(defaultCfg);
-        OpenerItem(defaultCfg.scriptInfo.name);
-        // console.log(`[Init] Инициализация скрипта успешно выполнена.`);
-        res({result:'success', process:'init', data:mainCfg});
-      }else{
-        mainCfg = structuredClone(c.settings);
-        // console.log(`[Init] Реинициализация скрипта успешно выполнена.`);
-        res({result:'success', process:'reInit', data:mainCfg});
-      }
-    });
+    if(!c.restart){
+      c.settings ? mainCfg = this.mergeSettings(defaultCfg, c.settings) : mainCfg = structuredClone(defaultCfg);
+      OpenerItem(defaultCfg.scriptInfo.name);
+      // console.log(`[Init] Инициализация скрипта успешно выполнена.`);
+      c.res({result:'success', process:'init', data:mainCfg});
+    }else{
+      mainCfg = structuredClone(c.settings);
+      // console.log(`[Init] Реинициализация скрипта успешно выполнена.`);
+      c.res({result:'success', process:'reInit', data:mainCfg});
+    }
+    // return new Promise((res, err) => {
+    //   if(!c.restart){
+    //     c.settings ? mainCfg = this.mergeSettings(defaultCfg, c.settings) : mainCfg = structuredClone(defaultCfg);
+    //     OpenerItem(defaultCfg.scriptInfo.name);
+    //     // console.log(`[Init] Инициализация скрипта успешно выполнена.`);
+    //     res({result:'success', process:'init', data:mainCfg});
+    //   }else{
+    //     mainCfg = structuredClone(c.settings);
+    //     // console.log(`[Init] Реинициализация скрипта успешно выполнена.`);
+    //     res({result:'success', process:'reInit', data:mainCfg});
+    //   }
+    // });
     // console.log('Coin', c);
     // if(!c.restart){
     //   c.settings ? mainCfg = this.mergeSettings(defaultCfg, c.settings) : mainCfg = structuredClone(defaultCfg);
