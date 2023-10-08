@@ -8,12 +8,12 @@ class Odb{
     if(name === 'supabase') return `https://${id||''}.supabase.co/rest/v1/`;
   }
   fetch(cmd){
-    return fetch(`${db.url}${cmd.path}`, {
+    return fetch(`${db[db.online].url}${cmd.path}`, {
       method: cmd.method,
       headers: {
         'Content-Type': 'application/json',
-        'apiKey': db.apiKey,
-        'Authorization': `Bearer ${db.token}`,
+        'apiKey': db[db.online].apiKey,
+        'Authorization': `Bearer ${db[db.online].token}`,
         'Content-Type': 'application/json',
         ...cmd.method !== 'GET' ? {'Prefer': 'return=minimal'} : {}
       },
@@ -21,7 +21,7 @@ class Odb{
     }).then(r => {
       // console.log(r);
       return r.json().then(res => {
-        console.log('Odb', res);
+        // console.log('Odb', res);
         if(!res) return undefined;
         if(this.typeOf(res) === 'array'){
           if(res.length < 1) return undefined;
@@ -35,7 +35,9 @@ class Odb{
       }).catch(err => {
         if(err.message === 'Unexpected end of JSON input') return r;
         else
-        return err;
+        if(err.message.match(/'<', "<!DOCTYPE "... is not valid JSON/)) throw new Error(`"<!DOCTYPE "... is not valid JSON`);
+        else
+        throw new Error(err);
       });
     });
   }
@@ -124,4 +126,3 @@ class Odb{
     }
   }
 }
-
