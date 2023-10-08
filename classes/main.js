@@ -289,21 +289,23 @@ class El{
   }
 
   loading(c){
-    new El().Div({
+    const main=this.Div({
       path: c.path,
       cName: 'loading',
+      rtn: c.rtn,
       func: (r) => {
         new El().Div({
           path: r,
           cName: 'anim'
         });
-        if(c.text) new El().Div({
+        if(c.text) this.Div({
           path: r,
           cName: 'text',
           text: c.text
         });
       }
-    })
+    });
+    if(c.rtn) return main;
   };
 
   typeOf(target){
