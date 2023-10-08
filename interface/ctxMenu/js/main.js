@@ -1,23 +1,29 @@
 class CtxMenu{
-  separator(c){
+  separator({path, text}){
     new El().Div({
-      path: c.path,
+      path: path,
       cName: 'separator',
+      text: text
+    });
+  }
+  loading(c){
+    new El().Loading({
+      path: c.path,
       text: c.text
-    });
+    })
   }
-  button(c){
+  button({path, cName, title, text, onclick}){
     new El().Button({
-      path: c.path,
-      cName: c.cName,
-      title: c.title,
-      text: c.text,
-      onclick: c.onclick
-    });
+      path: path,
+      cName: cName,
+      title: title,
+      text: text,
+      onclick: onclick
+    })
   }
-  sub(c){
+  sub({path, cName, text, title, items}){
     new El().Div({
-      path: c.path,
+      path: path,
       cName: 'sub',
       func: (s) => {
         const main=new El().Div({
@@ -28,16 +34,16 @@ class CtxMenu{
         new El().Div({
           path: s,
           cName: 'header',
-          text: c.text,
-          title: c.title
+          text: text,
+          title: title
         });
         const list=new El().Div({
           path: main,
-          cName: `list${c.cName && ' '+c.cName||''}`,
+          cName: `list${cName && ' '+cName||''}`,
           rtn: true
         });
-        if(c.items) c.items.forEach(e => {
-          this[e.type]({
+        if(items) items.forEach(e => {
+          if(e) this[e.type]({
             path: list,
             cName: e.cName,
             title: e.title,
@@ -48,73 +54,45 @@ class CtxMenu{
       }
     })
   }
-  build(c){
+  build({path, title, items, focus, autohide, e}){
     new El().Div({
-      path: c.path,
-      cName: 'ctx',
+      path: path,
+      cName: 'contextMenu',
+      style: `
+        top: ${e.top + (window.scrollY||window.scrollHeight||0)}px;
+        left: ${e.left}px;
+      `,
       tab: -1,
-      focus: c.focus,
-      onblur: (e) => {
-        // if(!c.autohide) return;
-        if(c.onblur) c.onblur(e.target);
-        if(c.autohide) setTimeout(() => {
-          e.target.remove();
-        }, 1000);
-      },
+      focus: focus,
       func: (m) => {
         new El().Div({
           path: m,
           cName: 'header',
-          text: c.header
+          text: title
         });
-        new El().Div({
+        this.list=new El().Div({
           path: m,
           cName: 'list',
-          func: (b) => {
-            if(c.load) new El().loading({
-              path: b,
-              theme: c.loadTheme,
-              text: c.loadText
-            });
-            // if(c.func) c.func(this, b);
-            if(c.func){
-              if(!c.load && c.items){
-                c.func(b);
-                c.items.forEach(e => {
-                  this[e.type]({
-                    path: b,
-                    cName: e.cName,
-                    text: e.text,
-                    title: e.title,
-                    onclick: e.onclick,
-                    items: e.items
-                  });
-                });
-              }
-              else
-              if(c.load){
-                new Promise((res, err) => {
-                  c.func({path:b, res:res, err:err});
-                }).then(res => {
-                  console.log(res);
-                  b.children[0].remove();
-                  if(c.items) c.items.forEach(e => {
-                    this[e.type]({
-                      path: b,
-                      cName: e.cName,
-                      text: e.text,
-                      title: e.title,
-                      onclick: e.onclick,
-                      items: e.items
-                    });
-                  });
-                })
-              }
-            }
-          }
+          rtn: true
         });
-        // if(c.autoFocus) m.focus();
+      },
+      onblur: (e) => {
+        if(!autohide) return;
+        setTimeout(() => {
+          e.target.remove();
+        }, 1000);
       }
+    });
+
+    if(items) items.forEach(e => {
+      this[e.type]({
+        path: this.list,
+        cName: e.cName,
+        text: e.text,
+        title: e.title,
+        onclick: e.onclick,
+        items: e.items
+      });
     });
   }
 }
