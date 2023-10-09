@@ -356,7 +356,7 @@ class El{
     })
     if(label) this.Label({
       path: path,
-      cName: `iList${lName && ` ${lName}`||''}`,
+      cName: /*`iList${lName && ` ${lName}`||''}`*/ lName||'iList',
       text: label,
       attr: lAttr,
       title: title,
