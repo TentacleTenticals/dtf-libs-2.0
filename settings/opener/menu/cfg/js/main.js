@@ -29,10 +29,13 @@ class SettingsMenu {
               path: c,
               text: 'Сохранить настройки',
               onclick: () => {
-        //         console.log('STGLIST', new Db().getSettings(document.querySelectorAll(`div[id=DTF-scriptSettings] fieldset`), false))
-        new Db().saveSettings(new Db().getSettings(document.querySelectorAll(`#DTF-scriptSettings fieldset`)));
-        // new Db().getSettings(document.querySelectorAll(`#DTF-scriptSettings fieldset`))
-               m.remove();
+                new Promise((res, err) => {
+                  new Db().saveSettings({cfg:new Db().getSettings(document.querySelectorAll(`#DTF-scriptSettings fieldset`)), res:res, err:err});
+                }).then(res => {
+                  if(res){
+                    m.remove();
+                  }
+                })
               }
             });
 
