@@ -183,6 +183,40 @@ ul.flex li::marker {
   gap: 5px 5px;
 }
 
+.loading {
+  display: flex;
+  position: relative;
+  width: 50%;
+  aspect-ratio: 1/1;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+.loading .anim {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-image: repeating-linear-gradient(45deg, rgb(199 65 173) 50%, transparent);
+  animation: 3s infinite linear roundRotate;
+  animation-fill-mode: forwards;
+  mask: radial-gradient(transparent 67%, rgb(0,0,0) 0%);
+  -webkit-mask: radial-gradient(transparent 67%, rgb(0,0,0) 0%);
+}
+.loading .text {
+  position: absolute;
+  z-index: 1;
+}
+
+@keyframes roundRotate {
+  from {
+    rotate: 0deg;
+  }
+
+  to {
+    rotate: 360deg;
+  }
+}
+
 .hor {
   flex-direction: row !important;
 }
