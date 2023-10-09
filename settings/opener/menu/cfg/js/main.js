@@ -1,6 +1,5 @@
 class SettingsMenu {
   constructor(func){
-    if(document.getElementById('DTF-scriptSettings')) return;
     new El().Div({
       path: document.body,
       cName: 'dtf-scriptWindow settings scrollMid',
