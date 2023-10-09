@@ -25,7 +25,7 @@ class Db{
         run: 'find',
         type: 'settings',
         rType: 'object',
-        target: 1,
+        target: 'main',
       }).then(res => {
         // console.log(res);
         if(!res){
@@ -199,7 +199,7 @@ class Db{
       new Odb()[db.online]({
         run: 'addOrUpdate',
         type: 'settings',
-        target: 1,
+        target: 'main',
         db: db,
         data: {cfg:o.cfg}
       }).then(db => {
