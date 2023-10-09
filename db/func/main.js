@@ -197,7 +197,7 @@ class Db{
     if(db.online){
       console.log(`[Save Settings] Saving to database...`);
       new Odb()[db.online]({
-        run: 'findOrAdd',
+        run: 'addOrUpdate',
         type: 'settings',
         target: 1,
         db: db,
