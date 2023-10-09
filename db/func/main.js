@@ -193,29 +193,29 @@ class Db{
     const setg = this.mergeSettings(defaultCfg, o);
     return setg;
   }
-  saveSettings(cfg){
-    if(db.name){
+  saveSettings(o){
+    if(db.online){
       console.log(`[Save Settings] Saving to database...`);
-      new Odb()[db.name]({
+      new Odb()[db.online]({
         run: 'findOrAdd',
         type: 'settings',
         target: 1,
         db: db,
-        data: {cfg:cfg}
+        data: {cfg:o.cfg}
       }).then(db => {
         console.log('Yo', db);
         if(db.status === 201){
           console.log(`Success, settings is added!!!`);
-          this.init({settings:cfg, restart:true});
+          this.init({settings:o.cfg, restart:true, res:o.res, err:o.err});
         }else
         if(db.status === 204){
           console.log(`Success, settings is updated!!!`);
-          this.init({settings:cfg, restart:true});
+          this.init({settings:o.cfg, restart:true, res:o.res, err:o.err});
         }
       }).catch(err => console.log(err));
     }else{
       console.log(`[Save Settings] Saved!`);
-      this.init({settings:cfg, restart:true});
+      this.init({settings:o.cfg, restart:true, res:o.res, err:o.err});
     }
   }
 }
