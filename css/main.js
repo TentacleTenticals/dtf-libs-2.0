@@ -121,6 +121,36 @@ label.iList {
   flex-direction: column;
 }
 
+label.discord {
+  display: flex;
+  flex-direction: column;
+}
+label.discord ul {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 3px 0;
+  padding: 0;
+  margin: 0;
+  border-left: 4px solid rgb(221 83 83);
+  padding: 2px 0 5px 8px;
+}
+label.discord li {
+  display: flex;
+  white-space: pre-line;
+}
+label.discord li::before {
+  display: block;
+  content: '';
+  width: 3px;
+  height: 3px;
+  background-color: rgb(213 133 133);
+  border-radius: 50%;
+}
+label.discord li::marker {
+  font-size: 0;
+}
+
 
 ul.flex {
   display: flex;
