@@ -201,7 +201,7 @@ class Db{
         type: 'settings',
         target: 'main',
         db: db,
-        data: {cfg:o.cfg}
+        data: {id:'main', cfg:o.cfg}
       }).then(db => {
         console.log('Yo', db);
         if(db.status === 201){
