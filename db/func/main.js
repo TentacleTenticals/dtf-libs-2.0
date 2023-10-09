@@ -76,7 +76,7 @@ class Db{
   init(c){
     if(!c.restart){
       c.settings ? mainCfg = this.mergeSettings(defaultCfg, c.settings) : mainCfg = structuredClone(defaultCfg);
-      OpenerItem(defaultCfg.scriptInfo.name);
+      OpenerItem(defaultCfg.scriptInfo.name, defaultCfg.scriptInfo.id);
       // console.log(`[Init] Инициализация скрипта успешно выполнена.`);
       c.res({result:'success', process:'init', data:mainCfg});
     }else{
