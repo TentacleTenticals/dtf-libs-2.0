@@ -1,6 +1,5 @@
 class DataMenu {
   constructor(func){
-    if(document.getElementById('DTF-scriptData')) return;
     new El().Div({
       path: document.body,
       cName: 'dtf-scriptWindow data scrollMid',
