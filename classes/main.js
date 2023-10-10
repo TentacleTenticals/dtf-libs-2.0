@@ -267,6 +267,7 @@ class El{
     if(c.rows) main.rows=c.rows;
     if(c.cols) main.cols=c.cols;
     if(c.text) main.textContent=c.text;
+    if(c.value) main.value=c.value;
     c.path.appendChild(main);
   }
 
