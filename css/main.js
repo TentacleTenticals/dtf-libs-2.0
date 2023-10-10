@@ -254,6 +254,9 @@ ul.flex li::marker {
   flex-direction: column !important;
 }
 
+.halfL {
+  flex-basis: 50%;
+}
 .full {
   flex-grow: 1;
 }
