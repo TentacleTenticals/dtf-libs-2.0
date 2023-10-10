@@ -1,29 +1,23 @@
 class CtxMenu{
-  separator({path, text}){
+  separator(c){
     new El().Div({
-      path: path,
+      path: c.path,
       cName: 'separator',
-      text: text
+      text: c.text
     });
   }
-  loading(c){
-    new El().Loading({
-      path: c.path,
-      text: c.text
-    })
-  }
-  button({path, cName, title, text, onclick}){
+  button(c){
     new El().Button({
-      path: path,
-      cName: cName,
-      title: title,
-      text: text,
-      onclick: onclick
-    })
+      path: c.path,
+      cName: c.cName,
+      title: c.title,
+      text: c.text,
+      onclick: c.onclick
+    });
   }
-  sub({path, cName, text, title, items}){
+  sub(c){
     new El().Div({
-      path: path,
+      path: c.path,
       cName: 'sub',
       func: (s) => {
         const main=new El().Div({
@@ -34,16 +28,16 @@ class CtxMenu{
         new El().Div({
           path: s,
           cName: 'header',
-          text: text,
-          title: title
+          text: c.text,
+          title: c.title
         });
         const list=new El().Div({
           path: main,
-          cName: `list${cName && ' '+cName||''}`,
+          cName: `list${c.cName && ' '+c.cName||''}`,
           rtn: true
         });
-        if(items) items.forEach(e => {
-          if(e) this[e.type]({
+        if(c.items) c.items.forEach(e => {
+          this[e.type]({
             path: list,
             cName: e.cName,
             title: e.title,
@@ -54,45 +48,85 @@ class CtxMenu{
       }
     })
   }
-  build({path, title, items, focus, autohide, e}){
+  build(c){
     new El().Div({
-      path: path,
-      cName: 'contextMenu',
-      style: `
-        top: ${e.top + (window.scrollY||window.scrollHeight||0)}px;
-        left: ${e.left}px;
-      `,
+      path: document.body,
+      cName: 'ctx',
       tab: -1,
-      focus: focus,
+      focus: c.focus,
+      style: `
+        top: ${c.rect.top + (window.scrollY||window.scrollHeight||0)}px;
+        left: ${c.rect.left}px;
+      `,
+      onblur: (e) => {
+        console.log('FOCUS', document.activeElement)
+        // if(!c.autohide) return;
+        if(c.onblur) c.onblur(e.target);
+        if(c.autohide) e.target.remove();
+      },
       func: (m) => {
         new El().Div({
           path: m,
           cName: 'header',
-          text: title
+          text: c.header
         });
-        this.list=new El().Div({
+        new El().Div({
           path: m,
           cName: 'list',
-          rtn: true
+          func: (b) => {
+            if(c.load) new El().loading({
+              path: b,
+              theme: c.loadTheme,
+              text: c.loadText
+            });
+            // if(c.func) c.func(this, b);
+            if(c.func){
+              if(!c.load && c.items){
+                c.func(b);
+                c.items.forEach(e => {
+                  this[e.type]({
+                    path: b,
+                    cName: e.cName,
+                    text: e.text,
+                    title: e.title,
+                    onclick: e.onclick,
+                    items: e.items
+                  });
+                });
+              }
+              else
+              if(c.load){
+                new Promise((res, err) => {
+                  c.func({path:b, res:res, err:err});
+                }).then(res => {
+                  console.log(res);
+                  b.children[0].remove();
+                  if(c.items) c.items.forEach(e => {
+                    this[e.type]({
+                      path: b,
+                      cName: e.cName,
+                      text: e.text,
+                      title: e.title,
+                      onclick: e.onclick,
+                      items: e.items
+                    });
+                  });
+                })
+              }
+            }else
+            c.items.forEach(e => {
+              this[e.type]({
+                path: b,
+                cName: e.cName,
+                text: e.text,
+                title: e.title,
+                onclick: e.onclick,
+                items: e.items
+              });
+            });
+          }
         });
-      },
-      onblur: (e) => {
-        if(!autohide) return;
-        setTimeout(() => {
-          e.target.remove();
-        }, 1000);
       }
-    });
-
-    if(items) items.forEach(e => {
-      this[e.type]({
-        path: this.list,
-        cName: e.cName,
-        text: e.text,
-        title: e.title,
-        onclick: e.onclick,
-        items: e.items
-      });
     });
   }
 }
