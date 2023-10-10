@@ -17,6 +17,8 @@ class El{
     if(o.onkeydown) main.onkeydown = o.onkeydown;
     if(o.onwheel) main.onwheel = o.onwheel;
     if(o.onfocus) main.onfocus = o.onfocus;
+    if(o.onfocusin) main.onfocusin = o.onfocusin;
+    if(o.onfocusout) main.onfocusout = o.onfocusout;
     if(o.onblur) main.onblur = o.onblur;
     if(o.onpaste) main.onpaste = o.onpaste;
     if(o.onmouseenter) main.onmouseenter = o.onmouseenter;
@@ -29,15 +31,8 @@ class El{
     o.addBefore ? o.path.insertBefore(main, o.addBefore) : o.path.appendChild(main);
 
     if(o.func) o.func(main);
-    if(o.rtn) {
-      if(!o.rtn.length > 0) return main;
-      this.obj = {};
-      o.rtn.forEach(e => {
-        this.obj[e] = this[e];
-      })
-      return this.obj;
-    }
     if(o.focus) main.focus();
+    if(o.rtn) return main;
   };
   Button({path, cName, id, title, text, label, container, style, onclick, disabled, rtn}){
     const main= document.createElement('button');
@@ -54,7 +49,7 @@ class El{
     if(id) main.id = id;
     if(text) main.textContent = text;
     if(style) main.style = style;
-    if(onclick) main.onclick = onclick;
+    if(onclick) main.onmousedown = onclick;
     if(disabled) main.disabled = disabled;
     (container ? this.container : path).appendChild(main);
 
@@ -83,7 +78,7 @@ class El{
     loading ? main.loading=loading : main.loading='lazy';
     if(style) main.style=style;
     if(scale) main.style.scale=scale;
-    if(onclick) main.onclick=onclick;
+    if(onclick) main.onmousedown=onclick;
     path.appendChild(main);
   };
   Video({path, cName, url, poster, autoplay, loop, muted, controls, pIp, text, style, preload, onclick, onplay, onpause, onended, rtn}){
@@ -99,7 +94,7 @@ class El{
     if(controls) main.controls=controls;
     pIp ? main.disablePictureInPicture=false : main.disablePictureInPicture=true;
     if(style) main.style=style;
-    if(onclick) main.onclick=onclick;
+    if(onclick) main.onmousedown=onclick;
     if(onplay) main.onplay=onplay;
     if(onpause) main.onpause=onpause;
     if(onended) main.onended=onended;
@@ -121,7 +116,7 @@ class El{
     if(text) main.textContent=text;
     if(url) main.href=url;
     main.target='_blank';
-    if(onclick) main.onclick = (e) => {
+    if(onclick) main.onmousedown = (e) => {
       e.preventDefault()
       e.stopImmediatePropagation();
       window.open(e.target.href, '_blank');
@@ -160,7 +155,7 @@ class El{
     if(max) main.max=max;
     if(step) main.step=step;
     if(auto) main.autocomplete=auto;
-    if(onclick) main.onclick=onclick;
+    if(onclick) main.onmousedown=onclick;
     if(onchange) main.onchange=onchange;
     if(onfocus) main.onfocus=onfocus;
     if(onblur) main.onblur=onblur;
@@ -318,7 +313,7 @@ class El{
     if(name) main.setAttribute('name', name);
     if(type) main.setAttribute('type', type);
     if(onRclick) main.oncontextmenu=onRclick;
-    if(mode && mode === 'all') main.onclick = (e) => {
+    if(mode && mode === 'all') main.onmousedown = (e) => {
       if(e.target.nodeName !== 'UL') return;
       this.iList({
         path: main,
@@ -462,7 +457,7 @@ class El{
   Legend({path, text, onclick}){
     const main=document.createElement('legend');
     main.textContent=text;
-    if(onclick) main.onclick=onclick;
+    if(onclick) main.onmousedown=onclick;
     path.appendChild(main);
   }
 
