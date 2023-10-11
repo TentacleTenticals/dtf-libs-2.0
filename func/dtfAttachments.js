@@ -56,7 +56,7 @@ function attachment(o){
   }
   const main=new El().Div({
     path: o.path,
-    cName: `mask ${o.type} ${o.i.data && o.i.data.type||''}`,
+    cName: `mask ${o.type}${o.i && o.i.data ? ' '+o.i.data.type:''}`,
     onclick: o.onclick,
     onRclick: o.onRclick,
     tab: o.tab,
