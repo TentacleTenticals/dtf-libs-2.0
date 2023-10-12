@@ -6,7 +6,7 @@ function getPageType(url){
   url.replace(/https:\/\/dtf\.ru\/([^]+)/, (d, text) => {
     let arr = text.split('/');
     
-    switch(true && arr[0]){
+    switch(true && true){
       case arr[0] && arr[0].match(/^popular$/)?.input:{
         if(!arr[1]) url = {type: 'popular'};
       }break;
