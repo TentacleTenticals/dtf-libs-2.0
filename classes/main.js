@@ -496,7 +496,7 @@ class El{
         label: e.label,
         lName: e.lName,
         name: e.name,
-        value: (autocfg && autocfg[0]) ? this.auto(e.group, e.c, e.name, autocfg[0][groupName]) : e.value,
+        value: (autocfg && autocfg[0]) ? this.auto(e.group, autocfg[1], e.name, autocfg[0][groupName]) : e.value,
         options: e.options,
         optgroups: e.optgroups,
         lAttr: e.group ? ['group', e.group] : ['group', autocfg && autocfg[1]]
