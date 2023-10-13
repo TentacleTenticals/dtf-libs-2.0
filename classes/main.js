@@ -721,7 +721,7 @@ class El{
       if(Array.isArray(args)){
         if(args[0]){
           if(typeof args[0] === 'string'){
-            if(args[0].match(/\[ Air \] Ready.*/)){
+            if(args[0].match(/\[ Air \] Ready \(.+/)){
               run({page:'def', status:'ready'});
             }else
             if(args[0].match(/\[Editor in popup\] Ready.*/)){
