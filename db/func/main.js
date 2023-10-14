@@ -75,11 +75,11 @@ class Db{
   }
   init(o){
     if(!o.restart){
-      let cfg;
-      o.settings ? cfg = this.mergeSettings(defaultCfg, o.settings) : cfg = structuredClone(defaultCfg);
+      // let cfg;
+      o.settings ? mainCfg = structuredClone(this.mergeSettings(defaultCfg, o.settings)) : mainCfg = structuredClone(defaultCfg);
       OpenerItem(defaultCfg.scriptInfo.name, defaultCfg.scriptInfo.id);
       // console.log(`[Init] Инициализация скрипта успешно выполнена.`);
-      o.res({result:'success', process:'init', data:cfg});
+      o.res({result:'success', process:'init', data:mainCfg});
     }else{
       mainCfg = structuredClone(c.settings);
       // console.log(`[Init] Реинициализация скрипта успешно выполнена.`);
