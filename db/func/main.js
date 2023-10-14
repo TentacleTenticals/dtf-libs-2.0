@@ -70,7 +70,7 @@ class Db{
       return newCfg;
     }
     merge(newCfg, savCfg);
-    console.log('[Settings Merge] Совмещение настроек успешно выполнено');
+    console.log('[Settings Merge] Совмещение настроек успешно выполнено', newCfg);
     return newCfg;
   }
   init(c){
