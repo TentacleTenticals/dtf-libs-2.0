@@ -81,7 +81,7 @@ class Db{
       // console.log(`[Init] Инициализация скрипта успешно выполнена.`);
       o.res({result:'success', process:'init', data:mainCfg});
     }else{
-      mainCfg = structuredClone(c.settings);
+      mainCfg = structuredClone(o.settings);
       // console.log(`[Init] Реинициализация скрипта успешно выполнена.`);
       o.res({result:'success', process:'reInit', data:mainCfg});
     }
