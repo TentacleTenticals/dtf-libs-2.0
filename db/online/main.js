@@ -36,8 +36,15 @@ class Odb{
         if(err.message === 'Unexpected end of JSON input') return r;
         else
         if(err.message.match(/'<', "<!DOCTYPE "... is not valid JSON/)) throw new Error(`"<!DOCTYPE "... is not valid JSON`);
-        else
-        throw new Error(err);
+        else{
+          alerter({
+            alert: true,
+            title: '[Odb]',
+            text: `Ошибка, перезагрузите страницу! ${err}`,
+            timer: 5000
+          });
+          throw new Error(err);
+        }
       });
     });
   }
