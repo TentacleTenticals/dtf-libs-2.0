@@ -1,6 +1,6 @@
 const alerterCss = () => {
     return `
-  .dtf-buttonsField {
+  .dtf-alerterField {
     display: inline-flex;
     flex-direction: column;
     gap: 5px 0px;
@@ -15,7 +15,7 @@ const alerterCss = () => {
     z-index: 1000;
   }
 
-  .dtf-alert {
+  .dtf-alerter {
     display: block;
     position: relative;
     top: 0;
@@ -33,13 +33,13 @@ const alerterCss = () => {
     z-index: 10;
     opacity: 0.9;
   }
-  .dtf-alert .header {
+  .dtf-alerter .header {
     display: flex;
     justify-content: space-between;
   }
 
 
-  .dtf-alert.hide {
+  .dtf-alerter.hide {
     right: -100%;
     animation-duration: 2s;
     animation-delay: 0s;
@@ -47,7 +47,7 @@ const alerterCss = () => {
     animation-direction: alternate;
     animation-name: slideOut;
   }
-  .dtf-alert :is(.type, .scriptName) {
+  .dtf-alerter :is(.type, .scriptName) {
     width: max-content;
     font-size: 13px;
     font-weight: 600;
@@ -55,12 +55,12 @@ const alerterCss = () => {
     border-radius: 3px;
   }
 
-  .dtf-alert .text {
+  .dtf-alerter .text {
     padding: 3px;
     font-size: 15px;
     white-space: pre-wrap;
   }
-  .dtf-alert .text::before {
+  .dtf-alerter .text::before {
     display: block;
     content: '';
     width: 100%;
@@ -68,10 +68,10 @@ const alerterCss = () => {
     box-shadow: inset 0px 0px 3px 1px rgb(46 46 46);
   }
 
-  .dtf-alert.info {
+  .dtf-alerter.info {
     background-color: rgb(229 140 140);
   }
-  .dtf-alert.err {
+  .dtf-alerter.err {
     background-color: rgb(154 235 154);
   }
 
@@ -80,12 +80,12 @@ const alerterCss = () => {
       right: -100%;
     }
     to {
-      right: calc(0%);
+      right: calc(0);
     }
   }
   @keyframes slideOut {
     from {
-      right: calc(-100% + 250px);
+      right: calc(0);
     }
     to {
       right: -100%;
