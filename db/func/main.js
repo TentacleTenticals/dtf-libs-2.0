@@ -73,16 +73,17 @@ class Db{
     console.log('[Settings Merge] Совмещение настроек успешно выполнено', newCfg);
     return newCfg;
   }
-  init(c){
-    if(!c.restart){
-      c.settings ? mainCfg = this.mergeSettings(defaultCfg, c.settings) : mainCfg = structuredClone(defaultCfg);
+  init(o){
+    if(!o.restart){
+      let cfg;
+      o.settings ? cfg = this.mergeSettings(defaultCfg, o.settings) : cfg = structuredClone(defaultCfg);
       OpenerItem(defaultCfg.scriptInfo.name, defaultCfg.scriptInfo.id);
       // console.log(`[Init] Инициализация скрипта успешно выполнена.`);
-      c.res({result:'success', process:'init', data:mainCfg});
+      o.res({result:'success', process:'init', data:cfg});
     }else{
       mainCfg = structuredClone(c.settings);
       // console.log(`[Init] Реинициализация скрипта успешно выполнена.`);
-      c.res({result:'success', process:'reInit', data:mainCfg});
+      o.res({result:'success', process:'reInit', data:mainCfg});
     }
     // return new Promise((res, err) => {
     //   if(!c.restart){
