@@ -40,7 +40,7 @@ class Odb{
           alerter({
             alert: true,
             title: '[Odb]',
-            text: `Ошибка, перезагрузите страницу! ${err}`,
+            text: `Ошибка! Перейдите на другую страницу, или перезагрузите её. Err: ${err}`,
             timer: 5000
           });
           throw new Error(err);
