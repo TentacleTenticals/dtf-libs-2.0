@@ -1,6 +1,6 @@
 function alerter(o){
     const main=new El().Div({
-      path: document.getElementById('dtf-alertField'),
+      path: document.getElementById('dtf-alerterField'),
       cName: !alert ? 'dtf-alerter info' : 'dtf-alerter err',
       rtn: true,
       func: (m) => {
