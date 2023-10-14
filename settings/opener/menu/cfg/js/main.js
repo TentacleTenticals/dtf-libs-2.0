@@ -33,6 +33,11 @@ class SettingsMenu {
                 }).then(res => {
                   if(res){
                     m.remove();
+                    alerter({
+                      title: '[Cfg save]',
+                      text: `Настройки успешно сохранены!`,
+                      timer: 5000
+                    });
                   }
                 })
               }
