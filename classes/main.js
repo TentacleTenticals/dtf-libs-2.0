@@ -179,7 +179,7 @@ class El{
     };
   }
 
-  Select({path, id, name, value, label, lName, lAttr, options, body, onchange, onfocus, rtn}){
+  Select({path, id, name, value, label, lName, lAttr, sub, options, body, onchange, onfocus, rtn}){
     if(label) this.l=this.Label({
       path: path,
       cName: lName,
@@ -196,6 +196,13 @@ class El{
       this.Option({
         path: main,
         value: e,
+      });
+    });
+    if(sub) sub.forEach(e => {
+      this.OptGroup({
+        path: main,
+        label: e.label,
+        items: e.items,
       });
     });
     if(value) main.value=value;
@@ -217,7 +224,7 @@ class El{
       });
     });
   }
-  OptGroup({path, label, option, options, rtn}){
+  OptGroup({path, label, option, options, items, rtn}){
     const main=document.createElement('optgroup');
     main.label=label;
     if(option) this.Option({
@@ -230,6 +237,13 @@ class El{
         value: e[0],
         text: e[1]
       })
+    });
+    if(items) items.forEach(e => {
+      // console.log('e', e[0])
+      this.Option({
+        path: main,
+        value: e
+      });
     });
     path.appendChild(main);
 
@@ -499,6 +513,7 @@ class El{
         value: (autocfg && autocfg[0]) ? this.auto(e.group, autocfg[1], e.name, autocfg[0][groupName]) : e.value,
         options: e.options,
         optgroups: e.optgroups,
+        sub: e.sub,
         lAttr: e.group ? ['group', e.group] : ['group', autocfg && autocfg[1]]
       })
       else
@@ -721,7 +736,7 @@ class El{
       if(Array.isArray(args)){
         if(args[0]){
           if(typeof args[0] === 'string'){
-            if(args[0].match(/\[ Air \] Ready \(.+/)){
+            if(args[0].match(/\[ Air \] Ready.*/)){
               run({page:'def', status:'ready'});
             }else
             if(args[0].match(/\[Editor in popup\] Ready.*/)){
