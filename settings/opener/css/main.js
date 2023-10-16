@@ -16,13 +16,14 @@ const openerCss = () => `
 .DTF-scriptSettingsOpener>.header {
   display: flex;
   justify-content: center;
-  aspect-ratio: 1/1;
   background-color: rgb(0,0,0);
   color: rgb(255,255,255);
   border-radius: 3px;
 }
 .DTF-scriptSettingsOpener>.header>.icon {
-  margin: auto;
+  aspect-ratio: 1/1;
+  font-size: 15px;
+  line-height: 20px;
 }
 
 .DTF-scriptSettingsOpener .header>.label {
