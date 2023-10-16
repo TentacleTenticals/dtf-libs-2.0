@@ -9,7 +9,7 @@ const tabberCss = () => `
 .tabber>.main {
   display: flex;
   flex-direction: column;
-  flex-basis: max-content;
+  flex-basis: fit-content;
   box-shadow: 0 0 1px 1px rgb(85 85 85);
 }
 
