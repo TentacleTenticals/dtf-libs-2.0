@@ -137,7 +137,7 @@ label.discord ul {
 }
 label.discord li {
   display: flex;
-  white-space: pre-line;
+  white-space: pre-wrap;
 }
 label.discord li::before {
   display: block;
