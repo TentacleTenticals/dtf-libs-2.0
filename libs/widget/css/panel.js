@@ -52,6 +52,7 @@ const widgetCss = () => `
 }
 .sidePanel.active>.header+.list {
   display: flex;
+  flex-direction: column;
 }
 
 .w-button {
