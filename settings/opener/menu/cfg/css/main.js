@@ -36,6 +36,15 @@ body:has(.dtf-scriptWindow) {
   cursor: pointer;
 }
 
+.dtf-scriptWindow>form {
+  gap: 15px 0;
+}
+
+.dtf-scriptWindow fieldset {
+  padding: 5px;
+  border: 1px solid rgb(255,255,255);
+}
+
 fieldset.hide .fList {
   display: none;
 }
