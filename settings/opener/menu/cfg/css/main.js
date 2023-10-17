@@ -37,7 +37,9 @@ body:has(.dtf-scriptWindow) {
 }
 
 .dtf-scriptWindow>form {
-  gap: 15px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px 0;
 }
 
 .dtf-scriptWindow fieldset {
