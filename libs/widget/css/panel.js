@@ -41,6 +41,7 @@ const widgetCss = () => `
 }
 .sidePanel:hover .header+.list {
   display: flex;
+  flex-direction: column;
 }
 
 .sidePanel:hover+.mainPanel .w-list {
