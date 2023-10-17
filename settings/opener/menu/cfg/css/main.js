@@ -14,7 +14,7 @@ body:has(.dtf-scriptWindow) {
   left: 0px;
   z-index: 1000;
   padding: 3px;
-  max-width: 90%;
+  max-width: 100%;
   height: 100%;
   box-shadow: 0px 0px 2px 1px rgb(0 0 0);
   overflow-y: auto;
@@ -93,11 +93,11 @@ fieldset.hide .fList {
   cursor: pointer;
 }
 
-.dtf-scriptWindow .iList {
+.dtf-scriptWindow .iList:not(.ul) {
   width: 100%;
   cursor: cell;
 }
-.dtf-scriptWindow .iList ul {
+.dtf-scriptWindow .iList:not(.ul) ul {
   background-color: rgb(30 30 30);
   box-shadow: 0 0 2px 1px rgb(117 117 117);
 }
@@ -114,6 +114,7 @@ fieldset.hide .fList {
 
 .dtf-scriptWindow .actions {
   display: flex;
+  justify-content: center;
   gap: 5px 10px;
 }
 
