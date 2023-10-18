@@ -1,12 +1,8 @@
 class WidgetPanel{
-  constructor({bText, hText, cName, id, items}){
+  constructor(){
     if(!document.getElementById('widgetPanel')) this.build();
-    const widget = document.getElementById('widgetPanel');
-    
-    this.wItem({bText:bText, hText:hText, cName:cName, id:id, items:items})
   }
   build(){
-    // const widget = document.getElementById('widgetPanel');
       const main=new El().Div({
         path: document.body,
         cName: 'widgetPanel',
@@ -45,44 +41,9 @@ class WidgetPanel{
           e.currentTarget.classList.toggle('active');
         }
       })
-      const wList=new El().Div({
+      new El().Div({
         path: mainPanel,
-        cName: 'w-list',
-        rtn: true
+        cName: 'w-list'
       })
-  }
-  wItem({bText, hText, cName, id, items}){
-    const widget = document.getElementById('widgetPanel');
-    const btn=new El().Button({
-      path: widget.children[0].children[1],
-      cName: 'w-button',
-      text: bText,
-      rtn: true,
-      onclick: (e) => {
-        wItem.classList.toggle('active');
-        btn.classList.toggle('active');
-      }
-    });
-    
-    const wItem=new El().Div({
-      path: widget.children[1].children[1],
-      cName: `wl-item ${cName}`,
-      id: `wl-${id}`,
-      rtn: true
-    });
-    new El().Div({
-      path: wItem,
-      cName: 'header',
-      text: hText,
-      onclick: (e) => {
-        wItem.classList.toggle('active');
-        btn.classList.toggle('active');
-      }
-    })
-    new El().Div({
-      path: wItem,
-      cName: 'list',
-      func: (l) => items(l)
-    })
   }
 }
