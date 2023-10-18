@@ -84,6 +84,7 @@ const widgetCss = () => `
   flex-direction: column;
   flex-grow: 1;
   position: absolute;
+  min-width: 100px;
 }
 
 .widgetPanel .mainPanel:hover .w-list {
