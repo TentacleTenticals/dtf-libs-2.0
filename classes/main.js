@@ -115,7 +115,6 @@ class El{
     if(o.url) main.src=o.url;
     o.preload ? main.preload=o.preload : main.preload='none';
     if(o.autoplay) main.autoplay=o.autoplay;
-    if(o.muted) main.muted=o.muted;
     if(o.loop) main.loop=o.loop;
     if(o.controls) main.controls=o.controls;
     o.path.appendChild(main);
