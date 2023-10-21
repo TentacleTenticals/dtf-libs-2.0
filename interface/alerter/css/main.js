@@ -69,10 +69,10 @@ const alerterCss = () => {
   }
 
   .dtf-alerter.info {
-    background-color: rgb(229 140 140);
+    background-color: rgb(154 235 154);
   }
   .dtf-alerter.err {
-    background-color: rgb(154 235 154);
+    background-color: rgb(229 140 140);
   }
 
   @keyframes slideIn {
