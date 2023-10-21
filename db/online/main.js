@@ -37,7 +37,7 @@ class Odb{
         else
         if(err.message.match(/'<', "<!DOCTYPE "... is not valid JSON/)) throw new Error(`"<!DOCTYPE "... is not valid JSON`);
         else{
-          alerter({
+          new Alerter({
             alert: true,
             title: '[Odb]',
             text: `Ошибка! Перейдите на другую страницу, или перезагрузите её. Err: ${err}`,
