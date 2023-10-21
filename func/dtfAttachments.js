@@ -55,6 +55,9 @@ function attachment(o){
   //   url: 'https://github.com/TentacleTenticals/dtf-markdown/raw/main/libs/Play.svg'
   // });
   }
+  // function test(){
+  //   if(o.i.type === 'image'){}
+  // }
   if(!o.i||!o.i.data) return;
   if(o.i.type === 'image'){
     if(o.i.data.type.match(/video|gif/)){
@@ -92,5 +95,13 @@ function attachment(o){
         url: `https://leonardo.osnova.io/${o.i.data.uuid}`
       })
     }
+  }else
+  if(o.i.type === 'audio'){
+    new El().Audio({
+      path: o.path,
+      cName: 'attach',
+      controls: true,
+      url: `https://leonardo.osnova.io/${o.i.data.uuid}`
+    })
   }
 };
