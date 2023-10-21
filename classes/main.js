@@ -109,6 +109,17 @@ class El{
       return this.obj;
     }
   };
+  Audio(o){
+    const main=document.createElement('audio');
+    if(o.cName) main.className=o.cName;
+    if(o.url) main.src=o.url;
+    o.preload ? main.preload=o.preload : main.preload='none';
+    if(o.autoplay) main.autoplay=o.autoplay;
+    if(o.muted) main.muted=o.muted;
+    if(o.loop) main.loop=o.loop;
+    if(o.controls) main.controls=o.controls;
+    o.path.appendChild(main);
+  }
   A({path, text, url, cName, id, onclick, rtn}){
     const main=document.createElement('a');
     if(cName) main.className=cName;
