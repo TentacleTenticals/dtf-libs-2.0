@@ -1,7 +1,15 @@
-function alerter(o){
+class Alerter{
+  constructor(o){
+    if(!document.getElementById('dtf-alerterField')){
+      console.log('[Alerter] Ошибка инициализации, не найден элемент "dtf-alerterFiled"');
+      return;
+    }
+    this.build(o);
+  }
+  build(o){
     const main=new El().Div({
       path: document.getElementById('dtf-alerterField'),
-      cName: !alert ? 'dtf-alerter info' : 'dtf-alerter err',
+      cName: !o.alert ? 'dtf-alerter info' : 'dtf-alerter err',
       rtn: true,
       func: (m) => {
         new El().Div({
@@ -38,3 +46,4 @@ function alerter(o){
       }, o.timer);
     }
   }
+}
