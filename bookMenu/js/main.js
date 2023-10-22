@@ -43,8 +43,6 @@ class BookMenu{
     return (mainCfg.database.bookMenu.size[type] * num) + i;
   }
   itemList({path, target, type}){
-    console.log('TYPE', type)
-    console.log('TARGET', target)
     if(!target && !target.length > 0) return;
     path.parentNode.setAttribute('type', type);
 
@@ -167,11 +165,7 @@ class BookMenu{
             new El().Button({
               path: c,
               cName: 'full',
-              text: '🔜\uFE0E',
-              onclick: (e) => {
-                console.log('TYPE', target)
-                this.nextItem(e.target.parentNode.parentNode.nextElementSibling, target, e.target.parentNode.parentNode.parentNode.parentNode.getAttribute('type'));
-              }
+              text: '🔜\uFE0E'
             });
           }
         });
