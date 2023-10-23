@@ -12,7 +12,7 @@ const alerterCss = () => {
     padding: 3px 3px 0 3px;
     overflow: hidden;
     /* background: red; */
-    z-index: 1000;
+    z-index: 1001;
   }
 
   .dtf-alerter {
