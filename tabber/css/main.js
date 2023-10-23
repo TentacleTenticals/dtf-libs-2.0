@@ -9,6 +9,7 @@ const tabberCss = () => `
 .tabber>.main {
   display: flex;
   flex-direction: column;
+  flex-basis: fit-content;
   box-shadow: 0 0 1px 1px rgb(85 85 85);
 }
 
@@ -71,7 +72,6 @@ const tabberCss = () => `
 }
 .tabber>.main .panel .srch {
   flex-grow: 1;
-  flex-basis: 100%;
 }
 
 .tabber>.main .tabs .tab {
@@ -94,5 +94,9 @@ const tabberCss = () => `
 
 .tabber>.main .tabs input:checked+.tab {
   background-color: rgb(75 10 40);
+}
+
+.tabber>.data {
+  width: 100%;
 }
 `
