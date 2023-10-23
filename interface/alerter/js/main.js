@@ -42,7 +42,7 @@ class Alerter{
         main.classList.add('hide');
         setTimeout(() => {
           main.remove();
-        }, 3000);
+        }, 2000);
       }, o.timer);
     }
   }
