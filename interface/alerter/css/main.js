@@ -9,9 +9,10 @@ const alerterCss = () => {
     height: 100%;
     top: 60px;
     right: 0;
+    left: 100%;
+/*     right: -100%; */
     padding: 3px 3px 0 3px;
-    overflow: hidden;
-    /* background: red; */
+    overflow: visible;
     z-index: 1001;
   }
 
@@ -19,6 +20,7 @@ const alerterCss = () => {
     display: block;
     position: relative;
     top: 0;
+    right: 100%;
     width: 290px;
     min-height: 60px;
     height: max-content;
@@ -40,7 +42,7 @@ const alerterCss = () => {
 
 
   .dtf-alerter.hide {
-    right: -100%;
+    right: 100%;
     animation-duration: 2s;
     animation-delay: 0s;
     animation-iteration-count: 1;
@@ -77,18 +79,18 @@ const alerterCss = () => {
 
   @keyframes slideIn {
     from {
-      right: -100%;
+      right: 0%;
     }
     to {
-      right: calc(0);
+      right: 100%;
     }
   }
   @keyframes slideOut {
     from {
-      right: calc(0);
+      right: 100%;
     }
     to {
-      right: -100%;
+      right: 0%;
     }
   }`
   }
