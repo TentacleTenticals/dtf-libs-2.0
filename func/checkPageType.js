@@ -3,7 +3,7 @@ function getPageType(url){
     console.log('[GetPageType] error - no url');
     return;
   }
-  url.replace(/https:\/\/dtf\.ru\/([^]+)/, (d, text) => {
+  url.replace(/https:\/\/.*dtf\.ru\/([^]+)/, (d, text) => {
     function ch(t){
       if(t) return true;
     }
