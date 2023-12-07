@@ -1,4 +1,4 @@
-export class El{
+class El{
   Div(o){
     const main=document.createElement('div');
     if(o.cName) main.className = o.cName;
