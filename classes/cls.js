@@ -129,6 +129,7 @@ class El{
     if(o.attr) main.setAttribute(o.attr[0], o.attr[1]);
     if(o.name) main.setAttribute('name', o.name);
     if(o.url) main.href=o.url;
+    if(o.rel) main.rel=o.rel.join(' ');
     if(o.style) main.style = o.style;
     if(o.onclick) main.onmousedown = o.onclick;
     if(o.onRclick) main.oncontextmenu = o.onRclick;
