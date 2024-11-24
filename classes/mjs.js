@@ -194,7 +194,7 @@ const El = {
   },
 
   Select: function(o){
-    if(label) this.l=this.Label({
+    if(o.label) this.l=this.Label({
       path: o.path,
       cName: o.lName,
       text: o.label,
@@ -221,7 +221,7 @@ const El = {
       });
     });
     if(o.value) main.value=o.value;
-    (label ? this.l : path).appendChild(main);
+    (o.label ? this.l : path).appendChild(main);
 
     if(o.body) body(main);
   },
