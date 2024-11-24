@@ -29,6 +29,7 @@ class El{
       cName: 'title',
       text: o.label
     });
+    o.insert ? o.path.insertAdjacentElement(o.insert, main) : o.path.appendChild(main);
     o.addBefore ? o.path.insertBefore(main, o.addBefore) : o.path.appendChild(main);
 
     if(o.func) o.func(main);
