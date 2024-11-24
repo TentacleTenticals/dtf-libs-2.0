@@ -221,7 +221,7 @@ const El = {
       });
     });
     if(o.value) main.value=o.value;
-    (o.label ? this.l : path).appendChild(main);
+    (o.label ? this.l : o.path).appendChild(main);
 
     if(o.body) body(main);
   },
