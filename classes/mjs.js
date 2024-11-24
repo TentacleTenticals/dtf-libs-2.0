@@ -193,36 +193,37 @@ const El = {
     };
   },
 
-  Select: function({path, id, name, value, label, lName, lAttr, sub, options, body, onchange, onfocus, rtn}){
+  Select: function(o){
     if(label) this.l=this.Label({
-      path: path,
-      cName: lName,
-      text: label,
-      attr: lAttr,
+      path: o.path,
+      cName: o.lName,
+      text: o.label,
+      attr: o.lAttr,
       rtn: true
     });
     const main=document.createElement('select');
-    if(id) main.id=id;
-    if(name) main.name=name;
-    if(onchange) main.onchange=onchange;
-    if(onfocus) main.onfocus=onfocus;
-    if(options) options.forEach(e => {
+    if(o.cName) main.className=o.cName;
+    if(o.id) main.id=o.id;
+    if(o.name) main.name=o.name;
+    if(o.onchange) main.onchange=o.onchange;
+    if(o.onfocus) main.onfocus=o.onfocus;
+    if(o.options) o.options.forEach(e => {
       this.Option({
         path: main,
         value: e,
       });
     });
-    if(sub) sub.forEach(e => {
+    if(o.sub) o.sub.forEach(e => {
       this.OptGroup({
         path: main,
         label: e.label,
         items: e.items,
       });
     });
-    if(value) main.value=value;
+    if(o.value) main.value=o.value;
     (label ? this.l : path).appendChild(main);
 
-    if(body) body(main);
+    if(o.body) body(main);
   },
   Option: function({path, value}){
     const main=document.createElement('option');
