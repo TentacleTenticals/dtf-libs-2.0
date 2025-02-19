@@ -1,5 +1,5 @@
 export class Alerter{
-  constructor(o){
+  constructor(El, o){
     if(!document.getElementById('alerterField')){
       El.Div({
         path: document.body,
