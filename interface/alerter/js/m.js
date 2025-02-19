@@ -1,4 +1,4 @@
-export class Alerter{
+class Alerter{
   constructor(El, o){
     if(!document.getElementById('alerterField')){
       El.Div({
@@ -6,7 +6,7 @@ export class Alerter{
         id: 'alerterField'
       });
     }
-    this.build(o);
+    this.build(El, o);
   }
   build(El, o){
     El.Div({
