@@ -8,7 +8,7 @@ export class Alerter{
     }
     this.build(o);
   }
-  build(o){
+  build(El, o){
     El.Div({
       path: document.getElementById('alerterField'),
       class: 'alerter' + (!o.alert ? ' info' : ' err'),
