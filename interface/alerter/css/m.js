@@ -35,47 +35,51 @@ background-color: green;
     animation-name: slideIn;
     z-index: 10;
     opacity: 0.9;
-  }
-  .alerter .header {
-    display: flex;
-    justify-content: space-between;
-  }
 
+    >.header {
+      display: flex;
+      justify-content: space-between;
+      color: rgb(0 0 0);
+    }
 
-  .alerter.hide {
-    right: 100%;
-    animation-duration: 2s;
-    animation-delay: 0s;
-    animation-iteration-count: 1;
-    animation-direction: alternate;
-    animation-name: slideOut;
-  }
-  .alerter :is(.type, .scriptName) {
-    width: max-content;
-    font-size: 13px;
-    font-weight: 600;
-    padding: 0px 2px 0px 2px;
-    border-radius: 3px;
-  }
+    &.hide {
+      right: 100%;
+      animation-duration: 2s;
+      animation-delay: 0s;
+      animation-iteration-count: 1;
+      animation-direction: alternate;
+      animation-name: slideOut;
+    }
 
-  .alerter .text {
-    padding: 3px;
-    font-size: 15px;
-    white-space: pre-wrap;
-  }
-  .alerter .text::before {
-    display: block;
-    content: '';
-    width: 100%;
-    height: 4px;
-    box-shadow: inset 0px 0px 3px 1px rgb(46 46 46);
-  }
+    &.info {
+      background-color: rgb(154 235 154);
+    }
+    &.err {
+      background-color: rgb(229 140 140);
+    }
 
-  .alerter.info {
-    background-color: rgb(154 235 154);
-  }
-  .alerter.err {
-    background-color: rgb(229 140 140);
+    &:is(.type, .scriptName) {
+      width: max-content;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 0px 2px 0px 2px;
+      border-radius: 3px;
+    }
+
+    .text {
+      padding: 3px;
+      font-size: 15px;
+      color: rgb(0 0 0);
+      white-space: pre-wrap;
+
+      &::before {
+        display: block;
+        content: '';
+        width: 100%;
+        height: 4px;
+        box-shadow: inset 0px 0px 3px 1px rgb(46 46 46);
+      }
+    }
   }
 
   @keyframes slideIn {
