@@ -1,4 +1,4 @@
-class Alerter{
+export class Alerter{
   constructor(El, o){
     if(!document.getElementById('alerterField')){
       El.Div({
