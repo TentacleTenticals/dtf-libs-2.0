@@ -26,7 +26,7 @@ export class Alerter{
             El.Div({
               path: h,
               class: 'scriptName',
-              text: o.GM && o.GM.info.script.author||info.scriptInfo.name
+              text: o.GM && o.GM.info.script.name||info.script.name
             });
           }
         });
